@@ -121,8 +121,8 @@
                     $('#imgPreviewForEdit').attr("src", data.result.profile_photo);
                     $('#name').empty();
                     var selected_item = "";
-                    if (data.userRole !== null) {
-                        selected_item = data.userRole.id;
+                    if (data.result !== null) {
+                        selected_item = data.result.role_id;
                     }
 
                     if (data.roles.length > 0) {
@@ -599,44 +599,44 @@
             });
         });
 
-        $('#notificationTable').DataTable({
-            "processing": true,
-            "serverSide": true,
-            "pageLength": 1000,
-            "info": false,
-            "order": [
-                [1, 'desc']
-            ],
-            "ajax": "{{ url('dataTableNotificationList') }}",
-            "columns": [{
-                    "data": "id",
-                    "orderable": false
-                },
-                {
-                    "data": "patient",
-                    "orderable": false
-                },
-                {
-                    "data": "rounder"
-                },
-                {
-                    "data": "action_details"
-                },
-                // {
-                //     data: 'action',
-                //     name: 'action',
-                //     orderable: true,
-                //     searchable: true
-                // },
+    {{--    $('#notificationTable').DataTable({--}}
+    {{--        "processing": true,--}}
+    {{--        "serverSide": true,--}}
+    {{--        "pageLength": 1000,--}}
+    {{--        "info": false,--}}
+    {{--        "order": [--}}
+    {{--            [1, 'desc']--}}
+    {{--        ],--}}
+    {{--        "ajax": "{{ url('dataTableNotificationList') }}",--}}
+    {{--        "columns": [{--}}
+    {{--                "data": "id",--}}
+    {{--                "orderable": false--}}
+    {{--            },--}}
+    {{--            {--}}
+    {{--                "data": "patient",--}}
+    {{--                "orderable": false--}}
+    {{--            },--}}
+    {{--            {--}}
+    {{--                "data": "rounder"--}}
+    {{--            },--}}
+    {{--            {--}}
+    {{--                "data": "action_details"--}}
+    {{--            },--}}
+    {{--            // {--}}
+    {{--            //     data: 'action',--}}
+    {{--            //     name: 'action',--}}
+    {{--            //     orderable: true,--}}
+    {{--            //     searchable: true--}}
+    {{--            // },--}}
 
-            ],
-            "fnDrawCallback": function(oSettings) {
-                if (oSettings._iDisplayLength >= oSettings.fnRecordsDisplay()) {
-                    $(oSettings.nTableWrapper).find('.dataTables_paginate').hide();
-                }
-            }
-        });
-    });
+    {{--        ],--}}
+    {{--        "fnDrawCallback": function(oSettings) {--}}
+    {{--            if (oSettings._iDisplayLength >= oSettings.fnRecordsDisplay()) {--}}
+    {{--                $(oSettings.nTableWrapper).find('.dataTables_paginate').hide();--}}
+    {{--            }--}}
+    {{--        }--}}
+    {{--    });--}}
+    {{--});--}}
 
     function deleteItem(e) {
         var checkstr = confirm('Are you sure you want to delete this?');
@@ -672,12 +672,12 @@
     });
 </script>
 <script>
-    $("document").ready(function() {
-        $(document).on('click', '#notification_menu', function() {
-            $.get("{{url('updateNotification')}}",
-                function(data) {}, "json");
-        });
-    });
+    {{--$("document").ready(function() {--}}
+    {{--    $(document).on('click', '#notification_menu', function() {--}}
+    {{--        $.get("{{url('updateNotification')}}",--}}
+    {{--            function(data) {}, "json");--}}
+    {{--    });--}}
+    {{--});--}}
 </script>
 <script>
     $("document").ready(function() {
@@ -708,38 +708,38 @@
 </script>
 
 <script>
-    $("document").ready(function() {
-        $(document).on('click', '.edit_notification', function() {
-            var id = $(this).attr("id");
-            $.get("{{route('notifications.edit')}}", {
-                    id: id
-                },
-                function(data) {
-                    var selected_item = data.result.result.rounder_id;
-                    if (data.result.rounder.length > 0) {
-                        for (var i = 0; i < data.result.rounder.length; i++) {
-                            if (data.result.rounder[i].id == selected_item) {
-                                selected = ' selected="selected" ';
-                            } else {
-                                selected = '';
-                            }
-                            if (data.result.rounder[i].is_online == 1) {
-                                icon = "fa-solid fa-circle";
-                            } else {
-                                icon = "fa-duotone fa-circle";
-                            }
-                            $('#rounder_id').append('<option data-icon="' + icon + '" value = \"' + data.result.rounder[i].id + '\" ' + selected + '>' + data.result.rounder[i].first_name + ' ' + data.result.rounder[i].last_name + '</option>');
-                        }
-                    }
-                    $('#patient_name').val(data.result.result.patient.first_name + ' ' + data.result.result.patient.last_name);
-                    $('#patient_id').val(data.result.result.patient_id);
-                    $('#previous_rounder_id').val(data.result.result.rounder_id);
-                    action = "{{route('notifications.update')}}" + '?id=' + data.result.result.id;
-                    $('#frm').attr('action', action);
-                }, "json");
-            $('#edit_notification').modal('show');
-        });
-    });
+    {{--$("document").ready(function() {--}}
+    {{--    $(document).on('click', '.edit_notification', function() {--}}
+    {{--        var id = $(this).attr("id");--}}
+    {{--        $.get("{{route('notifications.edit')}}", {--}}
+    {{--                id: id--}}
+    {{--            },--}}
+    {{--            function(data) {--}}
+    {{--                var selected_item = data.result.result.rounder_id;--}}
+    {{--                if (data.result.rounder.length > 0) {--}}
+    {{--                    for (var i = 0; i < data.result.rounder.length; i++) {--}}
+    {{--                        if (data.result.rounder[i].id == selected_item) {--}}
+    {{--                            selected = ' selected="selected" ';--}}
+    {{--                        } else {--}}
+    {{--                            selected = '';--}}
+    {{--                        }--}}
+    {{--                        if (data.result.rounder[i].is_online == 1) {--}}
+    {{--                            icon = "fa-solid fa-circle";--}}
+    {{--                        } else {--}}
+    {{--                            icon = "fa-duotone fa-circle";--}}
+    {{--                        }--}}
+    {{--                        $('#rounder_id').append('<option data-icon="' + icon + '" value = \"' + data.result.rounder[i].id + '\" ' + selected + '>' + data.result.rounder[i].first_name + ' ' + data.result.rounder[i].last_name + '</option>');--}}
+    {{--                    }--}}
+    {{--                }--}}
+    {{--                $('#patient_name').val(data.result.result.patient.first_name + ' ' + data.result.result.patient.last_name);--}}
+    {{--                $('#patient_id').val(data.result.result.patient_id);--}}
+    {{--                $('#previous_rounder_id').val(data.result.result.rounder_id);--}}
+    {{--                action = "{{route('notifications.update')}}" + '?id=' + data.result.result.id;--}}
+    {{--                $('#frm').attr('action', action);--}}
+    {{--            }, "json");--}}
+    {{--        $('#edit_notification').modal('show');--}}
+    {{--    });--}}
+    {{--});--}}
 </script>
 
 <script>
@@ -832,17 +832,17 @@
     });
 </script>
 <script type="text/javascript">
-    $(document).ready(function() {
-        setInterval(function() {
-            $(".sidebar").load(
-                $.get("{{url('countNotification')}}",
-                    function(data) {
-                        $('#notification_count').html(data.result.result);
-                    }, "json")
-            )
-        }, 5000);
+    {{--$(document).ready(function() {--}}
+    {{--    setInterval(function() {--}}
+    {{--        $(".sidebar").load(--}}
+    {{--            $.get("{{url('countNotification')}}",--}}
+    {{--                function(data) {--}}
+    {{--                    $('#notification_count').html(data.result.result);--}}
+    {{--                }, "json")--}}
+    {{--        )--}}
+    {{--    }, 5000);--}}
 
-    });
+    {{--});--}}
 </script>
 <script>
     $(function() {

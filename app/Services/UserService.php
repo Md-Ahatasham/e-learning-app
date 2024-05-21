@@ -4,6 +4,7 @@ namespace App\Services;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Repositories\UserRepository;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -19,17 +20,15 @@ class UserService extends Controller {
     public function getUserInfo(): array
     {
         $data['users'] = $this->userRepository->getAllUser();
-        //$data['userRole'] = $this->userRepository->getUserRoleName();
         $data['allRoles'] = $this->userRepository->getAllRoles();
         return $data;
     }
 
     public function storeUser($request){
-
         $request->merge(['profile_photo' => $this->uploadImage($request)]);
         $request['password'] = Hash::make($request['password']);
         $user = $this->userRepository->storeUser($request->all());
-        $user->assignRole($request->input('roles'));
+        $user->assignRole($request->input('role_id'));
     }
 
     public function uploadImage($request,$userInfo=null){
@@ -40,19 +39,40 @@ class UserService extends Controller {
         return $image_url;
     }
 
-    public function updateUser($request){
-        $userInfo = $this->userRepository->getUserById($_GET['id']);
-        $image_url = $this->uploadImage($request, $userInfo);
+    public function updateUser($request,$id): bool
+    {
+        try {
+            $userInfo = $this->userRepository->getUserById($id);
+            $image_url = $this->uploadImage($request, $userInfo);
 
-        if (!empty($image_url)) {
-            $request->merge(['profile_photo' => $image_url]);
+            if (!empty($image_url)) {
+                $request->merge(['profile_photo' => $image_url]);
+            }
+            $this->userRepository->updateUser($userInfo,$request);
+            //DB::table('model_has_roles')->where('model_id', $id)->delete();
+            $userInfo->assignRole($request->input('role_id'));
+            return true;
+        } catch (Exception $ex){
+            return false;
         }
-        $this->userRepository->updateUser($userInfo,$request);
-        DB::table('model_has_roles')->where('model_id', $_GET['id'])->delete();
-        $userInfo->assignRole($request->input('roles'));
+
     }
 
     public function deleteUser($id){
         return $this->userRepository->deleteUser($id);
+    }
+
+    public function getUserDetailsById($id): array
+    {
+        return $this->userRepository->getUserDetailsById($id);
+    }
+
+    public function checkEmail($email): string
+    {
+        $data = $this->userRepository->checkEmail($email);
+        if(empty($data)){
+            return "Email is already exist !";
+        }
+        return "";
     }
 }

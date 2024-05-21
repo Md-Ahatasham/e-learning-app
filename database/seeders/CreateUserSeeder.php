@@ -27,12 +27,11 @@ class CreateUserSeeder extends Seeder
                 'role_id' => '2',
                 'profile_photo' => asset('dist/img/default_avatar.png'),
                 'user_code' => 1234,
-                'hospital_code' => 123456,
             ],
 
         );
 
-        $role = Role::create(['name' => 'Rounder']);
+        $role = Role::create(['name' => 'Teacher']);
         $permissions = Permission::pluck('id', 'id')->all();
         $role->syncPermissions($permissions);
         $user->assignRole([$role->id]);

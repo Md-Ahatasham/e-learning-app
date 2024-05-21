@@ -12,7 +12,6 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
@@ -30,8 +29,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data = $this->service->getUserInfo();
-        $data['breadcrumb'] = $this->getBreadcrumb('User','User list');
+        try {
+            $data = $this->service->getUserInfo();
+            $data['breadcrumb'] = $this->getBreadcrumb('User','User list');
+        } catch (Exception $ex){
+            $data = [];
+        }
+
         return view('admin_level.users.index', with(['data' => $data]));
     }
 
@@ -44,8 +48,13 @@ class UserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $this->formValidation($request);
-        $this->service->storeUser($request);
-        return redirect()->route('users.index')->with('toast_success', 'User Created Successfully');
+        try {
+            $this->service->storeUser($request);
+            return redirect()->route('users.index')->with('toast_success', 'User created successfully');
+        } catch (Exception $ex){
+            return redirect()->route('users.index')->with('toast_error', 'Ops! Something went wrong.');
+        }
+
     }
 
 
@@ -60,10 +69,10 @@ class UserController extends Controller
     {
         $this->formValidation($request);
         try {
-            $this->service->updateUser($request);
-            return redirect()->route('users.index')->with('toast_success', 'User Updated Successfully');
+            $this->service->updateUser($request,$_GET['id']);
+            return redirect()->route('users.index')->with('toast_success', 'User updated successfully');
         } catch (Exception $ex) {
-            return redirect()->route('users.index')->with('toast_error', 'User Not Updated');
+            return redirect()->route('users.index')->with('toast_error', 'Ops! Something went wrong.');
         }
     }
 
@@ -80,7 +89,7 @@ class UserController extends Controller
             $this->service->deleteUser($id);
             return redirect()->route('users.index')->with('toast_success', 'User deleted successfully');
         } catch (Exception $ex) {
-            return redirect()->route('users.index')->with('toast_error', 'User not deleted');
+            return redirect()->route('users.index')->with('toast_error', 'Ops! Something went wrong.');
         }
     }
 
@@ -90,12 +99,8 @@ class UserController extends Controller
      */
     public function checkEmail(): JsonResponse
     {
-        $checkEmail = User::where('email', $_GET['email'])->first();
-        if (!empty($checkEmail)) {
-            return response()->json(['result' => "Email is already exist !"]);
-        } else {
-            return response()->json(['result' => ""]);
-        }
+        $result = $this->service->checkEmail($_GET['email']);
+        return response()->json(['result' => $result]);
     }
 
 
@@ -104,11 +109,7 @@ class UserController extends Controller
      */
     public function userInfoById()
     {
-        $data['roles'] = DB::table('roles')->selectRaw('roles.id as id, roles.name as name')->get();
-        $data['userRole'] = DB::table('roles')->leftjoin('model_has_roles', 'roles.id', '=', 'model_has_roles.role_id')
-            ->where('model_has_roles.model_id', '=', $_GET['id'])->selectRaw('roles.id')->first();
-       //dd($data['userRole']);
-        $data['result'] = User::where('id', $_GET['id'])->first();
+        $data = $this->service->getUserDetailsById($_GET['id']);
         echo json_encode($data);
     }
 

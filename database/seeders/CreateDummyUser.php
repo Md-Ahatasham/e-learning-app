@@ -25,7 +25,6 @@ class CreateDummyUser extends Seeder
                 'is_online' => '1',
                 'profile_photo' => asset('dist/img/default_avatar.png'),
                 'user_code' => 12345,
-                'hospital_code' => 123456,
             ],
             [
                 'first_name' => 'Jhone',
@@ -37,7 +36,6 @@ class CreateDummyUser extends Seeder
                 'is_online' => '1',
                 'profile_photo' => asset('dist/img/default_avatar.png'),
                 'user_code' => 123456,
-                'hospital_code' => 123456,
             ],
             [
                 'first_name' => 'The',
@@ -49,7 +47,6 @@ class CreateDummyUser extends Seeder
                 'is_online' => '1',
                 'profile_photo' => asset('dist/img/default_avatar.png'),
                 'user_code' => 1234567,
-                'hospital_code' => 123456,
             ],
             [
                 'first_name' => 'Jhonson',
@@ -61,7 +58,6 @@ class CreateDummyUser extends Seeder
                 'is_online' => '0',
                 'profile_photo' => asset('dist/img/default_avatar.png'),
                 'user_code' => 12345678,
-                'hospital_code' => 123456,
             ],
 
         );

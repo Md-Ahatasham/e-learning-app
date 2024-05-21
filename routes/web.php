@@ -11,14 +11,19 @@ Route::group(['middleware' => ['auth','activityTracker']], function () {
  // Route::get('/dashboard', function () {
  //    return view('admin_level.dashboard.dashboard');
  // });
+
   Route::get('/', 'HomeController@index');
   Route::get('dashboard', 'HomeController@index');
   Route::get('/login', 'HomeController@index');
   Route::resource('roles','RoleController');
+
+  ## user rote
   Route::resource('users','User\UserController');
-  Route::get('checkEmail','UserController@checkEmail');
-  Route::get('userInfoById', 'UserController@userInfoById')->name('users.userInfoById');
-  Route::put('userInfoUpdate', 'UserController@update')->name('users.update');
+  Route::get('checkEmail','User\UserController@checkEmail');
+  Route::get('userInfoById', 'User\UserController@userInfoById')->name('users.userInfoById');
+  Route::put('userInfoUpdate', 'User\UserController@update')->name('users.update');
+
+
   Route::resource('rounders','RounderController');
   Route::get('dataTableRounderList','RounderController@dataTableRounderList');
   Route::get('dataTableTabletList','RounderController@dataTableTabletList');

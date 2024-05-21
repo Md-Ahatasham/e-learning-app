@@ -1184,6 +1184,7 @@ body[mdtimepicker-display="on"] {
   border: 1px solid lightgray;
   min-width: 124%;
   margin-left: -43%;
+  margin-bottom: 0rem;
 }
 .toaster .toaster-button {
   margin-left: 19%;

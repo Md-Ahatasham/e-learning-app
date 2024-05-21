@@ -9,7 +9,10 @@ mkdir sessions
 mkdir views
 mkdir cache
 
-composer install or update
+
+npm install
+npm run dev
+composer install
 php artisan key: generate
 
 php artisan cache:clear
@@ -18,28 +21,8 @@ php artisan config:cache
 // run this command for database migration
 
 php artisan migrate:fresh
+php artisan db:seed
 
-
-// run these command serially for seeder
-
-<!-- php artisan db:seed --class=PermissionTableSeeder -->
-
-php artisan db:seed --class=CreateAdminUserSeeder
-php artisan db:seed --class=CreateDummyUser
-
-php artisan db:seed --class=CreateRounderSeeder
-php artisan db:seed --class=CreateUnitSeeder
-php artisan db:seed --class=CreateRoomSeeder
-php artisan db:seed --class=CreateBedSeeder
-php artisan db:seed --class=CreatePatientSeeder
-php artisan db:seed --class=CreatePatientHistorySeeder
-
-php artisan db:seed --class=CreatePrecaution
-
-php artisan db:seed --class=CreatePatientHasPrecaution
-php artisan db:seed --class=CreatePatientInOutHistorySeeder
-php artisan db:seed --class=CreateRoundingActivityLogSeeder
-php artisan db:seed --class=PermissionTableSeeder
 
 
 

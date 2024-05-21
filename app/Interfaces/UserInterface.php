@@ -7,4 +7,5 @@ interface UserInterface {
     public function getAllRoles();
     public function storeUser($request);
     public function getUserById($id);
+    public function getUserDetailsById($id);
 }

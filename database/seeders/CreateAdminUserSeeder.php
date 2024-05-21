@@ -27,10 +27,9 @@ class CreateAdminUserSeeder extends Seeder
                 'role_id' => '1',
                 'profile_photo' => asset('dist/img/default_avatar.png'),
                 'user_code' => 123,
-                'hospital_code' => 123456,
             ],
         );
-        $role = Role::create(['name' => 'Level-3']);
+        $role = Role::create(['name' => 'Admin']);
         $permissions = Permission::pluck('id', 'id')->all();
         $role->syncPermissions($permissions);
         $user->assignRole([$role->id]);
