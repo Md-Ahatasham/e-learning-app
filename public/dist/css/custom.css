@@ -1,0 +1,1204 @@
+/*!
+ *   Round Right
+ *   
+ *   
+ */
+
+/*css for category module */
+/* Changes by douglas */
+.btn-md {
+  padding: 0.485rem 1.5rem !important;
+  height: 45px !important;
+}
+.btn-danger {
+  margin-right: 15px !important;
+}
+/* End */
+
+.add_button_to_right {
+  float: right;
+}
+
+/* global configuration */
+
+.card-body .table td,
+.table th {
+  padding: 0.5rem;
+}
+
+.content-wrapper .content-header {
+  padding: 5px 0.5rem;
+}
+
+.cat_modal_header {
+  background-color: #eef5f5;
+  color: black;
+}
+.wrapper .sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active,
+.sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.activ {
+  background-color: #fafafa;
+}
+body [class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link.active,
+[class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link.active:focus,
+[class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link.active:hover {
+  background-color: #f3f0f0;
+  color: #343a40;
+}
+.form-hide {
+  display: none;
+}
+.main-sidebar .brand-link .brand-image {
+  width: 55%;
+  margin-left: 15%;
+}
+
+.layout-navbar-fixed
+  .wrapper
+  .sidebar-dark-primary
+  .brand-link:not([class*="navbar"]) {
+  background-color: #fff;
+}
+.pagination .page-item.active .page-link {
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+}
+div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+  margin: 2px 0;
+  white-space: nowrap;
+  justify-content: flex-start;
+}
+.show_flex {
+  display: flex;
+}
+.margin_right {
+  margin-right: 2px;
+}
+
+/* .page-item .page-link {
+  border-radius: 50px;
+} */
+.card .card-body {
+  padding: 0.5rem;
+}
+.body_padding_top {
+  padding-top: 2%;
+}
+#myBtn {
+  display: block;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+  z-index: 1111;
+  border-radius: 50px;
+  height: 7%;
+  width: 3%;
+  font-size: 8px;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}
+
+/* user module*/
+.right_border {
+  border-right: 1px solid black;
+}
+
+#description {
+  width: 100%;
+  height: 200px;
+  font-size: 14px;
+  line-height: 18px;
+  border: 1px solid #dddddd;
+  padding: 10px;
+}
+.icon_color {
+  color: red;
+}
+
+.admin-sidebar {
+  font-size: 17px;
+  background-color: #fff;
+}
+
+.wrapper [class*="sidebar-dark"] .brand-link {
+  border: 0px;
+}
+.nav-item .nav-link p {
+  color: black;
+}
+.nav-item .nav-link i {
+  color: black;
+}
+
+.image > img {
+  width: auto;
+}
+
+.wrapper .main-sidebar .layout-navbar-fixed.layout-fixed .wrapper .sidebar {
+  margin-top: 0px;
+}
+.wrapper .user-panel .image {
+  padding-left: 0px;
+}
+.wrapper > .admin-sidebar > .sidebar {
+  margin-top: 0px;
+}
+
+.wrapper [class*="sidebar-dark"] .user-panel {
+  border-bottom: 0px;
+}
+.row .info-box .info-box-icon {
+  display: initial;
+}
+
+.stuff_name,
+.tablet_name,
+.assignee_count {
+  font-size: 15px;
+  font-weight: normal;
+}
+
+.tab-content .tab-pane .info-box .info-box-number {
+  font-size: 15px;
+  font-weight: normal;
+}
+
+.info-box .info-box-content .info-box-number {
+  font-weight: normal;
+}
+.btn-info {
+  background-color: #40a988;
+}
+
+.tab-pane .info-box .info-box-content {
+  padding: 5px 0px;
+  display: inline-block;
+  word-wrap: break-word;
+  max-width: 67%;
+  min-width: 67%;
+}
+.info-box-icon .btn-xs {
+  vertical-align: top;
+  margin-top: 4%;
+  margin-left: 4%;
+  width: 25%;
+}
+
+.tab-pane .info-box {
+  display: block;
+  /* min-width: 194px; */
+  min-width: 15.5%;
+}
+.patient_image {
+  width: 48px;
+  height: 49px;
+}
+.first {
+  background-color: #40a988;
+}
+
+.second {
+  background-color: #4070a9;
+}
+.third {
+  background-color: #7540a9;
+}
+.fourth {
+  background-color: #a94040;
+}
+
+.main-page-body {
+  background-color: #fff;
+}
+
+.top_headline {
+  font-weight: normal;
+  border-bottom: 0px;
+  font-size: 20px;
+}
+.patient-form .patient-card {
+  box-shadow: none;
+}
+
+.patient .patient-header {
+  border-bottom: 0px;
+}
+
+label:not(.form-check-label):not(.custom-file-label) {
+  font-weight: normal;
+}
+.card-body .view-button > .btn {
+  width: 20%;
+}
+.nav-pills .tab-button {
+  width: 25%;
+}
+.nav-pills .tab-button a {
+  float: right;
+}
+
+.card-header .nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: #141414;
+  background-color: #fdfeff;
+}
+.row .medical-button {
+  width: 175%;
+}
+.row .table-button {
+  width: 30%;
+  min-width: 30%;
+}
+.patient-tab .tab {
+  box-shadow: none;
+  background: #f1f1f2;
+}
+.medical-text {
+  font-size: 14px;
+  padding-top: 10%;
+}
+.medical-box {
+  min-height: 35px;
+  margin-bottom: 1%;
+  margin-right: 6%;
+}
+.top_headline_precaution {
+  font-weight: normal;
+  border-bottom: 0px;
+  font-size: 24px;
+  padding-left: 6%;
+  padding-bottom: 4%;
+}
+.body_padding_top .add_new_button_design {
+  box-shadow: none;
+  margin-right: 0.5%;
+}
+
+#unitTable {
+  display: contents;
+}
+
+.text-sm .select2-container--default .select2-selection--single,
+select.form-control-sm
+  ~ .select2-container--default
+  .select2-selection--single {
+  height: 45px !important;
+}
+
+.form-control {
+  /*height: 45px !important;*/
+}
+.form-control-sm {
+  max-width: 90%;
+}
+
+.modal-footer .cancel-button {
+  color: white;
+  margin-right: 15px;
+}
+.modal-footer .cancel-button:hover {
+  color: white;
+}
+.form-group .cancel-button {
+  margin-right: 15px;
+}
+
+.form-group label {
+  text-align: right;
+  padding-right: 30px;
+}
+.add_more_button {
+  max-width: 15%;
+  float: right;
+  max-height: 45px;
+  margin-right: 10%;
+  cursor: pointer;
+}
+
+.add_icon {
+  padding: 10px;
+  border: 1px dashed #aaa;
+  display: inline-block;
+  border-radius: 50%;
+  margin-right: 10px;
+  margin-left: 25%;
+}
+
+.del_btn_d {
+  display: inline-block;
+  position: absolute;
+  right: 20px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.sub_menu_icon_size {
+  font-size: 13px;
+}
+
+.color-picker-image {
+  float: left;
+}
+.btn-custom {
+  height: 45px;
+  font-size: 16px;
+  min-width: 20%;
+}
+.wrapper .main-header {
+  border-bottom: 0px solid #dee2e6;
+}
+.text-aria-form-control {
+  max-width: 90%;
+  min-height: 100px;
+}
+.display-inline {
+  display: inline;
+}
+.font-size {
+  font-size: 14px;
+}
+.profile-user-img {
+  min-height: 100px;
+  max-height: 100px;
+  min-width: 100px;
+  max-width: 100px;
+}
+
+.select2-search__field {
+  height: 36px !important;
+}
+.general-title {
+  font-size: 18px;
+  font-weight: 400;
+  padding: 10px;
+  color: #000;
+}
+.elevation-14 {
+  border-right: 1px solid #ccc !important;
+}
+.info-box {
+  box-shadow: none;
+  border: 1px solid #ccc;
+}
+.nav-sidebar > .nav-item > .nav-link.active {
+  box-shadow: none !important;
+}
+.btn-xs {
+  border: 0px;
+}
+#profile_image {
+  border: 0px;
+}
+.patient-precaution-checkbox {
+  display: none;
+}
+.precaution-text {
+  font-size: 11px;
+  padding: 5%;
+  border: 1px solid gray;
+  border-radius: 5%;
+  width: 90%;
+}
+.precaution .col-sm-4 {
+  max-width: 31.11%;
+}
+.general_information a {
+  max-width: 20%;
+}
+.pull-right {
+  float: right;
+}
+.color-white {
+  color: #fff;
+}
+#html5colorpicker {
+  width: 90%;
+}
+.patient-font-size {
+  font-size: 15px;
+}
+
+.rounder-activity {
+  cursor: pointer;
+}
+.remove-card-border {
+  box-shadow: none;
+}
+.card-body .card-title {
+  font-size: 15px;
+}
+.fa-duotone {
+  color: gray;
+  float: right;
+  /* margin:3%; */
+}
+.fa-solid {
+  color: green;
+  float: right;
+  /* margin:3%; */
+}
+.margin_right {
+  margin-right: 2%;
+}
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+.mdtp__wrapper,
+body[mdtimepicker-display="on"] {
+  overflow: hidden;
+}
+.mdtimepicker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  background-color: rgba(10, 10, 10, 0.7);
+  transition: background-color 0.28s ease;
+  z-index: 100001;
+}
+.mdtimepicker.hidden {
+  display: none;
+}
+.mdtimepicker.animate {
+  background-color: transparent;
+}
+.mdtp__wrapper {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: 50%;
+  bottom: 24px;
+  min-width: 280px;
+  opacity: 1;
+  user-select: none;
+  border-radius: 2px;
+  transform: translateX(-50%) scale(1);
+  box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2),
+    0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12);
+  transition: transform 0.28s ease, opacity 0.28s ease;
+}
+.mdtp__wrapper.animate {
+  transform: translateX(-50%) scale(1.05);
+  opacity: 0;
+}
+.mdtp__time_holder {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 46px;
+  padding: 20px 24px;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  background-color: #1565c0;
+}
+.mdtp__time_holder > span {
+  display: inline-block;
+  line-height: 48px;
+  cursor: default;
+}
+.mdtp__time_holder > span:not(.mdtp__timedots):not(.mdtp__ampm) {
+  cursor: pointer;
+  margin: 0 4px;
+}
+.mdtp__time_holder .mdtp__time_h.active,
+.mdtp__time_holder .mdtp__time_m.active {
+  color: #fafafa;
+}
+.mdtp__time_holder .mdtp__ampm {
+  font-size: 18px;
+}
+.mdtp__clock_holder {
+  position: relative;
+  padding: 20px;
+  background-color: #fff;
+}
+.mdtp__clock_holder .mdtp__clock {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  background-color: #eee;
+}
+.mdtp__clock .mdtp__am,
+.mdtp__clock .mdtp__pm {
+  display: block;
+  position: absolute;
+  bottom: -8px;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.05);
+  transition: background-color 0.2s ease, color 0.2s;
+  z-index: 3;
+}
+.mdtp__clock .mdtp__am {
+  left: -8px;
+}
+.mdtp__clock .mdtp__pm {
+  right: -8px;
+}
+.mdtp__clock .mdtp__am:hover,
+.mdtp__clock .mdtp__pm:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.mdtp__clock .mdtp__am.active,
+.mdtp__clock .mdtp__pm.active {
+  color: #fafafa;
+  background-color: #1565c0;
+}
+.mdtp__clock .mdtp__clock_dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 4px;
+  background-color: #1565c0;
+  border-radius: 50%;
+}
+.mdtp__clock .mdtp__hour_holder,
+.mdtp__clock .mdtp__minute_holder {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transform: scale(1);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
+  overflow: hidden;
+}
+.mdtp__clock .mdtp__hour_holder.animate {
+  transform: scale(1.2);
+  opacity: 0;
+}
+.mdtp__clock .mdtp__minute_holder.animate {
+  transform: scale(0.8);
+  opacity: 0;
+}
+.mdtp__clock .mdtp__hour_holder.hidden,
+.mdtp__clock .mdtp__minute_holder.hidden {
+  display: none;
+}
+.mdtp__clock .mdtp__digit {
+  position: absolute;
+  width: 50%;
+  top: 50%;
+  left: 0;
+  margin-top: -16px;
+  transform-origin: right center;
+  z-index: 1;
+}
+.mdtp__clock .mdtp__digit span {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  margin-left: 8px;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.28s, color 0.14s;
+}
+.mdtp__clock .mdtp__digit span:hover,
+.mdtp__digit.active span {
+  background-color: #1565c0 !important;
+  color: #fff;
+  z-index: 2;
+}
+.mdtp__button,
+.mdtp__wrapper[data-theme="blue"] .mdtp__button {
+  color: #1565c0;
+}
+.mdtp__digit.active:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: calc(50% - 1px);
+  right: 0;
+  height: 2px;
+  width: calc(100% - 40px);
+  background-color: #1565c0;
+}
+.mdtp__clock .mdtp__minute_holder .mdtp__digit {
+  font-size: 13px;
+}
+.mdtp__clock .mdtp__minute_holder .mdtp__digit:not(.marker) {
+  margin-top: -6px;
+  height: 12px;
+}
+.mdtp__clock .mdtp__minute_holder .mdtp__digit:not(.marker).active:before {
+  width: calc(100% - 26px);
+}
+.mdtp__clock .mdtp__minute_holder .mdtp__digit:not(.marker) span {
+  width: 12px;
+  height: 12px;
+  line-height: 12px;
+  margin-left: 14px;
+}
+.mdtp__clock .mdtp__minute_holder .mdtp__digit.marker {
+  margin-top: -12px;
+}
+.mdtp__clock .mdtp__minute_holder .mdtp__digit.marker.active:before {
+  width: calc(100% - 34px);
+}
+.mdtp__clock .mdtp__minute_holder .mdtp__digit.marker span {
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  margin-left: 10px;
+}
+.mdtp__digit.rotate-6 {
+  transform: rotate(6deg);
+}
+.mdtp__digit.rotate-6 span {
+  transform: rotate(-6deg);
+}
+.mdtp__digit.rotate-12 {
+  transform: rotate(12deg);
+}
+.mdtp__digit.rotate-12 span {
+  transform: rotate(-12deg);
+}
+.mdtp__digit.rotate-18 {
+  transform: rotate(18deg);
+}
+.mdtp__digit.rotate-18 span {
+  transform: rotate(-18deg);
+}
+.mdtp__digit.rotate-24 {
+  transform: rotate(24deg);
+}
+.mdtp__digit.rotate-24 span {
+  transform: rotate(-24deg);
+}
+.mdtp__digit.rotate-30 {
+  transform: rotate(30deg);
+}
+.mdtp__digit.rotate-30 span {
+  transform: rotate(-30deg);
+}
+.mdtp__digit.rotate-36 {
+  transform: rotate(36deg);
+}
+.mdtp__digit.rotate-36 span {
+  transform: rotate(-36deg);
+}
+.mdtp__digit.rotate-42 {
+  transform: rotate(42deg);
+}
+.mdtp__digit.rotate-42 span {
+  transform: rotate(-42deg);
+}
+.mdtp__digit.rotate-48 {
+  transform: rotate(48deg);
+}
+.mdtp__digit.rotate-48 span {
+  transform: rotate(-48deg);
+}
+.mdtp__digit.rotate-54 {
+  transform: rotate(54deg);
+}
+.mdtp__digit.rotate-54 span {
+  transform: rotate(-54deg);
+}
+.mdtp__digit.rotate-60 {
+  transform: rotate(60deg);
+}
+.mdtp__digit.rotate-60 span {
+  transform: rotate(-60deg);
+}
+.mdtp__digit.rotate-66 {
+  transform: rotate(66deg);
+}
+.mdtp__digit.rotate-66 span {
+  transform: rotate(-66deg);
+}
+.mdtp__digit.rotate-72 {
+  transform: rotate(72deg);
+}
+.mdtp__digit.rotate-72 span {
+  transform: rotate(-72deg);
+}
+.mdtp__digit.rotate-78 {
+  transform: rotate(78deg);
+}
+.mdtp__digit.rotate-78 span {
+  transform: rotate(-78deg);
+}
+.mdtp__digit.rotate-84 {
+  transform: rotate(84deg);
+}
+.mdtp__digit.rotate-84 span {
+  transform: rotate(-84deg);
+}
+.mdtp__digit.rotate-90 {
+  transform: rotate(90deg);
+}
+.mdtp__digit.rotate-90 span {
+  transform: rotate(-90deg);
+}
+.mdtp__digit.rotate-96 {
+  transform: rotate(96deg);
+}
+.mdtp__digit.rotate-96 span {
+  transform: rotate(-96deg);
+}
+.mdtp__digit.rotate-102 {
+  transform: rotate(102deg);
+}
+.mdtp__digit.rotate-102 span {
+  transform: rotate(-102deg);
+}
+.mdtp__digit.rotate-108 {
+  transform: rotate(108deg);
+}
+.mdtp__digit.rotate-108 span {
+  transform: rotate(-108deg);
+}
+.mdtp__digit.rotate-114 {
+  transform: rotate(114deg);
+}
+.mdtp__digit.rotate-114 span {
+  transform: rotate(-114deg);
+}
+.mdtp__digit.rotate-120 {
+  transform: rotate(120deg);
+}
+.mdtp__digit.rotate-120 span {
+  transform: rotate(-120deg);
+}
+.mdtp__digit.rotate-126 {
+  transform: rotate(126deg);
+}
+.mdtp__digit.rotate-126 span {
+  transform: rotate(-126deg);
+}
+.mdtp__digit.rotate-132 {
+  transform: rotate(132deg);
+}
+.mdtp__digit.rotate-132 span {
+  transform: rotate(-132deg);
+}
+.mdtp__digit.rotate-138 {
+  transform: rotate(138deg);
+}
+.mdtp__digit.rotate-138 span {
+  transform: rotate(-138deg);
+}
+.mdtp__digit.rotate-144 {
+  transform: rotate(144deg);
+}
+.mdtp__digit.rotate-144 span {
+  transform: rotate(-144deg);
+}
+.mdtp__digit.rotate-150 {
+  transform: rotate(150deg);
+}
+.mdtp__digit.rotate-150 span {
+  transform: rotate(-150deg);
+}
+.mdtp__digit.rotate-156 {
+  transform: rotate(156deg);
+}
+.mdtp__digit.rotate-156 span {
+  transform: rotate(-156deg);
+}
+.mdtp__digit.rotate-162 {
+  transform: rotate(162deg);
+}
+.mdtp__digit.rotate-162 span {
+  transform: rotate(-162deg);
+}
+.mdtp__digit.rotate-168 {
+  transform: rotate(168deg);
+}
+.mdtp__digit.rotate-168 span {
+  transform: rotate(-168deg);
+}
+.mdtp__digit.rotate-174 {
+  transform: rotate(174deg);
+}
+.mdtp__digit.rotate-174 span {
+  transform: rotate(-174deg);
+}
+.mdtp__digit.rotate-180 {
+  transform: rotate(180deg);
+}
+.mdtp__digit.rotate-180 span {
+  transform: rotate(-180deg);
+}
+.mdtp__digit.rotate-186 {
+  transform: rotate(186deg);
+}
+.mdtp__digit.rotate-186 span {
+  transform: rotate(-186deg);
+}
+.mdtp__digit.rotate-192 {
+  transform: rotate(192deg);
+}
+.mdtp__digit.rotate-192 span {
+  transform: rotate(-192deg);
+}
+.mdtp__digit.rotate-198 {
+  transform: rotate(198deg);
+}
+.mdtp__digit.rotate-198 span {
+  transform: rotate(-198deg);
+}
+.mdtp__digit.rotate-204 {
+  transform: rotate(204deg);
+}
+.mdtp__digit.rotate-204 span {
+  transform: rotate(-204deg);
+}
+.mdtp__digit.rotate-210 {
+  transform: rotate(210deg);
+}
+.mdtp__digit.rotate-210 span {
+  transform: rotate(-210deg);
+}
+.mdtp__digit.rotate-216 {
+  transform: rotate(216deg);
+}
+.mdtp__digit.rotate-216 span {
+  transform: rotate(-216deg);
+}
+.mdtp__digit.rotate-222 {
+  transform: rotate(222deg);
+}
+.mdtp__digit.rotate-222 span {
+  transform: rotate(-222deg);
+}
+.mdtp__digit.rotate-228 {
+  transform: rotate(228deg);
+}
+.mdtp__digit.rotate-228 span {
+  transform: rotate(-228deg);
+}
+.mdtp__digit.rotate-234 {
+  transform: rotate(234deg);
+}
+.mdtp__digit.rotate-234 span {
+  transform: rotate(-234deg);
+}
+.mdtp__digit.rotate-240 {
+  transform: rotate(240deg);
+}
+.mdtp__digit.rotate-240 span {
+  transform: rotate(-240deg);
+}
+.mdtp__digit.rotate-246 {
+  transform: rotate(246deg);
+}
+.mdtp__digit.rotate-246 span {
+  transform: rotate(-246deg);
+}
+.mdtp__digit.rotate-252 {
+  transform: rotate(252deg);
+}
+.mdtp__digit.rotate-252 span {
+  transform: rotate(-252deg);
+}
+.mdtp__digit.rotate-258 {
+  transform: rotate(258deg);
+}
+.mdtp__digit.rotate-258 span {
+  transform: rotate(-258deg);
+}
+.mdtp__digit.rotate-264 {
+  transform: rotate(264deg);
+}
+.mdtp__digit.rotate-264 span {
+  transform: rotate(-264deg);
+}
+.mdtp__digit.rotate-270 {
+  transform: rotate(270deg);
+}
+.mdtp__digit.rotate-270 span {
+  transform: rotate(-270deg);
+}
+.mdtp__digit.rotate-276 {
+  transform: rotate(276deg);
+}
+.mdtp__digit.rotate-276 span {
+  transform: rotate(-276deg);
+}
+.mdtp__digit.rotate-282 {
+  transform: rotate(282deg);
+}
+.mdtp__digit.rotate-282 span {
+  transform: rotate(-282deg);
+}
+.mdtp__digit.rotate-288 {
+  transform: rotate(288deg);
+}
+.mdtp__digit.rotate-288 span {
+  transform: rotate(-288deg);
+}
+.mdtp__digit.rotate-294 {
+  transform: rotate(294deg);
+}
+.mdtp__digit.rotate-294 span {
+  transform: rotate(-294deg);
+}
+.mdtp__digit.rotate-300 {
+  transform: rotate(300deg);
+}
+.mdtp__digit.rotate-300 span {
+  transform: rotate(-300deg);
+}
+.mdtp__digit.rotate-306 {
+  transform: rotate(306deg);
+}
+.mdtp__digit.rotate-306 span {
+  transform: rotate(-306deg);
+}
+.mdtp__digit.rotate-312 {
+  transform: rotate(312deg);
+}
+.mdtp__digit.rotate-312 span {
+  transform: rotate(-312deg);
+}
+.mdtp__digit.rotate-318 {
+  transform: rotate(318deg);
+}
+.mdtp__digit.rotate-318 span {
+  transform: rotate(-318deg);
+}
+.mdtp__digit.rotate-324 {
+  transform: rotate(324deg);
+}
+.mdtp__digit.rotate-324 span {
+  transform: rotate(-324deg);
+}
+.mdtp__digit.rotate-330 {
+  transform: rotate(330deg);
+}
+.mdtp__digit.rotate-330 span {
+  transform: rotate(-330deg);
+}
+.mdtp__digit.rotate-336 {
+  transform: rotate(336deg);
+}
+.mdtp__digit.rotate-336 span {
+  transform: rotate(-336deg);
+}
+.mdtp__digit.rotate-342 {
+  transform: rotate(342deg);
+}
+.mdtp__digit.rotate-342 span {
+  transform: rotate(-342deg);
+}
+.mdtp__digit.rotate-348 {
+  transform: rotate(348deg);
+}
+.mdtp__digit.rotate-348 span {
+  transform: rotate(-348deg);
+}
+.mdtp__digit.rotate-354 {
+  transform: rotate(354deg);
+}
+.mdtp__digit.rotate-354 span {
+  transform: rotate(-354deg);
+}
+.mdtp__digit.rotate-360 {
+  transform: rotate(360deg);
+}
+.mdtp__digit.rotate-360 span {
+  transform: rotate(-360deg);
+}
+.mdtp__buttons {
+  margin: 0 -10px -10px;
+  text-align: right;
+}
+.mdtp__button {
+  display: inline-block;
+  padding: 0 16px;
+  min-width: 50px;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 32px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.mdtp__button:hover {
+  background-color: #e0e0e0;
+}
+.mdtp__wrapper[data-theme="blue"] .mdtp__clock .mdtp__am.active,
+.mdtp__wrapper[data-theme="blue"] .mdtp__clock .mdtp__clock_dot,
+.mdtp__wrapper[data-theme="blue"] .mdtp__clock .mdtp__pm.active,
+.mdtp__wrapper[data-theme="blue"] .mdtp__time_holder {
+  background-color: #1565c0;
+}
+.mdtp__wrapper[data-theme="blue"] .mdtp__clock .mdtp__digit span:hover,
+.mdtp__wrapper[data-theme="blue"] .mdtp__digit.active span {
+  background-color: #1565c0 !important;
+}
+.mdtp__wrapper[data-theme="blue"] .mdtp__digit.active:before {
+  background-color: #1565c0;
+}
+.mdtp__wrapper[data-theme="red"] .mdtp__clock .mdtp__am.active,
+.mdtp__wrapper[data-theme="red"] .mdtp__clock .mdtp__clock_dot,
+.mdtp__wrapper[data-theme="red"] .mdtp__clock .mdtp__pm.active,
+.mdtp__wrapper[data-theme="red"] .mdtp__time_holder {
+  background-color: #c62828;
+}
+.mdtp__wrapper[data-theme="red"] .mdtp__clock .mdtp__digit span:hover,
+.mdtp__wrapper[data-theme="red"] .mdtp__digit.active span {
+  background-color: #c62828 !important;
+}
+.mdtp__wrapper[data-theme="red"] .mdtp__digit.active:before {
+  background-color: #c62828;
+}
+.mdtp__wrapper[data-theme="red"] .mdtp__button {
+  color: #c62828;
+}
+.mdtp__wrapper[data-theme="purple"] .mdtp__clock .mdtp__am.active,
+.mdtp__wrapper[data-theme="purple"] .mdtp__clock .mdtp__clock_dot,
+.mdtp__wrapper[data-theme="purple"] .mdtp__clock .mdtp__pm.active,
+.mdtp__wrapper[data-theme="purple"] .mdtp__time_holder {
+  background-color: #6a1b9a;
+}
+.mdtp__wrapper[data-theme="purple"] .mdtp__clock .mdtp__digit span:hover,
+.mdtp__wrapper[data-theme="purple"] .mdtp__digit.active span {
+  background-color: #6a1b9a !important;
+}
+.mdtp__wrapper[data-theme="purple"] .mdtp__digit.active:before {
+  background-color: #6a1b9a;
+}
+.mdtp__wrapper[data-theme="purple"] .mdtp__button {
+  color: #6a1b9a;
+}
+.mdtp__wrapper[data-theme="indigo"] .mdtp__clock .mdtp__am.active,
+.mdtp__wrapper[data-theme="indigo"] .mdtp__clock .mdtp__clock_dot,
+.mdtp__wrapper[data-theme="indigo"] .mdtp__clock .mdtp__pm.active,
+.mdtp__wrapper[data-theme="indigo"] .mdtp__time_holder {
+  background-color: #283593;
+}
+.mdtp__wrapper[data-theme="indigo"] .mdtp__clock .mdtp__digit span:hover,
+.mdtp__wrapper[data-theme="indigo"] .mdtp__digit.active span {
+  background-color: #283593 !important;
+}
+.mdtp__wrapper[data-theme="indigo"] .mdtp__digit.active:before {
+  background-color: #283593;
+}
+.mdtp__wrapper[data-theme="indigo"] .mdtp__button {
+  color: #283593;
+}
+.mdtp__wrapper[data-theme="teal"] .mdtp__clock .mdtp__am.active,
+.mdtp__wrapper[data-theme="teal"] .mdtp__clock .mdtp__clock_dot,
+.mdtp__wrapper[data-theme="teal"] .mdtp__clock .mdtp__pm.active,
+.mdtp__wrapper[data-theme="teal"] .mdtp__time_holder {
+  background-color: #00695c;
+}
+.mdtp__wrapper[data-theme="teal"] .mdtp__clock .mdtp__digit span:hover,
+.mdtp__wrapper[data-theme="teal"] .mdtp__digit.active span {
+  background-color: #00695c !important;
+}
+.mdtp__wrapper[data-theme="teal"] .mdtp__digit.active:before {
+  background-color: #00695c;
+}
+.mdtp__wrapper[data-theme="teal"] .mdtp__button {
+  color: #00695c;
+}
+.mdtp__wrapper[data-theme="green"] .mdtp__clock .mdtp__am.active,
+.mdtp__wrapper[data-theme="green"] .mdtp__clock .mdtp__clock_dot,
+.mdtp__wrapper[data-theme="green"] .mdtp__clock .mdtp__pm.active,
+.mdtp__wrapper[data-theme="green"] .mdtp__time_holder {
+  background-color: #2e7d32;
+}
+.mdtp__wrapper[data-theme="green"] .mdtp__clock .mdtp__digit span:hover,
+.mdtp__wrapper[data-theme="green"] .mdtp__digit.active span {
+  background-color: #2e7d32 !important;
+}
+.mdtp__wrapper[data-theme="green"] .mdtp__digit.active:before {
+  background-color: #2e7d32;
+}
+.mdtp__wrapper[data-theme="green"] .mdtp__button {
+  color: #2e7d32;
+}
+@media (max-height: 360px) {
+  .mdtp__wrapper {
+    flex-direction: row;
+    bottom: 8px;
+  }
+  .mdtp__time_holder {
+    width: 160px;
+    padding: 20px;
+  }
+  .mdtp__clock_holder {
+    padding: 16px;
+  }
+  .mdtp__clock .mdtp__am,
+  .mdtp__clock .mdtp__pm {
+    bottom: -4px;
+  }
+  .mdtp__clock .mdtp__am {
+    left: -4px;
+  }
+  .mdtp__clock .mdtp__pm {
+    right: -4px;
+  }
+}
+@media (max-height: 320px) {
+  .mdtp__wrapper {
+    bottom: 0;
+  }
+}
+.timepicker_div .form-control:disabled,
+.form-control[readonly] {
+  background-color: #fff;
+  opacity: 1;
+}
+.modal .min-width {
+  min-width: 40%;
+}
+.employee_design {
+  margin-top: 17%;
+}
+.precaution-button {
+  background-color: gray;
+}
+.toaster {
+  border: 1px solid lightgray;
+  min-width: 124%;
+  margin-left: -43%;
+}
+.toaster .toaster-button {
+  margin-left: 19%;
+}
+.toaster-text-success{
+  color:green;
+}
+.toaster-text-error{
+  color:red;
+}
+.toaster-text-warning{
+  color:orange;
+}
+.toaster-text-danger{
+  color:red;
+}
+
+

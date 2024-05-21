@@ -1,0 +1,22 @@
+.form-control{
+	width:90%;
+    background-color: #FFFFFF;
+}
+
+img{
+    width: 50%;
+}
+.login-button-color{
+    background-color: #40A988;
+    width:45%;
+    margin-left:13%;
+}
+body{
+    background-color: #fff; 
+    /* background: #E5E5E5;  */
+}
+.card{
+    border:0px;
+    /* background: #E5E5E5; */
+    top:10%;
+}
