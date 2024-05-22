@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use App\Services\UserService;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;

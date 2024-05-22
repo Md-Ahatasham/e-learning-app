@@ -32,21 +32,30 @@
                             <div class="col-md-3 col-lg-3 right_border">
                                 {!! Form::open(array('route' => 'roles.store','method'=>'POST')) !!}
 
-                                <div class="form-group">
-                                    Role Name:
-                                    <select name="name" class="form-control form-control-sm  rounder_name">
-                                        <option value="">Select Role</option>
-                                        @if(isset($roleList) && !empty($roleList))
-                                        @foreach($roleList as $role)
+{{--                                <div class="form-group">--}}
+{{--                                    Role Name:--}}
+{{--                                    <select name="name" class="form-control form-control-sm  rounder_name">--}}
+{{--                                        <option value="">Select Role</option>--}}
+{{--                                        @if(!empty($data['roleList']))--}}
+{{--                                        @foreach($data['roleList'] as $role)--}}
 
-                                        <option value="{{$role['id']}}">{{$role['name']}}</option>
-                                        @endforeach
+{{--                                        <option value="{{$role['id']}}">{{$role['name']}}</option>--}}
+{{--                                        @endforeach--}}
+{{--                                        @endif--}}
+{{--                                    </select>--}}
+{{--                                    @if ($errors->has('name')) <p class="help-block icon_color">--}}
+{{--                                        <em class="fa fa-times-circle-o"></em>{{ $errors->first('name') }}--}}
+{{--                                    </p>--}}
+{{--                                    @endif--}}
+{{--                                </div>--}}
+
+                                <div class="form-group">
+                                    <label for="inputPassword" class="col-sm-12 text-left col-form-label">Role Name</label>
+                                    <div class="col-sm-12">
+                                        <input name="name" placeholder="Enter Role Name" value="{{ old('name') }}" id="last_name" type="text" class="form-control-sm form-control" />
+                                        @if ($errors->has('name')) <p class="help-block icon_color"><em class="fa fa-times-circle-o"></em>{{ $errors->first('name') }}</p>
                                         @endif
-                                    </select>
-                                    @if ($errors->has('name')) <p class="help-block icon_color">
-                                        <em class="fa fa-times-circle-o"></em>{{ $errors->first('name') }}
-                                    </p>
-                                    @endif
+                                    </div>
                                 </div>
 
                                 <div class="col-xs-12 col-sm-12 col-md-12 text-left">
@@ -74,7 +83,7 @@
 
                                     <div class="row">
                                         <div class="col-md-12"><input id="selectAll" type="checkbox"> <label for='selectAll'> <strong>Select All</strong></label></div>
-                                        @foreach($permission as $value)
+                                        @foreach($data['permission'] as $value)
                                         <div class="col-md-3">
                                             <label>{{ Form::checkbox('permission[]', $value->id, false, array('class' => 'name')) }}
                                                 {{ $value->name }}</label>

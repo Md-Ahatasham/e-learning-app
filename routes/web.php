@@ -15,9 +15,11 @@ Route::group(['middleware' => ['auth','activityTracker']], function () {
   Route::get('/', 'HomeController@index');
   Route::get('dashboard', 'HomeController@index');
   Route::get('/login', 'HomeController@index');
-  Route::resource('roles','RoleController');
 
-  ## user rote
+  ## user role route
+  Route::resource('roles','Role\RoleController');
+
+  ## user route
   Route::resource('users','User\UserController');
   Route::get('checkEmail','User\UserController@checkEmail');
   Route::get('userInfoById', 'User\UserController@userInfoById')->name('users.userInfoById');

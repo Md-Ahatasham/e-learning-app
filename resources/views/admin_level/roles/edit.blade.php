@@ -29,23 +29,17 @@
                     <div class="card-body">
                         <div class="row text">
                             <div class="col-md-3 col-lg-3 right_border">
-                                {!! Form::model($role, ['method' => 'PATCH','route' => ['roles.update', $role->id]]) !!}
+                                {!! Form::model($data['role'], ['method' => 'PATCH','route' => ['roles.update', $data['role']['id']]]) !!}
 
                                 <div class="form-group">
-                                    Role Name:
-
-                                    <select name="name" class="form-control input_field form-control-sm" id="name">
-                                        <option value="">Select Role</option>
-                                        @if(isset($roles) && !empty($roles))
-                                        @foreach($roles as $key =>$all)
-                                        <option value="{{$key}}" @if($key==$role['name']) {{ 'selected' }} @endif>{{$key}}</option>
-                                        @endforeach
-                                        @endif
-                                    </select>
-                                    @if ($errors->has('name')) <p class="help-block icon_color">
-                                        <em class="fa fa-times-circle-o"></em>{{ $errors->first('name') }}
-                                    </p>
-                                    @endif
+                                    <div class="form-group row">
+                                        <label for="inputPassword" class="col-sm-12 text-left col-form-label">Role Name</label>
+                                        <div class="col-sm-12">
+                                            <input name="name" readonly="readonly" placeholder="Enter Role Name" value="{{ $data['role']['name'] }}" id="preferred_name" type="text" class="input_field form-control-sm form-control" />
+                                            @if ($errors->has('name')) <p class="help-block icon_color"><em class="fa fa-times-circle-o"></em>{{ $errors->first('name') }}</p>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="col-xs-12 col-sm-12 col-md-12 text-left">
@@ -74,10 +68,10 @@
 
                                     <div class="row">
                                     <div class="col-md-12"><input id="selectAll" name="selectAll" type="checkbox"> <label for='selectAll'> <strong>Select All</strong></label></div>
-                                        @foreach($permission as $value)
+                                        @foreach($data['permission'] as $value)
                                         <div class="col-md-3">
-                                            <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
-                                                {{ $value->name }}</label>
+                                            <label>{{ Form::checkbox('permission[]', $value['id'], in_array($value['id'], $data['rolePermissions']) ? true : false, array('class' => 'name')) }}
+                                                {{ $value['name'] }}</label>
                                         </div>
                                         @endforeach
                                     </div>
@@ -86,9 +80,6 @@
 
                                 </div>
                             </div>
-
-
-
                             {!! Form::close() !!}
                         </div>
                     </div>

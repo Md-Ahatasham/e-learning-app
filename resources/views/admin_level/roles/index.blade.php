@@ -6,7 +6,6 @@
         <!-- Info boxes -->
         <div class="row justify-content-around body_padding_top">
             <div class="col-md-10">
-
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title" style="font-weight: normal;font-size:16px;">Role List </h3>
@@ -27,8 +26,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if(isset($roles) && !empty($roles))
-                                @foreach ($roles as $key => $role)
+                                @if(!empty($data['roles']))
+                                @foreach ($data['roles'] as $key => $role)
                                 <tr>
                                     <td>{{$loop->index+1}}</td>
                                     <td>{{ $role->name }}</td>
