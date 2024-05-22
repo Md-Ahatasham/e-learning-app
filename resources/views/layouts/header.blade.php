@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>RoundRight | @if(isset($data['title']) && !empty($data['title'])){{$data['title']}} @endif</title>
+    <title>E-learning | {{$data['breadcrumb']['title'] ?? ''}} </title>
 
 
     <!-- Font Awesome Icons -->

@@ -50,7 +50,6 @@ class RoleController extends Controller
     {
         $data['permission'] = $this->service->getPermissionList();
         $data['breadcrumb'] = $this->getBreadcrumb("Roles", "Add Roles");
-        $data['roleList'] = $this->role();
         return view('admin_level.roles.create', with(['data' => $data]));
     }
 

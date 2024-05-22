@@ -32,23 +32,6 @@
                             <div class="col-md-3 col-lg-3 right_border">
                                 {!! Form::open(array('route' => 'roles.store','method'=>'POST')) !!}
 
-{{--                                <div class="form-group">--}}
-{{--                                    Role Name:--}}
-{{--                                    <select name="name" class="form-control form-control-sm  rounder_name">--}}
-{{--                                        <option value="">Select Role</option>--}}
-{{--                                        @if(!empty($data['roleList']))--}}
-{{--                                        @foreach($data['roleList'] as $role)--}}
-
-{{--                                        <option value="{{$role['id']}}">{{$role['name']}}</option>--}}
-{{--                                        @endforeach--}}
-{{--                                        @endif--}}
-{{--                                    </select>--}}
-{{--                                    @if ($errors->has('name')) <p class="help-block icon_color">--}}
-{{--                                        <em class="fa fa-times-circle-o"></em>{{ $errors->first('name') }}--}}
-{{--                                    </p>--}}
-{{--                                    @endif--}}
-{{--                                </div>--}}
-
                                 <div class="form-group">
                                     <label for="inputPassword" class="col-sm-12 text-left col-form-label">Role Name</label>
                                     <div class="col-sm-12">
