@@ -29,85 +29,8 @@
 <script src="{{asset('dist/js/slick.min.js')}}"></script>
 <script src="{{asset('plugins/custom.js')}}"></script>
 
-
-<script type="text/javascript">
-    $('.slider').slick({
-        dots: false,
-        infinite: false,
-        speed: 300,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        responsive: [{
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-            // You can unslick at a given breakpoint now by adding:
-            // settings: "unslick"
-            // instead of a settings object
-        ]
-    });
-</script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("#abbreviation").keyup(function() {
-            var value = $(this).val();
-            $("#color_view").val(value);
-        });
-
-        $("#selectAll").click(function() {
-            $("input[type=checkbox]").prop('checked', $(this).prop('checked'));
-        });
-
-    });
-</script>
-<script>
-    function clickColor(hex, seltop, selleft, html5) {
-        var color;
-        if (html5 && html5 == 5) {
-            color = document.getElementById("html5colorpicker").value;
-            $("#color_view").css("background", color);
-            $("#color_code").val(color);
-        }
-    }
-</script>
 <script>
     $("document").ready(function() {
-
-        // if (navigator.userAgent.indexOf("Firefox") != -1) {
-        //     $(".add-precaution-icon").css({
-        //         "margin-top": '110' + '%'
-        //     });
-        //     $(".edit-precaution-icon").css({
-        //         "margin-top": '115' + '%'
-        //     });
-        // } else if (navigator.userAgent.indexOf("Chrome") != -1) {
-        //     $(".add-precaution-icon").css({
-        //         "margin-top": '125' + '%'
-        //     });
-        //     $(".edit-precaution-icon").css({
-        //         "margin-top": '133' + '%'
-        //     });
-        // }
-
         $(document).on('click', '.edit_user', function() {
             var id = $(this).attr("id");
             $.get("{{route('users.userInfoById')}}", {
@@ -184,597 +107,85 @@
 </script>
 
 <script>
-    $(document).ready(function() {
-        $(".rounding-history").click(function() {
-            var patientId = $(this).attr("id");
-            $('#rounding_history_table').DataTable({
-                "processing": true,
-                "serverSide": true,
-                "retrieve": true,
-                "pageLength": 4,
-                "info": false,
-                "lengthChange": false,
-                "searching": false,
-                "order": [
-                    [0, 'desc']
-                ],
-                "ajax": "{{ url('getRoundingHistory') }}" + '/' + patientId,
-                "columns": [{
-                        "data": "time"
-                    },
-                    {
-                        "data": "rounder"
-                    },
-                    {
-                        "data": "tablet"
-                    },
-                    {
-                        "data": "location"
-                    },
-                    {
-                        "data": "behaviour"
-                    },
-                    {
-                        "data": "affect"
-                    },
-                    {
-                        "data": "transfer_to"
-                    },
-                ],
-                "fnDrawCallback": function(oSettings) {
-                    if (oSettings._iDisplayLength >= oSettings.fnRecordsDisplay()) {
-                        $(oSettings.nTableWrapper).find('.dataTables_paginate').hide();
-                    }
-                }
-            });
-
-        });
-
-        $(".activity_history").click(function() {
-            var patientId = $(this).attr("id");
-            $('#activity_history_table').DataTable({
-                "processing": true,
-                "serverSide": true,
-                "retrieve": true,
-                "pageLength": 4,
-                "info": false,
-                "lengthChange": false,
-                "searching": false,
-                "order": [
-                    [0, 'asc']
-                ],
-                "ajax": "{{ url('getPatientActivityHistory') }}" + '/' + patientId,
-                "columns": [{
-                        "data": "time"
-                    },
-                    {
-                        "data": "event"
-                    },
-                    {
-                        "data": "user"
-                    },
-                ],
-                "fnDrawCallback": function(oSettings) {
-                    if (oSettings._iDisplayLength >= oSettings.fnRecordsDisplay()) {
-                        $(oSettings.nTableWrapper).find('.dataTables_paginate').hide();
-                    }
-                }
-            });
-
-        });
-
-        $('#dashboardPatientTable').DataTable({
-            "processing": true,
-            "serverSide": true,
-            "pageLength": 7,
-            "info": false,
-            "order": [
-                [1, 'desc']
-            ],
-            "ajax": "{{ url('dashboardPatientList') }}",
-            "columns": [{
-                    "data": "patient_picture",
-                    "orderable": false
-                },
-                {
-                    "data": "first_name"
-                },
-                {
-                    "data": "preferred_name"
-                },
-                {
-                    "data": "last_name"
-                },
-                {
-                    "data": "gender"
-                },
-                {
-                    "data": "unit"
-                },
-                {
-                    "data": "room"
-                },
-                {
-                    "data": "bed"
-                },
-                {
-                    "data": "admission_date"
-                },
-                {
-                    "data": "rounding_interval"
-                },
-                {
-                    "data": "precaution",
-                    "orderable": false,
-                },
-            ]
-        });
-
-        $('#patienttable').DataTable({
-            "processing": true,
-            "serverSide": true,
-            "pageLength": 1000,
-            "info": false,
-            "order": [
-                [1, 'desc']
-            ],
-            "ajax": "{{ url('dataTablePatientList') }}",
-            "columns": [{
-                    "data": "patient_picture",
-                    "orderable": false
-                },
-                {
-                    "data": "first_name"
-                },
-                {
-                    "data": "preferred_name"
-                },
-                {
-                    "data": "last_name"
-                },
-                {
-                    "data": "gender"
-                },
-                {
-                    "data": "units"
-                },
-                {
-                    "data": "rooms"
-                },
-                {
-                    "data": "beds"
-                },
-                {
-                    "data": "admission_date"
-                },
-                {
-                    "data": "rounding_interval"
-                },
-                {
-                    "data": "precaution",
-                    "orderable": false
-                },
-            ],
-            "fnDrawCallback": function(oSettings) {
-                if (oSettings._iDisplayLength >= oSettings.fnRecordsDisplay()) {
-                    $(oSettings.nTableWrapper).find('.dataTables_paginate').hide();
-                }
-            }
-        });
-        $('#dischargepatienttable').DataTable({
-            "processing": true,
-            "serverSide": true,
-            "pageLength": 1000,
-            "info": false,
-            "order": [
-                [6, 'desc']
-            ],
-            "ajax": "{{ url('dischargedPatient') }}",
-            "columns": [{
-                    "data": "patient_picture",
-                    "orderable": false
-                },
-                {
-                    "data": "first_name"
-                },
-                {
-                    "data": "last_name"
-                },
-                {
-                    "data": "gender"
-                },
-                {
-                    "data": "unit"
-                },
-                {
-                    "data": "room"
-                },
-                {
-                    "data": "bed"
-                },
-                {
-                    "data": "admission_date"
-                },
-                {
-                    "data": "rounding_interval"
-                },
-                {
-                    "data": "precaution",
-                    "orderable": false
-                },
-            ],
-            "fnDrawCallback": function(oSettings) {
-                if (oSettings._iDisplayLength >= oSettings.fnRecordsDisplay()) {
-                    $(oSettings.nTableWrapper).find('.dataTables_paginate').hide();
-                }
-            }
-        });
-
-        $('#queuePatienttable').DataTable({
-            "processing": true,
-            "serverSide": true,
-            "pageLength": 1000,
-            "info": false,
-            "order": [
-                [1, 'desc']
-            ],
-            "ajax": "{{ url('queuePatientList') }}",
-            "columns": [{
-                    "data": "patient_picture",
-                    "orderable": false
-                },
-                {
-                    "data": "first_name"
-                },
-                {
-                    "data": "last_name"
-                },
-                {
-                    "data": "gender"
-                },
-                {
-                    "data": "unit"
-                },
-                {
-                    "data": "room"
-                },
-                {
-                    "data": "bed"
-                },
-                {
-                    "data": "rounding_interval"
-                },
-                {
-                    "data": "precaution",
-                    "orderable": false
-                },
-                {
-                    data: 'action',
-                    name: 'action',
-                    orderable: true,
-                    searchable: true
-                },
-            ],
-            "fnDrawCallback": function(oSettings) {
-                if (oSettings._iDisplayLength >= oSettings.fnRecordsDisplay()) {
-                    $(oSettings.nTableWrapper).find('.dataTables_paginate').hide();
-                }
-            }
-        });
-
-        $('#roundertable').DataTable({
-            "processing": true,
-            "serverSide": true,
-            "pageLength": 1000,
-            "info": false,
-            "order": [
-                [0, 'desc']
-            ],
-            "ajax": "{{ url('dataTableRounderList') }}",
-            "columns": [{
-                    "data": "first_name"
-                },
-                {
-                    "data": "last_name"
-                },
-                {
-                    "data": "employee_id"
-                },
-                {
-                    "data": "dob"
-                },
-                {
-                    "data": "status"
-                },
-            ],
-            "fnDrawCallback": function(oSettings) {
-                if (oSettings._iDisplayLength >= oSettings.fnRecordsDisplay()) {
-                    $(oSettings.nTableWrapper).find('.dataTables_paginate').hide();
-                }
-            }
-        });
-        $('#tablettable').DataTable({
-            "processing": true,
-            "serverSide": true,
-            "pageLength": 1000,
-            "info": false,
-            "order": [
-                [0, 'desc']
-            ],
-            "ajax": "{{ url('dataTableTabletList') }}",
-            "columns": [{
-                    "data": "tablet_in_use"
-                },
-                {
-                    "data": "time_since_last_sync"
-                },
-                {
-                    "data": "name"
-                },
-                {
-                    "data": "assigned_patients"
-                },
-                {
-                    "data": "last_location"
-                },
-                {
-                    "data": "tablet_in_use"
-                },
-
-            ],
-            "fnDrawCallback": function(oSettings) {
-                if (oSettings._iDisplayLength >= oSettings.fnRecordsDisplay()) {
-                    $(oSettings.nTableWrapper).find('.dataTables_paginate').hide();
-                }
-            }
-        });
-
-        var firstRounder = $(".first_rounder").attr("id");
-        $("div[id='" + firstRounder + '_card' + "']").addClass('btn-info');
-        $(".rounderActivityLogTable").attr('id', firstRounder).DataTable({
-            "retrieve": true,
-            "processing": true,
-            "serverSide": true,
-            "pageLength": 7,
-            "info": false,
-            "lengthChange": false,
-            "searching": false,
-            "order": [
-                [0, 'desc']
-            ],
-            "ajax": "{{ url('tabletActivityByrounderId') }}" + '/' + firstRounder,
-            "columns": [{
-                    "data": "time",
-                    "className": "text-center"
-                },
-                {
-                    "data": "event",
-                    "className": "text-center"
-                },
-                {
-                    "data": "user",
-                    "className": "text-center"
-                },
-            ],
-            "fnDrawCallback": function(oSettings) {
-                if (oSettings._iDisplayLength >= oSettings.fnRecordsDisplay()) {
-                    $(oSettings.nTableWrapper).find('.dataTables_paginate').hide();
-                }
-            }
-        });
-        $(".rounder-activity").click(function() {
-            var firstRounder = $(this).attr("id");
-            $("div[class*='btn-info']").removeClass('btn-info');
-            $("div[id='" + firstRounder + '_card' + "']").addClass('btn-info');
-            $(".rounderActivityLogTable").attr('id', '_' + firstRounder).DataTable({
-                "processing": true,
-                "serverSide": true,
-                "destroy": true,
-                "pageLength": 7,
-                "lengthChange": false,
-                "info": false,
-                "searching": false,
-                "order": [
-                    [0, 'desc']
-                ],
-                "ajax": "{{ url('tabletActivityByrounderId') }}" + '/' + firstRounder,
-                "columns": [{
-                        "data": "time",
-                        "className": "text-center"
-                    },
-                    {
-                        "data": "event",
-                        "className": "text-center"
-                    },
-                    {
-                        "data": "user",
-                        "className": "text-center"
-                    },
-                ],
-                "fnDrawCallback": function(oSettings) {
-                    if (oSettings._iDisplayLength >= oSettings.fnRecordsDisplay()) {
-                        $(oSettings.nTableWrapper).find('.dataTables_paginate').hide();
-                    }
-                }
-            });
-        });
-
-    {{--    $('#notificationTable').DataTable({--}}
-    {{--        "processing": true,--}}
-    {{--        "serverSide": true,--}}
-    {{--        "pageLength": 1000,--}}
-    {{--        "info": false,--}}
-    {{--        "order": [--}}
-    {{--            [1, 'desc']--}}
-    {{--        ],--}}
-    {{--        "ajax": "{{ url('dataTableNotificationList') }}",--}}
-    {{--        "columns": [{--}}
-    {{--                "data": "id",--}}
-    {{--                "orderable": false--}}
-    {{--            },--}}
-    {{--            {--}}
-    {{--                "data": "patient",--}}
-    {{--                "orderable": false--}}
-    {{--            },--}}
-    {{--            {--}}
-    {{--                "data": "rounder"--}}
-    {{--            },--}}
-    {{--            {--}}
-    {{--                "data": "action_details"--}}
-    {{--            },--}}
-    {{--            // {--}}
-    {{--            //     data: 'action',--}}
-    {{--            //     name: 'action',--}}
-    {{--            //     orderable: true,--}}
-    {{--            //     searchable: true--}}
-    {{--            // },--}}
-
-    {{--        ],--}}
-    {{--        "fnDrawCallback": function(oSettings) {--}}
-    {{--            if (oSettings._iDisplayLength >= oSettings.fnRecordsDisplay()) {--}}
-    {{--                $(oSettings.nTableWrapper).find('.dataTables_paginate').hide();--}}
-    {{--            }--}}
-    {{--        }--}}
-    {{--    });--}}
-    {{--});--}}
-
     function deleteItem(e) {
-        var checkstr = confirm('Are you sure you want to delete this?');
-        if (checkstr == false) {
+        const checkStr = confirm('Are you sure you want to delete this?');
+        if (checkStr === false) {
             e.preventDefault();
             return false;
         }
     }
+    $(document).ready(function() {
 
-    function checkDischarge(e) {
-        var checkstr = confirm('Are you sure you want to discharge?');
-        if (checkstr == false) {
-            e.preventDefault();
-            return false;
-        }
-    }
-</script>
-<script>
-    $("document").ready(function() {
-        $(document).on('click', '.tablet', function() {
-            $.get("{{route('tablets.create')}}",
-                function(data) {
-                    if (data.rounder.length > 0) {
-                        for (var i = 0; i < data.rounder.length; i++) {
-                            selected = '';
-
-                            $('#rounder_name').append('<option value = \"' + data.rounder[i].id + '\" ' + selected + '>' + data.rounder[i].first_name + ' ' + data.rounder[i].last_name + '</option>');
-                        }
-                    }
-                }, "json");
-            $('#tabletModal').modal('show');
-        });
-    });
-</script>
-<script>
-    {{--$("document").ready(function() {--}}
-    {{--    $(document).on('click', '#notification_menu', function() {--}}
-    {{--        $.get("{{url('updateNotification')}}",--}}
-    {{--            function(data) {}, "json");--}}
-    {{--    });--}}
-    {{--});--}}
-</script>
-<script>
-    $("document").ready(function() {
-        $(document).on('click', '.edit_tablet', function() {
-            var id = $(this).attr("id");
-            $.get("{{route('tablets.edit')}}", {
-                    id: id
+        $('#studentTable').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "pageLength": 1000,
+            "info": false,
+            "order": [
+                [0, 'desc']
+            ],
+            "ajax": "{{ url('dataTableStudentList') }}",
+            "columns": [{
+                "data": "profile_photo",
+                "orderable": false
                 },
-                function(data) {
-                    var selected_item = data.result.result.rounder_id;
-                    if (data.result.rounder.length > 0) {
-                        for (var i = 0; i < data.result.rounder.length; i++) {
-                            if (data.result.rounder[i].id == selected_item) {
-                                selected = ' selected="selected" ';
-                            } else {
-                                selected = '';
-                            }
-                            $('#edit_rounder_name').append('<option value = \"' + data.result.rounder[i].id + '\" ' + selected + '>' + data.result.rounder[i].first_name + ' ' + data.result.rounder[i].last_name + '</option>');
-                        }
-                    }
-                    $('#edit_tablet_name').val(data.result.result.tablet_name);
-                    action = "{{route('tablets.update')}}" + '?id=' + data.result.result.id;
-                    $('#frm').attr('action', action);
-                }, "json");
-            $('#editTabletModal').modal('show');
-        });
-    });
-</script>
+                {
+                    "data": "first_name"
+                },
+                {
+                    "data": "last_name"
+                },
+                {
+                    "data": "email"
+                },
+                {
+                    "data": "action",
+                },
 
-<script>
-    {{--$("document").ready(function() {--}}
-    {{--    $(document).on('click', '.edit_notification', function() {--}}
-    {{--        var id = $(this).attr("id");--}}
-    {{--        $.get("{{route('notifications.edit')}}", {--}}
-    {{--                id: id--}}
-    {{--            },--}}
-    {{--            function(data) {--}}
-    {{--                var selected_item = data.result.result.rounder_id;--}}
-    {{--                if (data.result.rounder.length > 0) {--}}
-    {{--                    for (var i = 0; i < data.result.rounder.length; i++) {--}}
-    {{--                        if (data.result.rounder[i].id == selected_item) {--}}
-    {{--                            selected = ' selected="selected" ';--}}
-    {{--                        } else {--}}
-    {{--                            selected = '';--}}
-    {{--                        }--}}
-    {{--                        if (data.result.rounder[i].is_online == 1) {--}}
-    {{--                            icon = "fa-solid fa-circle";--}}
-    {{--                        } else {--}}
-    {{--                            icon = "fa-duotone fa-circle";--}}
-    {{--                        }--}}
-    {{--                        $('#rounder_id').append('<option data-icon="' + icon + '" value = \"' + data.result.rounder[i].id + '\" ' + selected + '>' + data.result.rounder[i].first_name + ' ' + data.result.rounder[i].last_name + '</option>');--}}
-    {{--                    }--}}
-    {{--                }--}}
-    {{--                $('#patient_name').val(data.result.result.patient.first_name + ' ' + data.result.result.patient.last_name);--}}
-    {{--                $('#patient_id').val(data.result.result.patient_id);--}}
-    {{--                $('#previous_rounder_id').val(data.result.result.rounder_id);--}}
-    {{--                action = "{{route('notifications.update')}}" + '?id=' + data.result.result.id;--}}
-    {{--                $('#frm').attr('action', action);--}}
-    {{--            }, "json");--}}
-    {{--        $('#edit_notification').modal('show');--}}
-    {{--    });--}}
-    {{--});--}}
-</script>
-
-<script>
-    $("document").ready(function() {
-        var array_of_id = [];
-        $(document).on('click', '.checkInput', function() {
-            var id = $(this).attr("id");
-            array_of_id.push($(this).attr("id"));
-            var appearence = 0;
-            if ($.inArray(id, array_of_id) > -1) {
-                array_of_id.forEach(element => {
-                    if (element === id) {
-                        appearence++;
-                    }
-                });
+            ],
+            "fnDrawCallback": function (oSettings) {
+                if (oSettings._iDisplayLength >= oSettings.fnRecordsDisplay()) {
+                    $(oSettings.nTableWrapper).find('.dataTables_paginate').hide();
+                }
             }
-            $.get("{{route('precautions.getColor')}}", {
-                    id: id
+        });
+
+        $('#teacherTable').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "pageLength": 1000,
+            "info": false,
+            "order": [
+                [0, 'desc']
+            ],
+            "ajax": "{{ url('dataTableTeacherList') }}",
+            "columns": [{
+                "data": "profile_photo",
+                "orderable": false
+            },
+                {
+                    "data": "first_name"
                 },
-                function(data) {
+                {
+                    "data": "last_name"
+                },
+                {
+                    "data": "email"
+                },
+                {
+                    "data": "action",
+                },
 
-                    if (appearence % 2 != 0) {
-                        $("div[id='" + id + "']").css("background", data.result.result.color_code);
-                    } else {
-                        $("div[id='" + id + "']").css("background", "none");
-                    }
-                }, "json");
-
-            $("input[id='" + id + "']").prop('checked', function(_, checked) {
-                return !checked;
-            });
-
+            ],
+            "fnDrawCallback": function (oSettings) {
+                if (oSettings._iDisplayLength >= oSettings.fnRecordsDisplay()) {
+                    $(oSettings.nTableWrapper).find('.dataTables_paginate').hide();
+                }
+            }
         });
     });
 </script>
+
 <script type="text/javascript">
     $(document).ready(function() {
         var maxField = 11;
@@ -831,19 +242,6 @@
         });
     });
 </script>
-<script type="text/javascript">
-    {{--$(document).ready(function() {--}}
-    {{--    setInterval(function() {--}}
-    {{--        $(".sidebar").load(--}}
-    {{--            $.get("{{url('countNotification')}}",--}}
-    {{--                function(data) {--}}
-    {{--                    $('#notification_count').html(data.result.result);--}}
-    {{--                }, "json")--}}
-    {{--        )--}}
-    {{--    }, 5000);--}}
-
-    {{--});--}}
-</script>
 <script>
     $(function() {
         $("#unit_wrapper>.row>.col-md-6").first().text('Unit List');
@@ -854,11 +252,7 @@
         $("#bed_wrapper>.row>.col-md-6").first().text('Bed List');
         $("#specialty_wrapper>.row>.col-md-6").first().text('Specialty List');
         $("#qualification_wrapper>.row>.col-md-6").first().text('Qualification List');
-        $("#precaution_wrapper>.row>.col-md-6").first().text('PreCaution List');
-        $("#patienttable_wrapper>.row>.col-md-6").first().text('Master Patient List');
-        $("#queuePatienttable_wrapper>.row>.col-md-6").first().text('Queued Patient List');
-        $("#dischargepatienttable_wrapper>.row>.col-md-6").first().text('Discharged Patient List');
-        $("#dashboardPatientTable_wrapper>.row>.col-md-6").first().text('Current Patient List');
+        $("#studentTable_wrapper>.row>.col-md-6").first().text('Student List');
         $("#roundertable_wrapper>.row>.col-md-6").first().text('Rounders');
         $("#tablettable_wrapper>.row>.col-md-6").first().text('Tablets');
         $("#assignedTablet_wrapper>.row>.col-md-6").first().text('Assigned Tablet List');

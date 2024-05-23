@@ -25,6 +25,16 @@ Route::group(['middleware' => ['auth','activityTracker']], function () {
   Route::get('userInfoById', 'User\UserController@userInfoById')->name('users.userInfoById');
   Route::put('userInfoUpdate', 'User\UserController@update')->name('users.update');
 
+  ## student route
+
+  Route::resource('students','Student\StudentController');
+  Route::get('dataTableStudentList','Student\StudentController@dataTableStudentList');
+
+  ## student route
+
+  Route::resource('teachers','Teacher\TeacherController');
+  Route::get('dataTableTeacherList','Teacher\TeacherController@dataTableTeacherList');
+
 
   Route::resource('rounders','RounderController');
   Route::get('dataTableRounderList','RounderController@dataTableRounderList');
@@ -34,13 +44,13 @@ Route::group(['middleware' => ['auth','activityTracker']], function () {
 
   Route::get('tabletActivityByrounderId/{id}','RounderController@tabletActivityByrounderId');
   Route::get('rounderActivity','RounderController@roundingActivity')->name('rounders.roundingActivity');
- 
-  Route::resource('patients','PatientController');
+
+
   Route::post('rounderAssign','PatientController@assign')->name('patients.assign');
   Route::get('queueList','PatientController@getQueueList')->name('patients.queueList');
   Route::get('queuePatientList','PatientController@getQueuePatientList');
   Route::get('assignRounder/{id}','PatientController@assignRounder');
-  Route::get('dataTablePatientList','PatientController@dataTablePatientList');
+
   Route::get('dischargePatient/{id}','PatientController@dischargePatient')->name('patients.dischargePatient');
   Route::get('dischargedPatientlist','PatientController@dischargedPatientlist')->name('patients.dischargedPatientlist');
   Route::get('dischargedPatient','PatientController@dischargedPatient')->name('patients.dischargedPatient');
@@ -69,7 +79,7 @@ Route::group(['middleware' => ['auth','activityTracker']], function () {
   Route::resource('rooms','RoomController');
   Route::get('/roomInfo', 'RoomController@edit')->name('rooms.edit');
   Route::put('/roomInfoUpdate', 'RoomController@update')->name('rooms.update');
- 
+
   Route::resource('beds','BedController');
   Route::get('/bedInfo', 'BedController@edit')->name('beds.edit');
   Route::put('/bedInfoUpdate', 'BedController@update')->name('beds.update');

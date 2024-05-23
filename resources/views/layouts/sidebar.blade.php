@@ -54,7 +54,7 @@
 
                 @can('teacher-list')
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('teachers.index') }}" class="nav-link">
                             <i class="fas fa-chart-bar"></i>
                             <p>
                                 Teachers
@@ -65,7 +65,7 @@
 
                 @can('student-list')
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('students.index') }}" class="nav-link">
                             <i class="fas fa-chart-bar"></i>
                             <p>
                                 Students
