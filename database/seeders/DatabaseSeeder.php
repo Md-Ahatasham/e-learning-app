@@ -17,9 +17,6 @@ class DatabaseSeeder extends Seeder
             CreateAdminUserSeeder::class,
             CreateRoleSeeder::class,
             CreateDummyUser::class,
-            CreateUnitSeeder::class,
-            CreateRoomSeeder::class,
-            CreateBedSeeder::class,
             PermissionTableSeeder::class
         ]);
     }
