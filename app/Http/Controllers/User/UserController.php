@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUserRequest;
+use App\Models\User;
 use App\Services\UserService;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
@@ -38,15 +40,20 @@ class UserController extends Controller
         return view('admin_level.users.index', with(['data' => $data]));
     }
 
+    public function create()
+    {
+        $data = $this->service->preDefinedInfo();
+        $data['breadcrumb'] = $this->getBreadcrumb('User','Add User');
+        return view('admin_level.users.create', with(['data' => $data]));
+    }
+
 
     /**
-     * @param Request $request
+     * @param StoreUserRequest $request
      * @return RedirectResponse
-     * @throws ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(StoreUserRequest $request): RedirectResponse
     {
-        $this->formValidation($request);
         try {
             $this->service->storeUser($request);
             return redirect()->route('users.index')->with('toast_success', 'User created successfully');
@@ -56,19 +63,27 @@ class UserController extends Controller
 
     }
 
+    public function edit(int $id)
+    {
+        $data = $this->service->preDefinedInfo();
+        $data['userDetails'] = $this->service->getUserDetailsById($id);
+        $data['breadcrumb'] = $this->getBreadcrumb("Users", "Update User");
+        return view('admin_level.users.edit', with(['data' => $data]));
+
+    }
+
 
     /**
      * Update the specified resource in storage.
      *
      * @param Request $request
+     * @param $id
      * @return RedirectResponse
-     * @throws ValidationException
      */
-    public function update(Request $request): RedirectResponse
+    public function update(Request $request, $id): RedirectResponse
     {
-        $this->formValidation($request);
         try {
-            $this->service->updateUser($request,$_GET['id']);
+            $this->service->updateUser($request,$id);
             return redirect()->route('users.index')->with('toast_success', 'User updated successfully');
         } catch (Exception $ex) {
             return redirect()->route('users.index')->with('toast_error', 'Ops! Something went wrong.');

@@ -10,9 +10,11 @@
                     <div class="card-header">
                         <h4 class="card-title">User List </h4>
                         @can('user-create')
-                        <a href="" class="btn btn-info btn-round ml-auto btn-sm add_button_to_right" data-toggle="modal" data-target="#modal-xl"><em class="fa fa-plus"></em> Add New</a>
+{{--                        <a href="" class="btn btn-info btn-round ml-auto btn-sm add_button_to_right" data-toggle="modal" data-target="#modal-xl"><em class="fa fa-plus"></em> Add New</a>--}}
+                        <a href="{{ route('users.create') }}" class="btn btn-info btn-round ml-auto btn-sm add_button_to_right"><em class="fa fa-plus"></em> Add New</a>
                         @endcan
                     </div>
+
                     <div class="card-body">
                         <table class="table table-bordered table-striped" aria-describedby="table">
                             <thead>
@@ -43,7 +45,7 @@
                                                         <a class="edit_user btn btn-primary btn-xs" id="{{$user->id}}"><em class="fa fa-edit"></em></a>
                                                     @endif
                                                     @if(Auth::user()->roles->first()->name == "Admin")
-                                                        <a class="edit_user btn btn-primary btn-xs" id="{{$user->id}}"><em class="fa fa-edit"></em></a>
+                                                        <a href="{{route('users.edit',$user->id)}}" class="edit_user btn btn-primary btn-xs" id="{{$user->id}}"><em class="fa fa-edit"></em></a>
                                                     @endif
                                                 @endcan
                                             </div>
@@ -72,16 +74,6 @@
             </div>
         </div>
     </div>
-
-
-    {{-- start of user add modal --}}
-
-    @include('admin_level.users.create')
-
-
-    {{-- start of user edit modal --}}
-
-     @include('admin_level.users.edit')
 
 </section>
 

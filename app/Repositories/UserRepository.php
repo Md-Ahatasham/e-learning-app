@@ -3,6 +3,8 @@ namespace App\Repositories;
 
 use App\Interfaces\UserInterface;
 use App\Models\User;
+use App\Models\UserDetail;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
@@ -30,14 +32,19 @@ class UserRepository implements UserInterface{
         return User::create($request);
     }
 
-    public function getUserById($id)
+    public function storeUserDetails($request)
     {
-        return User::where('id', $id)->first();
+        return UserDetail::create($request);
     }
 
-    public function updateUser($userInfo,$request)
+    public function getUserById($id)
     {
-        return $userInfo->update($request->except(['_token', '_method', 'submit', 'user_photo', 'name']));
+        return User::with('userDetail')->where('id', $id)->first();
+    }
+
+    public function updateUser($request, $userInfo)
+    {
+        return $userInfo->update($request);
     }
 
     public function deleteUser($id)
@@ -45,11 +52,14 @@ class UserRepository implements UserInterface{
         return User::where('id', $id)->delete();
     }
 
-    public function getUserDetailsById($id): array
+    public function getUserDetailsById($id)
     {
-        $data['roles'] = DB::table('roles')->selectRaw('roles.id as id, roles.name as name')->get();
-        $data['result'] = $this->getUserById($id);
-        return $data;
+        return $this->getUserById($id);
+    }
+
+    public function getRoles(): Collection
+    {
+        return DB::table('roles')->selectRaw('roles.id as id, roles.name as name')->get();
     }
 
     /**
@@ -59,5 +69,10 @@ class UserRepository implements UserInterface{
     public function checkEmail($email)
     {
         return User::where('email', $email)->first();
+    }
+
+    public function updateUserDetails($preparedEducationalRequest,$userId)
+    {
+      return UserDetail::updateOrCreate(['user_id'=>$userId], $preparedEducationalRequest);
     }
 }

@@ -31,39 +31,39 @@
 
 <script>
     $("document").ready(function() {
-        $(document).on('click', '.edit_user', function() {
-            var id = $(this).attr("id");
-            $.get("{{route('users.userInfoById')}}", {
-                    id: id
-                },
-                function(data) {
-                    $('#edit_first_name').val(data.result.first_name);
-                    $('#edit_last_name').val(data.result.last_name);
-                    $('.edit_email').val(data.result.email);
-                    $('#edit_employee_id').val(data.result.user_code);
-                    $('#imgPreviewForEdit').attr("src", data.result.profile_photo);
-                    $('#name').empty();
-                    var selected_item = "";
-                    if (data.result !== null) {
-                        selected_item = data.result.role_id;
-                    }
+        {{--$(document).on('click', '.edit_user', function() {--}}
+        {{--    var id = $(this).attr("id");--}}
+        {{--    $.get("{{route('users.userInfoById')}}", {--}}
+        {{--            id: id--}}
+        {{--        },--}}
+        {{--        function(data) {--}}
+        {{--            $('#edit_first_name').val(data.result.first_name);--}}
+        {{--            $('#edit_last_name').val(data.result.last_name);--}}
+        {{--            $('.edit_email').val(data.result.email);--}}
+        {{--            $('#edit_employee_id').val(data.result.user_code);--}}
+        {{--            $('#imgPreviewForEdit').attr("src", data.result.profile_photo);--}}
+        {{--            $('#name').empty();--}}
+        {{--            var selected_item = "";--}}
+        {{--            if (data.result !== null) {--}}
+        {{--                selected_item = data.result.role_id;--}}
+        {{--            }--}}
 
-                    if (data.roles.length > 0) {
+        {{--            if (data.roles.length > 0) {--}}
 
-                        for (var i = 0; i < data.roles.length; i++) {
-                            if (data.roles[i].id == selected_item) {
-                                selected = 'selected="selected" ';
-                            } else {
-                                selected = '';
-                            }
-                            $('#name').append('<option value = \"' + data.roles[i].id + '\" ' + selected + '>' + data.roles[i].name + '</option>');
-                        }
-                    }
-                    action = "{{route('users.update')}}" + '?id=' + data.result.id;
-                    $('#frm').attr('action', action);
-                }, "json");
-            $('#edit_user').modal('show');
-        });
+        {{--                for (var i = 0; i < data.roles.length; i++) {--}}
+        {{--                    if (data.roles[i].id == selected_item) {--}}
+        {{--                        selected = 'selected="selected" ';--}}
+        {{--                    } else {--}}
+        {{--                        selected = '';--}}
+        {{--                    }--}}
+        {{--                    $('#name').append('<option value = \"' + data.roles[i].id + '\" ' + selected + '>' + data.roles[i].name + '</option>');--}}
+        {{--                }--}}
+        {{--            }--}}
+        {{--            action = "{{route('users.update')}}" + '?id=' + data.result.id;--}}
+        {{--            $('#frm').attr('action', action);--}}
+        {{--        }, "json");--}}
+        {{--    $('#edit_user').modal('show');--}}
+        {{--});--}}
     });
 </script>
 <script>

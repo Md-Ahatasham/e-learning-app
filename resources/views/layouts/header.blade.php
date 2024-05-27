@@ -51,10 +51,47 @@
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item text-right">
+                    @include('layouts.notification')
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <img src="{{asset(Auth::user()->profile_photo)}}" class="img-circle elevation-2 " style="width: 26px; height:26px;float:right" alt="{{asset('dist/img/avatar5.png')}}">
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
 
-            <li class="nav-item text-right">
-                @include('layouts.notification')
-            </li>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-users mr-2"></i> {{'Profile'}}
+                            <span class="float-right text-muted text-sm"></span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="" class="dropdown-item">
+                            <i class="fas fa-envelope mr-2"></i> {{'Change Password'}}
+                            <span class="float-right text-muted text-sm"></span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="nav-link pl-3" href="{{ route('logout') }}" onclick="event.preventDefault();
+    		                    document.getElementById('logout-form').submit();">
+                            <i class="fas fa-sign-out-alt" style="padding-right:.5rem"></i>
+                            {{ __('Log Out') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="form-hide">
+                            @csrf
+                        </form>
+                        <div class="dropdown-divider"></div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </a>
+                </li>
+
+            </ul>
+
+
         </ul>
     </nav>
     <!-- /.navbar -->

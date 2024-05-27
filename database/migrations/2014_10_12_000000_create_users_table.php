@@ -23,6 +23,8 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('role_id');
             $table->string('profile_photo')->nullable();
             $table->unsignedBigInteger('user_code');
+            $table->string('speciality',255)->nullable();
+            $table->Integer('experience')->nullable();
             $table->unsignedTinyInteger('status')->default(1)->comment('0 inactive and 1 is active');
             $table->rememberToken();
             $table->softDeletes();

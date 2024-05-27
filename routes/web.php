@@ -23,7 +23,7 @@ Route::group(['middleware' => ['auth','activityTracker']], function () {
   Route::resource('users','User\UserController');
   Route::get('checkEmail','User\UserController@checkEmail');
   Route::get('userInfoById', 'User\UserController@userInfoById')->name('users.userInfoById');
-  Route::put('userInfoUpdate', 'User\UserController@update')->name('users.update');
+//  Route::put('userInfoUpdate', 'User\UserController@update')->name('users.update');
 
   ## student route
 

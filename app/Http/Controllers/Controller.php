@@ -55,12 +55,30 @@ class Controller extends BaseController
             $newFileName = time() . '.' . $photo->getClientOriginalExtension();
             $imageUrl = asset('profile_photo' . '/' . $newFileName);
             if (!File::isDirectory($uploadPath)) {
-                File::makeDirectory($uploadPath, '', true, true);
+                File::makeDirectory($uploadPath, '0777', true, true);
             }
             $photo->move($uploadPath, $newFileName);
             if (!empty($previous_image)) {
                 $this->deleteImage($previous_image, $forRounder = 1);
             }
+            return $imageUrl;
+        } catch (Exception $ex) {
+            return false;
+        }
+    }
+
+
+    public function uploadCertificate($certificate, $folder)
+    {
+        try {
+            $uploadPath = public_path($folder.'/');
+            $newFileName = time() . '.' . $certificate->getClientOriginalExtension();
+            $imageUrl = asset($folder . '/' . $newFileName);
+
+            if (!File::isDirectory($uploadPath)) {
+                File::makeDirectory($uploadPath, 0777, true, true);
+            }
+            $certificate->move($uploadPath, $newFileName);
             return $imageUrl;
         } catch (Exception $ex) {
             return false;
@@ -99,18 +117,23 @@ class Controller extends BaseController
     }
 
     /**
-     * gender array
+     * board array
      * @date: 18-03-2022
-     * @param  null
      * @return array
      */
-    public function gender()
+    public function board(): array
     {
         return [
-            ['id' => '1', 'name' => 'Male'],
-            ['id' => '2', 'name' => 'Female'],
-            ['id' => '3', 'name' => 'Transgender M->F'],
-            ['id' => '4', 'name' => 'Transgender F->M']
+            '' => 'Select',
+            'Dhaka' => 'Dhaka',
+            'Mymensingh' => 'Mymensingh',
+            'Sylhet' => 'Sylhet',
+            'Rangpur' => 'Rangpur',
+            'Barishal' => 'Barishal',
+            'Cumilla' => 'Cumilla',
+            'Rajshahi' => 'Rajshahi',
+            'Chottogram' => 'Chottogram',
+            'Dinajpur' => 'Dinajpur',
         ];
     }
 
@@ -132,14 +155,20 @@ class Controller extends BaseController
     /**
      * get patient status array
      * @date: 18-03-2022
-     * @param  null
      * @return array
      */
-    public function status()
+    public function educationalQualification(): array
     {
         return [
-            ['id' => '1', 'name' => 'Admitted'],
-            ['id' => '2', 'name' => 'Queue']
+            '' => 'Select',
+            'SSC' => 'SSC',
+            'HSC' => 'HSC',
+            'HONORS' => 'HONORS',
+            'B.A' => 'B.A',
+            'B.sc' => 'B.sc',
+            'M.sc' => 'M.sc',
+            'M.A' => 'M.A',
+            'M.sc' => 'M.sc',
         ];
     }
 
@@ -148,6 +177,7 @@ class Controller extends BaseController
      * @date: 18-03-2022
      * @param  null
      * @return array
+     *
      */
     public function intervalSchedule()
     {

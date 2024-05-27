@@ -28,7 +28,7 @@ class StoreUserRequest extends FormRequest
             'last_name' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
             'password' => 'required|string|min:8',
-            'roles' => 'required|string'
+            'role_id' => 'required'
             ];
     }
 
@@ -43,7 +43,7 @@ class StoreUserRequest extends FormRequest
             'password.required' => 'The password field is required.',
             'password.string' => 'The password field must be a string.',
             'password.min' => 'The password must be at least 8 characters long.',
-            'roles.required' => 'Role field is required'
+            'role_id.required' => 'Role field is required'
         ];
     }
 }
