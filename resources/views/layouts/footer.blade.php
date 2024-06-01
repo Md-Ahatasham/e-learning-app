@@ -31,39 +31,56 @@
 
 <script>
     $("document").ready(function() {
-        {{--$(document).on('click', '.edit_user', function() {--}}
-        {{--    var id = $(this).attr("id");--}}
-        {{--    $.get("{{route('users.userInfoById')}}", {--}}
-        {{--            id: id--}}
-        {{--        },--}}
-        {{--        function(data) {--}}
-        {{--            $('#edit_first_name').val(data.result.first_name);--}}
-        {{--            $('#edit_last_name').val(data.result.last_name);--}}
-        {{--            $('.edit_email').val(data.result.email);--}}
-        {{--            $('#edit_employee_id').val(data.result.user_code);--}}
-        {{--            $('#imgPreviewForEdit').attr("src", data.result.profile_photo);--}}
-        {{--            $('#name').empty();--}}
-        {{--            var selected_item = "";--}}
-        {{--            if (data.result !== null) {--}}
-        {{--                selected_item = data.result.role_id;--}}
-        {{--            }--}}
+        $('#updatePasswordForm').on('submit', function (event) {
+            event.preventDefault(); // Prevent the default form submission
 
-        {{--            if (data.roles.length > 0) {--}}
+            // Clear previous error messages
+            $('.error').text('');
 
-        {{--                for (var i = 0; i < data.roles.length; i++) {--}}
-        {{--                    if (data.roles[i].id == selected_item) {--}}
-        {{--                        selected = 'selected="selected" ';--}}
-        {{--                    } else {--}}
-        {{--                        selected = '';--}}
-        {{--                    }--}}
-        {{--                    $('#name').append('<option value = \"' + data.roles[i].id + '\" ' + selected + '>' + data.roles[i].name + '</option>');--}}
-        {{--                }--}}
-        {{--            }--}}
-        {{--            action = "{{route('users.update')}}" + '?id=' + data.result.id;--}}
-        {{--            $('#frm').attr('action', action);--}}
-        {{--        }, "json");--}}
-        {{--    $('#edit_user').modal('show');--}}
-        {{--});--}}
+            // Get form values
+            let currentPassword = $('#currentPassword').val();
+            let newPassword = $('#newPassword').val();
+            let confirmPassword = $('#confirmPassword').val();
+
+            let isValid = true;
+
+            // Client-side validation
+            if (newPassword.length < 8) {
+                $('#newPasswordError').text('New password must be at least 8 characters long.');
+                isValid = false;
+            }
+
+            if (newPassword !== confirmPassword) {
+                $('#confirmPasswordError').text('Passwords do not match.');
+                isValid = false;
+            }
+
+            // If validation passes, submit the form via AJAX
+            if (isValid) {
+                $.ajax({
+                    url: '/updatePassword', // Adjust the URL as needed
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // Include CSRF token if needed
+                    },
+                    success: function (response) {
+                        alert('Password updated successfully!');
+                        $('#password-change-modal').modal('hide');
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        if (jqXHR.responseJSON && jqXHR.responseJSON.errors) {
+                            // Display server-side validation errors
+                            $.each(jqXHR.responseJSON.errors, function (field, message) {
+                                $('#' + field + 'Error').text(message[0]);
+                            });
+                        } else {
+                            alert('Error updating password. Please try again.');
+                        }
+                    }
+                });
+            }
+        });
     });
 </script>
 <script>
@@ -129,40 +146,6 @@
                 "data": "profile_photo",
                 "orderable": false
                 },
-                {
-                    "data": "first_name"
-                },
-                {
-                    "data": "last_name"
-                },
-                {
-                    "data": "email"
-                },
-                {
-                    "data": "action",
-                },
-
-            ],
-            "fnDrawCallback": function (oSettings) {
-                if (oSettings._iDisplayLength >= oSettings.fnRecordsDisplay()) {
-                    $(oSettings.nTableWrapper).find('.dataTables_paginate').hide();
-                }
-            }
-        });
-
-        $('#teacherTable').DataTable({
-            "processing": true,
-            "serverSide": true,
-            "pageLength": 1000,
-            "info": false,
-            "order": [
-                [0, 'desc']
-            ],
-            "ajax": "{{ url('dataTableTeacherList') }}",
-            "columns": [{
-                "data": "profile_photo",
-                "orderable": false
-            },
                 {
                     "data": "first_name"
                 },
@@ -391,53 +374,39 @@
 
 <script>
     $("document").ready(function() {
-        $(document).on('click', '.edit_location', function() {
-            var id = $(this).attr("id");
-            $.get("{{route('locations.locationInfoById')}}", {
+        $(document).on('click', '.edit_batch', function() {
+            let id = $(this).attr("id");
+            $.get("{{route('batches.batchInfoById')}}", {
                     id: id
                 },
                 function(data) {
-                    $('#edit_location_name').val(data.result.name);
-                    action = "{{route('locations.update')}}" + '?id=' + data.result.id;
+                    $('#edit_batch_name').val(data.result.batch_name);
+                    let action = "{{route('batches.update')}}" + '?id=' + data.result.id;
                     $('#frm').attr('action', action);
                 }, "json");
-            $('#edit_location_modal').modal('show');
+            $('#edit_batch_modal').modal('show');
         });
     });
 </script>
 
 <script>
     $("document").ready(function() {
-        $(document).on('click', '.edit_affect', function() {
-            var id = $(this).attr("id");
-            $.get("{{route('affects.affectInfoById')}}", {
+        $(document).on('click', '.edit_course', function() {
+            let id = $(this).attr("id");
+            $.get("{{route('courses.courseInfoById')}}", {
                     id: id
                 },
                 function(data) {
-                    $('#edit_affect_name').val(data.result.affect_name);
-                    action = "{{route('affects.update')}}" + '?id=' + data.result.id;
+                    $('#edit_course_name').val(data.result.course_name);
+                    $('#edit_course_details').val(data.result.course_details);
+                    let action = "{{route('courses.update')}}" + '?id=' + data.result.id;
                     $('#frm').attr('action', action);
                 }, "json");
-            $('#edit_affect_modal').modal('show');
+            $('#edit_course_modal').modal('show');
         });
     });
 </script>
-<script>
-    $("document").ready(function() {
-        $(document).on('click', '.edit_behavior', function() {
-            var id = $(this).attr("id");
-            $.get("{{route('behaviors.behaviorInfoById')}}", {
-                    id: id
-                },
-                function(data) {
-                    $('#edit_behavior_name').val(data.result.behavior_name);
-                    action = "{{route('behaviors.update')}}" + '?id=' + data.result.id;
-                    $('#frm').attr('action', action);
-                }, "json");
-            $('#edit_behavior_modal').modal('show');
-        });
-    });
-</script>
+
 <script>
     $("document").ready(function() {
         $(document).on('click', '.room', function() {
@@ -499,33 +468,7 @@
         });
     });
 </script>
-<script>
-    $("document").ready(function() {
-        $(document).on('click', '.edit_bed', function() {
-            var id = $(this).attr("id");
-            $.get("{{route('beds.edit')}}", {
-                    id: id
-                },
-                function(data) {
-                    var selected_item = data.result.result.room_id;
-                    if (data.result.room.length > 0) {
-                        for (var i = 0; i < data.result.room.length; i++) {
-                            if (data.result.room[i].id == selected_item) {
-                                selected = ' selected="selected" ';
-                            } else {
-                                selected = '';
-                            }
-                            $('#edit_room_no').append('<option value = \"' + data.result.room[i].id + '\" ' + selected + '>' + data.result.room[i].room_no + '</option>');
-                        }
-                    }
-                    $('#edit_bed_no').val(data.result.result.bed_no);
-                    action = "{{route('beds.update')}}" + '?id=' + data.result.result.id;
-                    $('#frm').attr('action', action);
-                }, "json");
-            $('#editBedModal').modal('show');
-        });
-    });
-</script>
+
 <script>
     $("document").ready(function() {
         $(".unit").change(function() {

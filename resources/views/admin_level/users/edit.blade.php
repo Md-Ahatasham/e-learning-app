@@ -31,7 +31,11 @@
                                         <div class="form-group" style="margin-bottom:0rem">
                                             <label for="email">{{'Select Role'}}</label>
 
-                                            <select name="name" class="form-control input_field form-control-sm" id="name">
+                                            @if(!empty($from) && $from == 'profile')
+                                                <input type="hidden" value="1" name="fromWhere"/>
+                                            @endif
+
+                                            <select name="role_id" class="form-control input_field form-control-sm" id="name">
                                                 @if(!empty($data['userDetails']['roles']))
                                                     @foreach($data['userDetails']['roles'] as $key =>$roles)
                                                         <option value="{{$roles->id}}" @if($roles->id==$data['userDetails']['result']['role_id']) {{ 'selected' }} @endif>{{$roles->name}}</option>

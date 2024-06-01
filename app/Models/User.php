@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -44,5 +45,12 @@ class User extends Authenticatable
     public function userDetail(): HasOne
     {
         return $this->hasOne('App\Models\UserDetail', 'user_id', 'id');
+    }
+
+    public function courses(): BelongsToMany
+    {
+        return $this->belongsToMany(Course::class, 'user_course')
+            ->using(TeacherStudentCourse::class)
+            ->withTimestamps();
     }
 }

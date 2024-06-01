@@ -155,4 +155,9 @@ class UserService extends Controller {
 
         return $prepareRequestData;
     }
+
+    public function updatePassword($password)
+    {
+        return $this->userRepository->updatePassword($password);
+    }
 }

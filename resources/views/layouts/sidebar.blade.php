@@ -23,7 +23,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                 @if(Auth::user()->can('user-list') || Auth::user()->can('role-list') || Auth::user()->can('permission-list'))
-                    <li class="nav-item has-treeview">
+                    <li class="nav-item has-treeview menu-open">
                         <a href="#" class="nav-link">
                             <i class="fas fa-user"></i>
                             <p>
@@ -86,99 +86,37 @@
                     </li>
                 @endcan
 
-
-                @if(Auth::user()->can('user-list') || Auth::user()->can('location-list') || Auth::user()->can('role-list') || Auth::user()->can('behavior-list') || Auth::user()->can('affect-list'))
-                <li class="nav-item has-treeview d-none">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-chart-bar"></i>
-                        <p>
-                            Admin
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-
-                    <ul class="nav nav-treeview">
-                        @can('user-list')
-
-                        <li class="nav-item">
-                            <a href="{{ route('users.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon sub_menu_icon_size"></i>
-                                <p>Users</p>
+{{--                    @if(Auth::user()->can('user-list') || Auth::user()->can('role-list') || Auth::user()->can('permission-list'))--}}
+                        <li class="nav-item has-treeview menu-open">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-user"></i>
+                                <p>
+                                    {{'Configuration'}}
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
                             </a>
-                        </li>
-                        @endcan
+                            <ul class="nav nav-treeview">
+{{--                                @can('role-list')--}}
+                                    <li class="nav-item">
+                                        <a href="{{ route('batches.index') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon sub_menu_icon_size"></i>
+                                            <p>Batch</p>
+                                        </a>
+                                    </li>
+{{--                                @endcan--}}
 
+{{--                                @can('role-list')--}}
+                                    <li class="nav-item">
+                                        <a href="{{route('courses.index')}}" class="nav-link">
+                                            <i class="far fa-circle nav-icon sub_menu_icon_size"></i>
+                                            <p>Course</p>
+                                        </a>
+                                    </li>
+{{--                                @endcan--}}
 
-                        @can('permission-list')
-                        <li class="nav-item">
-                            <a href="{{ route('permission.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon sub_menu_icon_size"></i>
-                                <p>Permission</p>
-                            </a>
+                            </ul>
                         </li>
-                        @endcan
-                        @can('role-list')
-                        <li class="nav-item">
-                            <a href="{{ route('roles.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon sub_menu_icon_size"></i>
-                                <p>User Role</p>
-                            </a>
-                        </li>
-                        @endcan
-
-
-                        @can('location-list')
-                        <li class="nav-item">
-                            <a href="{{route('locations.index')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon sub_menu_icon_size"></i>
-                                <p>Location</p>
-                            </a>
-                        </li>
-                        @endcan
-                        @can('unit-list')
-                        <li class="nav-item">
-                            <a href="{{route('units.index')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon sub_menu_icon_size"></i>
-                                <p>Unit</p>
-                            </a>
-                        </li>
-                        @endcan
-
-                        <li class="nav-item">
-                            <a href="{{route('rooms.index')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon sub_menu_icon_size"></i>
-                                <p>Room</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{route('beds.index')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon sub_menu_icon_size"></i>
-                                <p>Bed</p>
-                            </a>
-                        </li>
-
-                        @can('behavior-list')
-                        <li class="nav-item">
-                            <a href="{{route('behaviors.index')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon sub_menu_icon_size"></i>
-                                <p>behavior</p>
-                            </a>
-                        </li>
-                        @endcan
-
-                        @can('affect-list')
-                        <li class="nav-item">
-                            <a href="{{route('affects.index')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon sub_menu_icon_size"></i>
-                                <p>Affect</p>
-                            </a>
-                        </li>
-                        @endcan
-
-                    </ul>
-                </li>
-                @endif
+{{--                    @endif--}}
 
                 @can('report-list')
                     <li class="nav-item">

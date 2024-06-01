@@ -8,9 +8,6 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => ['auth','activityTracker']], function () {
- // Route::get('/dashboard', function () {
- //    return view('admin_level.dashboard.dashboard');
- // });
 
   Route::get('/', 'HomeController@index');
   Route::get('dashboard', 'HomeController@index');
@@ -23,7 +20,9 @@ Route::group(['middleware' => ['auth','activityTracker']], function () {
   Route::resource('users','User\UserController');
   Route::get('checkEmail','User\UserController@checkEmail');
   Route::get('userInfoById', 'User\UserController@userInfoById')->name('users.userInfoById');
-//  Route::put('userInfoUpdate', 'User\UserController@update')->name('users.update');
+  Route::get('profile', 'User\UserController@viewProfile')->name('users.profile');
+  Route::post('updatePassword', 'User\UserController@updatePassword')->name('users.updatePassword');
+  Route::get('editProfile/{id}', 'User\UserController@editProfile')->name('users.editProfile');
 
   ## student route
 
@@ -33,7 +32,19 @@ Route::group(['middleware' => ['auth','activityTracker']], function () {
   ## student route
 
   Route::resource('teachers','Teacher\TeacherController');
-  Route::get('dataTableTeacherList','Teacher\TeacherController@dataTableTeacherList');
+  Route::post('assignCourse','Teacher\TeacherController@assignCourse')->name('assign.courses');
+  Route::put('getCourseInfo','Teacher\TeacherController@getCourseInfoByTeacher')->name('assignCourse.edit');
+
+  ## batch route
+  Route::resource('batches','Batch\BatchController');
+  Route::get('/batchInfoById', 'Batch\BatchController@batchInfoById')->name('batches.batchInfoById');
+  Route::put('/batchInfoUpdate', 'Batch\BatchController@update')->name('batches.update');
+
+  ## course route
+  Route::resource('courses','Course\CourseController');
+  Route::get('/coursesInfoById', 'Course\CourseController@courseInfoById')->name('courses.courseInfoById');
+  Route::put('/coursesInfoUpdate', 'Course\CourseController@update')->name('courses.update');
+  Route::get('/coursesEnrolledByStudent/{id}', 'Course\CourseController@getEnrolledCourseByStudent')->name('courses.enrolled');
 
 
   Route::resource('rounders','RounderController');

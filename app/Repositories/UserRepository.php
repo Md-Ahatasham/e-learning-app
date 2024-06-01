@@ -7,6 +7,7 @@ use App\Models\UserDetail;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
 class UserRepository implements UserInterface{
@@ -74,5 +75,10 @@ class UserRepository implements UserInterface{
     public function updateUserDetails($preparedEducationalRequest,$userId)
     {
       return UserDetail::updateOrCreate(['user_id'=>$userId], $preparedEducationalRequest);
+    }
+
+    public function updatePassword($password)
+    {
+      return User::find(Auth::user()->id)->update(['password' => Hash::make($password)]);
     }
 }

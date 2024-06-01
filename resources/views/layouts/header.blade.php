@@ -61,12 +61,12 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
 
-                        <a href="#" class="dropdown-item">
+                        <a href="{{route('users.profile')}}" class="dropdown-item">
                             <i class="fas fa-users mr-2"></i> {{'Profile'}}
                             <span class="float-right text-muted text-sm"></span>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="" class="dropdown-item">
+                        <a href="" class="dropdown-item" data-toggle="modal" data-target="#password-change-modal">
                             <i class="fas fa-envelope mr-2"></i> {{'Change Password'}}
                             <span class="float-right text-muted text-sm"></span>
                         </a>
@@ -95,3 +95,43 @@
         </ul>
     </nav>
     <!-- /.navbar -->
+    <!---- category add modal ---------------------------------------------------->
+
+    <div class="modal fade" id="password-change-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header cat_modal_header">
+                    <h5 class="modal-title">Update Password</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                        <form id="updatePasswordForm">
+                            <div class="form-group">
+                                <label for="currentPassword">Current Password:</label>
+                                <input type="password" class="form-control" id="currentPassword" name="currentPassword" required>
+                                <span class="error text-danger" id="currentPasswordError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="newPassword">New Password:</label>
+                                <input type="password" class="form-control" id="newPassword" name="newPassword" required>
+                                <span class="error text-danger" id="newPasswordError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm New Password:</label>
+                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                                <span class="error text-danger" id="confirmPasswordError"></span>
+                            </div>
+
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn btn-info btn-sm text-right">Update</button>
+                            </div>
+                        </form>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /end of category add modal ------------------>

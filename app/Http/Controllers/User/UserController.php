@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdatePasswordRequest;
 use App\Models\User;
 use App\Services\UserService;
 use Exception;
@@ -13,6 +14,8 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
@@ -84,6 +87,10 @@ class UserController extends Controller
     {
         try {
             $this->service->updateUser($request,$id);
+            if(!empty($request->fromWhere) && $request->fromWhere == 1)
+            {
+                return redirect()->route('users.profile')->with('toast_success', 'Profile updated successfully');
+            }
             return redirect()->route('users.index')->with('toast_success', 'User updated successfully');
         } catch (Exception $ex) {
             return redirect()->route('users.index')->with('toast_error', 'Ops! Something went wrong.');
@@ -127,18 +134,30 @@ class UserController extends Controller
         echo json_encode($data);
     }
 
-
-    /**
-     * @param $request
-     * @return void
-     * @throws ValidationException
-     */
-    public function formValidation($request)
+    public function viewProfile()
     {
-        $this->validate($request, [
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required'
-        ]);
+        $data['userDetails'] = $this->service->getUserDetailsById(Auth::user()->id);
+        $data['breadcrumb'] = $this->getBreadcrumb("Profile", "View Profile");
+        return view('admin_level.users.profile', with(['data' => $data]));
     }
+
+    public function updatePassword(UpdatePasswordRequest $request): JsonResponse
+    {
+        if (!Hash::check($request->currentPassword, Auth::user()->password)) {
+            return response()->json(['errors' => ['currentPassword' => ['Current password is incorrect.']]], 422);
+        }
+        $this->service->updatePassword($request->newPassword);
+        return response()->json(['message' => 'Password updated successfully!']);
+    }
+
+
+    public function editProfile(int $id)
+    {
+        $data = $this->service->preDefinedInfo();
+        $data['userDetails'] = $this->service->getUserDetailsById($id);
+        $data['breadcrumb'] = $this->getBreadcrumb("Users", "Update User");
+        return view('admin_level.users.edit', with(['data' => $data, 'from' => 'profile']));
+
+    }
+
 }

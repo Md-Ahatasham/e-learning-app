@@ -2,17 +2,20 @@
 namespace App\Repositories\Teacher;
 
 use App\Interfaces\Teacher\TeacherInterface;
+use App\Models\User;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 class TeacherRepository implements TeacherInterface{
 
-    public function getAllTeacherList(): Collection
+    public function getAllTeacherList()
     {
-        return DB::table('users')
-            ->leftjoin('roles', 'users.role_id', '=', 'roles.id')
-            ->where('roles.name', '=', 'Teacher')
-            ->selectRaw('users.*')
-            ->get();
+        return User::with('courses')->where('role_id', 2)->get();
+    }
+
+    public function assignCourseToTeacher($request)
+    {
+        $user = User::find($request['user_id']);
+        $user->courses()->attach($request['course_id']);
     }
 }
