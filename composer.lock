@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0b09cdd5d7fef51f844c3d3dce243fbe",
+    "content-hash": "a95cb18740ab66bd3b62bfad9b2d2602",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4305,96 +4305,6 @@
                 }
             ],
             "time": "2021-09-25T23:10:38+00:00"
-        },
-        {
-            "name": "realrashid/sweet-alert",
-            "version": "v5.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/realrashid/sweet-alert.git",
-                "reference": "5cf4a41631cf74efecb5e44d05eca02a2aa8d7e1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/realrashid/sweet-alert/zipball/5cf4a41631cf74efecb5e44d05eca02a2aa8d7e1",
-                "reference": "5cf4a41631cf74efecb5e44d05eca02a2aa8d7e1",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/framework": "^5.6|^6.0|^7.0|^8.0|^9.0",
-                "php": "^7.2|^8.0"
-            },
-            "require-dev": {
-                "symfony/thanks": "^1.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "RealRashid\\SweetAlert\\SweetAlertServiceProvider"
-                    ],
-                    "aliases": {
-                        "Alert": "RealRashid\\SweetAlert\\Facades\\Alert"
-                    }
-                }
-            },
-            "autoload": {
-                "files": [
-                    "src/functions.php"
-                ],
-                "psr-4": {
-                    "RealRashid\\SweetAlert\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Rashid Ali",
-                    "email": "realrashid05@gmail.com",
-                    "homepage": "https://realrashid.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A BEAUTIFUL, RESPONSIVE, CUSTOMIZABLE, ACCESSIBLE (WAI-ARIA) REPLACEMENT FOR JAVASCRIPT'S POPUP BOXES FOR LARAVEL BY RASHID ALI",
-            "homepage": "https://github.com/realrashid/sweet-alert",
-            "keywords": [
-                "alert",
-                "laravel",
-                "laravel-package",
-                "notifier",
-                "noty",
-                "sweet-alert",
-                "sweet-alert2",
-                "toast"
-            ],
-            "support": {
-                "docs": "https://realrashid.github.io/sweet-alert/",
-                "email": "realrashid05@gmail.com",
-                "issues": "https://github.com/realrashid/sweet-alert/issues",
-                "source": "https://github.com/realrashid/sweet-alert"
-            },
-            "funding": [
-                {
-                    "url": "https://ko-fi.com/realrashid",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://www.buymeacoffee.com/realrashid",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://issuehunt.io/r/realrashid",
-                    "type": "issuehunt"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/realrashid/sweet-alert",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2022-02-04T09:38:53+00:00"
         },
         {
             "name": "spatie/laravel-permission",
@@ -9671,6 +9581,53 @@
             "time": "2020-09-28T06:39:44+00:00"
         },
         {
+            "name": "theanik/laravel-more-command",
+            "version": "v1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/theanik/laravel-more-command.git",
+                "reference": "a6c4144c5ca7839cce7fd969bcffb9181c1e088e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/theanik/laravel-more-command/zipball/a6c4144c5ca7839cce7fd969bcffb9181c1e088e",
+                "reference": "a6c4144c5ca7839cce7fd969bcffb9181c1e088e",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Theanik\\LaravelMoreCommand\\LaravelMoreCommandProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Theanik\\LaravelMoreCommand\\": "src/"
+                },
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anwar Hossain Anik",
+                    "email": "anwar.anik33@gmail.com"
+                }
+            ],
+            "description": "Create a Repository and Service class and trait using Artisan CLI",
+            "support": {
+                "issues": "https://github.com/theanik/laravel-more-command/issues",
+                "source": "https://github.com/theanik/laravel-more-command/tree/v1.3.0"
+            },
+            "time": "2022-02-21T16:53:24+00:00"
+        },
+        {
             "name": "theseer/tokenizer",
             "version": "1.2.1",
             "source": {
@@ -9723,8 +9680,9 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.3|^8.0"
+        "php": "^7.3|^8.0",
+        "ext-json": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }

@@ -29,7 +29,7 @@ Route::group(['middleware' => ['auth','activityTracker']], function () {
   Route::resource('students','Student\StudentController');
   Route::get('dataTableStudentList','Student\StudentController@dataTableStudentList');
 
-  ## student route
+  ## teacher route
 
   Route::resource('teachers','Teacher\TeacherController');
   Route::post('assignCourse','Teacher\TeacherController@assignCourse')->name('assign.courses');
@@ -45,6 +45,10 @@ Route::group(['middleware' => ['auth','activityTracker']], function () {
   Route::get('/coursesInfoById', 'Course\CourseController@courseInfoById')->name('courses.courseInfoById');
   Route::put('/coursesInfoUpdate', 'Course\CourseController@update')->name('courses.update');
   Route::get('/coursesEnrolledByStudent/{id}', 'Course\CourseController@getEnrolledCourseByStudent')->name('courses.enrolled');
+
+  ## content route
+  Route::resource('contents','Content\ContentController');
+  Route::get('/prepareContents/{id}','Content\ContentController@prepareContentByCourseId')->name('contents.prepareContent');
 
 
   Route::resource('rounders','RounderController');

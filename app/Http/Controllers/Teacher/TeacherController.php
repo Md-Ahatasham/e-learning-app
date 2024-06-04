@@ -30,7 +30,7 @@ class TeacherController extends Controller
         $data['courseList'] = app()->make(CourseService::class)->getAllCourse();
         $data['breadcrumb'] = $this->getBreadcrumb("Teachers", "Teacher List");
 //        dd($data);
-        return view('admin_level.teachers.index', with(['data' => $data]));
+        return view('backend.teachers.index', with(['data' => $data]));
     }
 
     public function assignCourse(Request $request): RedirectResponse

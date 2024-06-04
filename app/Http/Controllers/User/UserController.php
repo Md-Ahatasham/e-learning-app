@@ -40,14 +40,14 @@ class UserController extends Controller
             $data = [];
         }
 
-        return view('admin_level.users.index', with(['data' => $data]));
+        return view('backend.users.index', with(['data' => $data]));
     }
 
     public function create()
     {
         $data = $this->service->preDefinedInfo();
         $data['breadcrumb'] = $this->getBreadcrumb('User','Add User');
-        return view('admin_level.users.create', with(['data' => $data]));
+        return view('backend.users.create', with(['data' => $data]));
     }
 
 
@@ -71,7 +71,7 @@ class UserController extends Controller
         $data = $this->service->preDefinedInfo();
         $data['userDetails'] = $this->service->getUserDetailsById($id);
         $data['breadcrumb'] = $this->getBreadcrumb("Users", "Update User");
-        return view('admin_level.users.edit', with(['data' => $data]));
+        return view('backend.users.edit', with(['data' => $data]));
 
     }
 
@@ -138,7 +138,7 @@ class UserController extends Controller
     {
         $data['userDetails'] = $this->service->getUserDetailsById(Auth::user()->id);
         $data['breadcrumb'] = $this->getBreadcrumb("Profile", "View Profile");
-        return view('admin_level.users.profile', with(['data' => $data]));
+        return view('backend.users.profile', with(['data' => $data]));
     }
 
     public function updatePassword(UpdatePasswordRequest $request): JsonResponse
@@ -156,7 +156,7 @@ class UserController extends Controller
         $data = $this->service->preDefinedInfo();
         $data['userDetails'] = $this->service->getUserDetailsById($id);
         $data['breadcrumb'] = $this->getBreadcrumb("Users", "Update User");
-        return view('admin_level.users.edit', with(['data' => $data, 'from' => 'profile']));
+        return view('backend.users.edit', with(['data' => $data, 'from' => 'profile']));
 
     }
 

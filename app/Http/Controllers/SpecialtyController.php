@@ -19,7 +19,7 @@ class SpecialtyController extends Controller
     {
         $data['specialty_list'] = Specialty::all()->sortByDesc('id');
         $data['title'] = "Specialty";
-        return view('admin_level.specialties.index')->with('data', $data);
+        return view('backend.specialties.index')->with('data', $data);
     }
 
     /**

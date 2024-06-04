@@ -17,7 +17,7 @@ class StudentController extends Controller
     public function index()
     {
         $data['breadcrumb'] = $this->getBreadcrumb("Students", "Student List");
-        return view('admin_level.students.index', with(['data' => $data]));
+        return view('backend.students.index', with(['data' => $data]));
     }
 
 

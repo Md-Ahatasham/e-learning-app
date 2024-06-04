@@ -19,7 +19,7 @@ class EducationalQualificationController extends Controller
     {
         $data['degree_list'] = EducationalQualification::all()->sortByDesc('id');
         $data['title'] = "Qualification";
-        return view('admin_level.educationalDegrees.index')->with('data', $data);
+        return view('backend.educationalDegrees.index')->with('data', $data);
     }
 
     /**

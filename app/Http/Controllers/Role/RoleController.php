@@ -36,7 +36,7 @@ class RoleController extends Controller
     {
         $data['roles'] = $this->service->getAllRoles();
         $data['breadcrumb'] = $this->getBreadcrumb("Roles", "Role list");
-        return view('admin_level.roles.index', with(['data' => $data]));
+        return view('backend.roles.index', with(['data' => $data]));
     }
 
 
@@ -50,7 +50,7 @@ class RoleController extends Controller
     {
         $data['permission'] = $this->service->getPermissionList();
         $data['breadcrumb'] = $this->getBreadcrumb("Roles", "Add Roles");
-        return view('admin_level.roles.create', with(['data' => $data]));
+        return view('backend.roles.create', with(['data' => $data]));
     }
 
 
@@ -90,7 +90,7 @@ class RoleController extends Controller
     {
         $data = $this->service->getPermissionAssociatedWithRole($id);
         $data['breadcrumb'] = $this->getBreadcrumb("Roles", "Update Permissions");
-        return view('admin_level.roles.edit', with(['data' => $data]));
+        return view('backend.roles.edit', with(['data' => $data]));
     }
 
 

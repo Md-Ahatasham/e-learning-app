@@ -8,10 +8,11 @@
                 <div class="col-md-10">
                     <div class="row card add_new_button_design mr-0">
                         <div class="">
-{{--                            @can('batch-create')--}}
-                                <a href="" class="btn btn-info btn-sm btn-round ml-auto add_button_to_right" data-toggle="modal" data-target="#modal-default">
-                                    <em class="fa fa-plus"></em> &nbsp; Add New Batch</a> <br>
-{{--                            @endcan--}}
+                            {{--                            @can('batch-create')--}}
+                            <a href="" class="btn btn-info btn-sm btn-round ml-auto add_button_to_right"
+                               data-toggle="modal" data-target="#modal-default">
+                                <em class="fa fa-plus"></em> &nbsp; Add New Batch</a> <br>
+                            {{--                            @endcan--}}
                         </div>
                     </div>
                     <div class="card">
@@ -36,21 +37,27 @@
                                                     <td class="text-center">
                                                         <div class="row form-button-action">
                                                             <div class="col-6 text-right">
-{{--                                                                @can('batch-edit')--}}
-                                                                    <button type="button" data-toggle="tooltip" title="" class="edit_batch btn  btn-info btn-xs " data-original-title="Edit Task" id="{{$list->id}}">
-                                                                        <em class="fa fa-edit"></em>
-                                                                    </button>
-{{--                                                                @endcan--}}
+                                                                {{--                                                                @can('batch-edit')--}}
+                                                                <button type="button" data-toggle="tooltip" title=""
+                                                                        class="edit_batch btn  btn-info btn-xs "
+                                                                        data-original-title="Edit Task"
+                                                                        id="{{$list->id}}">
+                                                                    <em class="fa fa-edit"></em>
+                                                                </button>
+                                                                {{--                                                                @endcan--}}
                                                             </div>
 
                                                             <div class="col-6 text-left">
-{{--                                                                @can('batch-delete')--}}
-                                                                    <form action="{{ route('batches.destroy',$list->id) }}" method="post">
-                                                                        @csrf
-                                                                        @method('DELETE')
-                                                                        <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure you want to delete ?')"><em class='fas fa-trash-alt'></em> </button>
-                                                                    </form>
-{{--                                                                @endcan--}}
+                                                                {{--                                                                @can('batch-delete')--}}
+                                                                <form action="{{ route('batches.destroy',$list->id) }}"
+                                                                      method="post">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit" class="btn btn-danger btn-xs"
+                                                                            onclick="return confirm('Are you sure you want to delete ?')">
+                                                                        <em class='fas fa-trash-alt'></em></button>
+                                                                </form>
+                                                                {{--                                                                @endcan--}}
                                                             </div>
                                                         </div>
                                                     </td>
@@ -86,24 +93,31 @@
                     </div>
 
                     <div class="modal-body">
-                        <form action="{{route('batches.store')}}" method="post" enctype="multipart/form-data"> {{csrf_field()}}
+                        <form action="{{route('batches.store')}}" method="post"
+                              enctype="multipart/form-data"> {{csrf_field()}}
 
                             <div class="row">
                                 <div class="col-sm-12 col-md-12">
                                     <div class="row" id="unitTable">
                                         <div class="form-group">
                                             <label for="">Batch Name</label>
-                                            <input required="required" placeholder="Enter Batch Name" class="form-control-sm form-control" id="" type="text" name="batch_name[]">
+                                            <input required="required" placeholder="Enter Batch Name"
+                                                   class="form-control-sm form-control" id="" type="text"
+                                                   name="batch_name[]">
                                         </div>
                                     </div>
-                                    <a class="add_button btn-sm btn-default add_more_button form-control" title="Add field"><em class="fas fa-plus add_icon"></em> </a>
+                                    <a class="add_button btn-sm btn-default add_more_button form-control"
+                                       title="Add field"><em class="fas fa-plus add_icon"></em> </a>
                                 </div>
                             </div>
                     </div>
                     <div class="modal-footer justify-content-center">
                         <div class="col-6 text-center">
-                            <span><a data-dismiss="modal" aria-label="Close" class="btn-sm btn btn-danger cancel-button text-left">Cancel&nbsp;<span class="glyphicons glyphicons-circle_minus"></span></a></span>
-                            <span><input type="submit" class="btn btn-sm btn-info text-right" value="Save"><span class="glyphicons glyphicons-circle_plus"></span></button></span>
+                            <span><a data-dismiss="modal" aria-label="Close"
+                                     class="btn-sm btn btn-danger cancel-button text-left">Cancel&nbsp;<span
+                                            class="glyphicons glyphicons-circle_minus"></span></a></span>
+                            <span><input type="submit" class="btn btn-sm btn-info text-right" value="Save"><span
+                                        class="glyphicons glyphicons-circle_plus"></span></button></span>
                         </div>
                         </form>
                     </div>
@@ -112,7 +126,7 @@
         </div>
         {{-- end of add batch modal--}}
 
-       @include('admin_level.batches.edit')
+        @include('backend.batches.edit')
         </div>
 
     </section>

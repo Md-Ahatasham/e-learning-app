@@ -24,7 +24,7 @@ class HomeController extends Controller
     public function index(): Renderable
     {
         $data['breadcrumb'] = $this->getBreadcrumb("Dashboard", "Dashboard");
-        return view('admin_level.dashboard.index', with(['data' => $data]));
+        return view('backend.dashboard.index', with(['data' => $data]));
     }
 
 }

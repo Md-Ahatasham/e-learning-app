@@ -25,7 +25,7 @@ class PermissionController extends Controller
     {
         $breadcrumb_data['title'] = "Permission";
         $data = Permission::orderBy('id', 'DESC')->get();
-        return view('admin_level.permission.index')->with(['all_permissions' => $data, 'data' => $breadcrumb_data]);
+        return view('backend.permission.index')->with(['all_permissions' => $data, 'data' => $breadcrumb_data]);
     }
 
     /**

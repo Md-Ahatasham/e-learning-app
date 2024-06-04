@@ -20,6 +20,6 @@ class ActivityLogController extends Controller
         $rounders = UserActivityLog::with('userInfo')->orderBy('id', 'DESC')->get();
         $breadcrumb_data['title'] = "Activity log";
         $breadcrumb_data['headline'] = "Activity Log List";
-        return view('admin_level.activityLogs.index', with(['users_log' => $rounders, 'data' => $breadcrumb_data]));
+        return view('backend.activityLogs.index', with(['users_log' => $rounders, 'data' => $breadcrumb_data]));
     }
 }
