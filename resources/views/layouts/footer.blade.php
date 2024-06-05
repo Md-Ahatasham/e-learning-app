@@ -75,7 +75,47 @@
         });
     });
 </script>
-
+{{--<script>--}}
+{{--    $(document).ready(function() {--}}
+{{--        $("#showContent").fileinput({--}}
+{{--            theme: 'explorer-fa5',--}}
+{{--            allowedFileExtensions: ['mp4','pdf'],--}}
+{{--            previewFileType: 'video',--}}
+{{--            initialPreview: [--}}
+{{--                @if(!empty($data['contentList']))--}}
+{{--                @foreach($data['contentList'] as $content)--}}
+{{--                    "{{ asset($content['content_path']) }}",--}}
+{{--                @endforeach--}}
+{{--                @endif--}}
+{{--            ],--}}
+{{--            initialPreviewAsData: true,--}}
+{{--            initialPreviewConfig: [--}}
+{{--                @if(!empty($data['contentList']))--}}
+{{--                    @foreach($data['contentList'] as $content)--}}
+{{--                {--}}
+{{--                    caption: "{{ $content['content_title'] }}",--}}
+{{--                    type: "{{ pathinfo($content['content_path'], PATHINFO_EXTENSION) == "mp4" ? 'video': pathinfo($content['content_path'], PATHINFO_EXTENSION) }}",--}}
+{{--                    url: "",--}}
+{{--                    key: "{{$content['content_id']}}"--}}
+{{--                },--}}
+{{--                @endforeach--}}
+{{--                @endif--}}
+{{--            ],--}}
+{{--            fileActionSettings: {--}}
+{{--                showRemove: true,--}}
+{{--                showUpload: false,--}}
+{{--                showZoom: true,--}}
+{{--                showDrag: false,--}}
+{{--            },--}}
+{{--            showUpload: false,--}}
+{{--            showRemove: false,--}}
+{{--            showCaption: false,--}}
+{{--            browseOnZoneClick: false,--}}
+{{--            showBrowse: false,--}}
+{{--            showClose: false--}}
+{{--        });--}}
+{{--    });--}}
+{{--</script>--}}
 <script>
     $("document").ready(function() {
         $('#updatePasswordForm').on('submit', function (event) {
