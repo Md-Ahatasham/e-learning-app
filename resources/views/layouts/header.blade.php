@@ -23,6 +23,12 @@
     <link rel="stylesheet" href="{{asset('dist/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('dist/css/slick.min.css')}}">
     <link rel="stylesheet" href="{{asset('dist/css/slick-theme.min.css')}}">
+
+    <link href="{{asset('krajee/css/fileinput.css')}}" media="all" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" crossorigin="anonymous">
+    <link href="{{asset('krajee/themes/explorer-fa5/theme.css')}}" media="all" rel="stylesheet" type="text/css"/>
+
+
     <!-- Google Font: Source Sans Pro -->
 {{--    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900' rel='stylesheet' type='text/css'>--}}
     <link rel="icon" type="image/png" sizes="32x32" href="{{asset('dist/img/favicon.png')}}">

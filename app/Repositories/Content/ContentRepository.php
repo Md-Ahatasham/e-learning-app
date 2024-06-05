@@ -19,7 +19,7 @@ class ContentRepository implements ContentInterface{
 
     public function getContentById($id)
     {
-        return Content::find($id);
+        return Content::where('course_id',$id)->get();
     }
 
     public function updateContent($request,$id)

@@ -107,6 +107,7 @@
             </div>
             {{-- end of add batch modal--}}
         </div>
+        </div>
 
     </section>
 

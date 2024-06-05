@@ -24,25 +24,23 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     /**
-     * Store a patient image in storage.
-     * @date: 18-03-2022
-     * @param  \Illuminate\Http\Request  $request
-     * @return $image_url
+     * Store content in storage.
+     * @param $request
+     * @param $file
+     * @return false|string $content_path
      */
-    public function uploadPatientPhoto($photo, $previous_image = null)
+    public function uploadContent($request, $file)
     {
         try {
-            $uploadPath = public_path('patient_picture/');
-            $newFileName = time() . '.' . $photo->getClientOriginalExtension();
-            $imageUrl = asset('patient_picture' . '/' . $newFileName);
+            $initialPath = 'course_id/'.$request['course_id'].'/';
+            $uploadPath = public_path($initialPath);
+            $contentFileName = time() . '.' . $file->getClientOriginalExtension();
+            $content_path = asset($initialPath . $contentFileName);
             if (!File::isDirectory($uploadPath)) {
-                File::makeDirectory($uploadPath, '', true, true);
+                File::makeDirectory($uploadPath, '0777', true, true);
             }
-            $photo->move($uploadPath, $newFileName);
-            if (!empty($previous_image)) {
-                $this->deleteImage($previous_image);
-            }
-            return $imageUrl;
+            $file->move($uploadPath, $contentFileName);
+            return $content_path;
         } catch (Exception $ex) {
             return false;
         }
@@ -88,10 +86,11 @@ class Controller extends BaseController
     /**
      * Delete specific image
      * @date: 18-03-2022
-     * @param  $image path
-     * @return always true
+     * @param $imagePath
+     * @param null $forRounder
+     * @return  true
      */
-    public function deleteImage($imagePath, $forRounder = null)
+    public function deleteImage($imagePath, $forRounder = null): bool
     {
         $file_name = substr($imagePath, strrpos($imagePath, '/') + 1);
         if ($file_name != 'default_avatar.png') {

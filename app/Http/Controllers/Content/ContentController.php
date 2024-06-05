@@ -55,9 +55,9 @@ class ContentController extends Controller
         try {
             $this->service->storeContent($request);
         } catch (Exception $ex) {
-            return redirect()->route('contents.index')->with('toast_warning', 'Failed, Content not added!');
+            return redirect()->route('courses.index')->with('toast_warning', 'Failed, Content not added!');
         }
-        return redirect()->route('contents.index')->with('toast_success', 'Content added successfully !');
+        return redirect()->route('courses.index')->with('toast_success', 'Content added successfully !');
 
     }
 
@@ -104,5 +104,12 @@ class ContentController extends Controller
     public function destroy(Content $content)
     {
         //
+    }
+
+    public function getContentById($id)
+    {
+        $data['contentList'] = $this->service->getContent($id);
+        $data['breadcrumb'] = $this->getBreadcrumb("Content", "Content List");
+        return view('backend.contents.index', with(['data' => $data]));
     }
 }

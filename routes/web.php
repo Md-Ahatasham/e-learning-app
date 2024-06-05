@@ -49,6 +49,7 @@ Route::group(['middleware' => ['auth','activityTracker']], function () {
   ## content route
   Route::resource('contents','Content\ContentController');
   Route::get('/prepareContents/{id}','Content\ContentController@prepareContentByCourseId')->name('contents.prepareContent');
+  Route::get('/getContentById/{id}','Content\ContentController@getContentById')->name('contents.getContentById');
 
 
   Route::resource('rounders','RounderController');

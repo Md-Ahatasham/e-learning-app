@@ -66,6 +66,12 @@
                                                                     <em class="fa fa-couch"></em>
                                                                 </a>
                                                             </div>
+
+                                                            <div class="col-4 text-right">
+                                                                <a href="{{route('contents.getContentById',$list->id)}}" class="btn  btn-info btn-xs ">
+                                                                    <em class="fa fa-eye"></em>
+                                                                </a>
+                                                            </div>
                                                         </div>
                                                     </td>
                                                 </tr>

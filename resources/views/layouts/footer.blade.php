@@ -28,6 +28,53 @@
 <script src="{{asset('dist/js/color.js')}}"></script>
 <script src="{{asset('dist/js/slick.min.js')}}"></script>
 <script src="{{asset('plugins/custom.js')}}"></script>
+<script src="{{asset('krajee/js/plugins/buffer.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('krajee/js/plugins/filetype.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('krajee/js/plugins/piexif.js')}}" type="text/javascript"></script>
+<script src="{{asset('krajee/js/plugins/sortable.js')}}" type="text/javascript"></script>
+<script src="{{asset('krajee/js/fileinput.js')}}" type="text/javascript"></script>
+<script src="{{asset('krajee/js/locales/fr.js')}}" type="text/javascript"></script>
+<script src="{{asset('krajee/js/locales/es.js')}}" type="text/javascript"></script>
+<script src="{{asset('krajee/themes/gly/theme.js')}}" type="text/javascript"></script>
+<script src="{{asset('krajee/themes/fa5/theme.js')}}" type="text/javascript"></script>
+<script src="{{asset('krajee/themes/explorer-fa5/theme.js')}}" type="text/javascript"></script>
+<script>$.fn.fileinput.defaults.theme = 'gly';</script>
+<script>
+    $(document).ready(function() {
+        $("#content").fileinput({
+            theme: 'explorer-fa5',
+            maxFileSize: 20000048,
+            showUpload: false, // Hide the upload button
+            showCaption: true,
+            browseClass: "btn btn-primary btn-md",
+            fileType: "any",
+            previewFileIcon: "<i class='fas fa-file'></i>",
+            deleteUrl: "",
+            uploadUrl: '#',
+            initialPreviewShowDelete: true,
+            overwriteInitial: false,
+            initialPreviewAsData: true,
+            initialPreview: [], // You can populate this array with initial preview files if necessary
+            initialPreviewConfig: [], // You can populate this array with initial preview configuration if necessary
+            uploadExtraData: function() {
+                return {
+                    _token: $("input[name='_token']").val()
+                };
+            },
+            deleteExtraData: function() {
+                return {
+                    _token: $("input[name='_token']").val()
+                };
+            },
+            showDelete: true,
+            showTrash:true,
+            showRemove: false, // Ensure the remove button is shown
+            showClose: false // Optionally hide the close button in each preview frame
+        }).on('filedeleted', function(event, key) {
+            console.log('Key = ' + key);
+        });
+    });
+</script>
 
 <script>
     $("document").ready(function() {
