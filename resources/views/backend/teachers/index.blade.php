@@ -91,6 +91,17 @@
                                                     @endif
                                                 </select>
                                             </div>
+
+                                            <div class="form-group">
+                                                <label for="batch">{{'Select Batch'}}</label>
+                                                <select name="batch_id[]" class="select2 form-control input_field form-control-sm" multiple="multiple" id="batch">
+                                                    @if(!empty($data['batchList']))
+                                                        @foreach($data['batchList'] as $batch)
+                                                            <option value="{{$batch->id}}">{{$batch->batch_name}}</option>
+                                                        @endforeach
+                                                    @endif
+                                                </select>
+                                            </div>
                                         </div>
 {{--                                        <a class="add_button btn-sm btn-default add_more_button form-control" title="Add field"><em class="fas fa-plus add_icon"></em> </a>--}}
                                     </div>

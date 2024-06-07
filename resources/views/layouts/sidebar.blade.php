@@ -113,6 +113,12 @@
                                         </a>
                                     </li>
 {{--                                @endcan--}}
+                                <li class="nav-item">
+                                    <a href="{{route('routines.index')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon sub_menu_icon_size"></i>
+                                        <p>Routine</p>
+                                    </a>
+                                </li>
 
                             </ul>
                         </li>

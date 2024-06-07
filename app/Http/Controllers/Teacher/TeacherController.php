@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Services\Batch\BatchService;
 use App\Services\Course\CourseService;
 use App\Services\Teacher\TeacherService;
 use Exception;
@@ -28,8 +29,8 @@ class TeacherController extends Controller
     {
         $data['teacherList'] = $this->service->getAllTeacherList();
         $data['courseList'] = app()->make(CourseService::class)->getAllCourse();
+        $data['batchList'] = app()->make(BatchService::class)->getAllBatch();
         $data['breadcrumb'] = $this->getBreadcrumb("Teachers", "Teacher List");
-//        dd($data);
         return view('backend.teachers.index', with(['data' => $data]));
     }
 

@@ -51,6 +51,7 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Course::class, 'user_course')
             ->using(TeacherStudentCourse::class)
-            ->withTimestamps();
+            ->withTimestamps()
+            ->withPivot('batch_id');
     }
 }

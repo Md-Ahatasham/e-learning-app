@@ -51,6 +51,8 @@ Route::group(['middleware' => ['auth','activityTracker']], function () {
   Route::get('/prepareContents/{id}','Content\ContentController@prepareContentByCourseId')->name('contents.prepareContent');
   Route::get('/getContentById/{id}','Content\ContentController@getContentById')->name('contents.getContentById');
 
+  ## routine
+  Route::resource('routines','Routine\RoutineController');
 
   Route::resource('rounders','RounderController');
   Route::get('dataTableRounderList','RounderController@dataTableRounderList');

@@ -16,7 +16,7 @@ class TeacherService extends Controller {
         return $this->repository->getAllTeacherList();
     }
 
-    public function assignCourseToTeacher($request)
+    public function assignCourseToTeacher($request): bool
     {
         return $this->repository->assignCourseToTeacher($request);
     }

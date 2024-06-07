@@ -25,8 +25,11 @@
     <link rel="stylesheet" href="{{asset('dist/css/slick-theme.min.css')}}">
 
     <link href="{{asset('krajee/css/fileinput.css')}}" media="all" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" crossorigin="anonymous">
+{{--    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" crossorigin="anonymous">--}}
     <link href="{{asset('krajee/themes/explorer-fa5/theme.css')}}" media="all" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('css/datepicker.css')}}" media="all" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css">
+{{--    <link rel="stylesheet" href="{{asset('css/fontawesome.css')}}">--}}
 
 
     <!-- Google Font: Source Sans Pro -->

@@ -38,7 +38,40 @@
 <script src="{{asset('krajee/themes/gly/theme.js')}}" type="text/javascript"></script>
 <script src="{{asset('krajee/themes/fa5/theme.js')}}" type="text/javascript"></script>
 <script src="{{asset('krajee/themes/explorer-fa5/theme.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/moment.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/datepicker.js')}}" type="text/javascript"></script>
+{{--<script src="{{asset('js/datedemo.js')}}" type="text/javascript"></script>--}}
 <script>$.fn.fileinput.defaults.theme = 'gly';</script>
+<script>
+    $("document").ready(function() {
+        $("#routine").DataTable({
+            "responsive": true,
+            "paging": true,
+            "pageLength": 10000,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": false,
+            "autoWidth": true,
+            "fnDrawCallback": function(oSettings) {
+                if (oSettings._iDisplayLength >= oSettings.fnRecordsDisplay()) {
+                    $(oSettings.nTableWrapper).find('.dataTables_paginate').hide();
+                }
+            }
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#startDate,#endDate').datetimepicker({
+            "allowInputToggle": true,
+            "showClose": true,
+            "showClear": true,
+            "showTodayButton": true,
+            "format": "MM/DD/YYYY HH:mm:ss A",
+        });
+    });
+</script>
 <script>
     $(document).ready(function() {
         $("#content").fileinput({
@@ -75,47 +108,7 @@
         });
     });
 </script>
-{{--<script>--}}
-{{--    $(document).ready(function() {--}}
-{{--        $("#showContent").fileinput({--}}
-{{--            theme: 'explorer-fa5',--}}
-{{--            allowedFileExtensions: ['mp4','pdf'],--}}
-{{--            previewFileType: 'video',--}}
-{{--            initialPreview: [--}}
-{{--                @if(!empty($data['contentList']))--}}
-{{--                @foreach($data['contentList'] as $content)--}}
-{{--                    "{{ asset($content['content_path']) }}",--}}
-{{--                @endforeach--}}
-{{--                @endif--}}
-{{--            ],--}}
-{{--            initialPreviewAsData: true,--}}
-{{--            initialPreviewConfig: [--}}
-{{--                @if(!empty($data['contentList']))--}}
-{{--                    @foreach($data['contentList'] as $content)--}}
-{{--                {--}}
-{{--                    caption: "{{ $content['content_title'] }}",--}}
-{{--                    type: "{{ pathinfo($content['content_path'], PATHINFO_EXTENSION) == "mp4" ? 'video': pathinfo($content['content_path'], PATHINFO_EXTENSION) }}",--}}
-{{--                    url: "",--}}
-{{--                    key: "{{$content['content_id']}}"--}}
-{{--                },--}}
-{{--                @endforeach--}}
-{{--                @endif--}}
-{{--            ],--}}
-{{--            fileActionSettings: {--}}
-{{--                showRemove: true,--}}
-{{--                showUpload: false,--}}
-{{--                showZoom: true,--}}
-{{--                showDrag: false,--}}
-{{--            },--}}
-{{--            showUpload: false,--}}
-{{--            showRemove: false,--}}
-{{--            showCaption: false,--}}
-{{--            browseOnZoneClick: false,--}}
-{{--            showBrowse: false,--}}
-{{--            showClose: false--}}
-{{--        });--}}
-{{--    });--}}
-{{--</script>--}}
+
 <script>
     $("document").ready(function() {
         $('#updatePasswordForm').on('submit', function (event) {
@@ -290,57 +283,12 @@
 
     });
 </script>
-<script>
-    $("document").ready(function() {
-        $(document).ready(function() {
-            $('.timepicker').mdtimepicker();
-        });
-        $("#unit, #permission,#specialty,#qualification,#precaution,#bed,#room,#assignedTablet,#rounder_activity,#affect,#behavior").DataTable({
-            "responsive": true,
-            "paging": true,
-            "pageLength": 1000,
-            "lengthChange": false,
-            "searching": true,
-            "ordering": false,
-            "info": false,
-            "autoWidth": false,
-            "fnDrawCallback": function(oSettings) {
-                if (oSettings._iDisplayLength >= oSettings.fnRecordsDisplay()) {
-                    $(oSettings.nTableWrapper).find('.dataTables_paginate').hide();
-                }
-            }
-        });
-    });
-</script>
+
 <script>
     $(function() {
-        $("#unit_wrapper>.row>.col-md-6").first().text('Unit List');
-        $("#location_wrapper>.row>.col-md-6").first().text('Unit List');
-        $("#affect_wrapper>.row>.col-md-6").first().text('Affect List');
-        $("#behavior_wrapper>.row>.col-md-6").first().text('Behavior List');
-        $("#room_wrapper>.row>.col-md-6").first().text('Room List');
-        $("#bed_wrapper>.row>.col-md-6").first().text('Bed List');
-        $("#specialty_wrapper>.row>.col-md-6").first().text('Specialty List');
-        $("#qualification_wrapper>.row>.col-md-6").first().text('Qualification List');
-        $("#studentTable_wrapper>.row>.col-md-6").first().text('Student List');
-        $("#roundertable_wrapper>.row>.col-md-6").first().text('Rounders');
-        $("#tablettable_wrapper>.row>.col-md-6").first().text('Tablets');
-        $("#assignedTablet_wrapper>.row>.col-md-6").first().text('Assigned Tablet List');
-        $("#rounder_activity_wrapper>.row>.col-md-6").first().text('Tablet Details');
-        $("#notificationTable_wrapper>.row>.col-md-6").first().text('Notifications');
-        $("#permission_wrapper>.row>.col-md-6").first().text('Permission List');
         $('.select2').select2()
         $('.select2bs4').select2({
             theme: 'bootstrap4'
-        });
-
-        function formatText(icon) {
-            return $('<span><i class="fas ' + $(icon.element).data('icon') + '"></i> ' + icon.text + '</span>');
-        };
-
-        $('.rounder_name').select2({
-            templateSelection: formatText,
-            templateResult: formatText
         });
     })
 </script>
@@ -442,22 +390,6 @@
         $("ul>li .menu-open>a>i").addClass('fa fa-circle').css({"color":"#00aecb"});
     });
 </script>
-<script>
-    $("document").ready(function() {
-        $(document).on('click', '.edit_unit', function() {
-            var id = $(this).attr("id");
-            $.get("{{route('units.unitInfoById')}}", {
-                    id: id
-                },
-                function(data) {
-                    $('#edit_unit_name').val(data.result.name);
-                    action = "{{route('units.update')}}" + '?id=' + data.result.id;
-                    $('#frm').attr('action', action);
-                }, "json");
-            $('#edit_unit_modal').modal('show');
-        });
-    });
-</script>
 
 <script>
     $("document").ready(function() {
@@ -494,109 +426,6 @@
     });
 </script>
 
-<script>
-    $("document").ready(function() {
-        $(document).on('click', '.room', function() {
-            $.get("{{route('rooms.create')}}",
-                function(data) {
-                    if (data.unit.length > 0) {
-                        for (var i = 0; i < data.unit.length; i++) {
-                            selected = '';
-
-                            $('#unit_name').append('<option value = \"' + data.unit[i].id + '\" ' + selected + '>' + data.unit[i].name + '</option>');
-                        }
-                    }
-                }, "json");
-            $('#roomModal').modal('show');
-        });
-    });
-</script>
-<script>
-    $("document").ready(function() {
-        $(document).on('click', '.edit_room', function() {
-            var id = $(this).attr("id");
-            $.get("{{route('rooms.edit')}}", {
-                    id: id
-                },
-                function(data) {
-                    var selected_item = data.result.result.unit_id;
-                    if (data.result.unit.length > 0) {
-                        for (var i = 0; i < data.result.unit.length; i++) {
-                            if (data.result.unit[i].id == selected_item) {
-                                selected = ' selected="selected" ';
-                            } else {
-                                selected = '';
-                            }
-                            $('#edit_unit_name').append('<option value = \"' + data.result.unit[i].id + '\" ' + selected + '>' + data.result.unit[i].name + '</option>');
-                        }
-                    }
-                    $('#edit_room_name').val(data.result.result.room_no);
-                    action = "{{route('rooms.update')}}" + '?id=' + data.result.result.id;
-                    $('#frm').attr('action', action);
-                }, "json");
-            $('#editRoomModal').modal('show');
-        });
-    });
-</script>
-<script>
-    $("document").ready(function() {
-        $(document).on('click', '.bed', function() {
-            $.get("{{route('beds.create')}}",
-                function(data) {
-                    if (data.room.length > 0) {
-                        for (var i = 0; i < data.room.length; i++) {
-                            selected = '';
-
-                            $('#room_no').append('<option value = \"' + data.room[i].id + '\" ' + selected + '>' + data.room[i].room_no + '</option>');
-                        }
-                    }
-                }, "json");
-            $('#bedModal').modal('show');
-        });
-    });
-</script>
-
-<script>
-    $("document").ready(function() {
-        $(".unit").change(function() {
-            var id = $(this).val();
-            $.get("{{route('patients.getRoomListByUnitId')}}", {
-                    id: id
-                },
-                function(data) {
-                    $(".room").empty();
-                    if (data.roomList.length > 0) {
-                        $('.room').append('<option value = \"' + '' + '\">' + 'Select Room No' + '</option>');
-                        for (var i = 0; i < data.roomList.length; i++) {
-                            selected = '';
-                            $('.room').append('<option value = \"' + data.roomList[i].id + '\" ' + selected + '>' + data.roomList[i].room_no + '</option>');
-                        }
-                    }
-                }, "json");
-        });
-    });
-</script>
-<script>
-    $("document").ready(function() {
-        $(".room").change(function() {
-            var id = $(this).val();
-            $.get("{{route('patients.getBedListByRoomId')}}", {
-                    id: id
-                },
-                function(data) {
-                    $(".bed").empty();
-                    if (data.bedList.length > 0) {
-                        $('.bed').append('<option value = \"' + '' + '\">' + 'Select Bed No' + '</option>');
-                        for (var i = 0; i < data.bedList.length; i++) {
-                            selected = '';
-                            $('.bed').append('<option value = \"' + data.bedList[i].id + '\" ' + selected + '>' + data.bedList[i].bed_no + '</option>');
-                        }
-                    }
-                }, "json");
-
-        });
-    });
-</script>
 </body>
 
 </html>
