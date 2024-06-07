@@ -24,4 +24,10 @@ class Course extends Model
     {
         return $this->hasMany(Routine::class, 'course_id','id');
     }
+
+    public function batches()
+    {
+        return $this->belongsToMany(Batch::class, 'user_course')
+            ->withPivot('user_id', 'created_at', 'updated_at');
+    }
 }

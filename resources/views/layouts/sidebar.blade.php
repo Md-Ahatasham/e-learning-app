@@ -96,16 +96,16 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-{{--                                @can('role-list')--}}
+                                @can('batch-list')
                                     <li class="nav-item">
                                         <a href="{{ route('batches.index') }}" class="nav-link">
                                             <i class="far fa-circle nav-icon sub_menu_icon_size"></i>
                                             <p>Batch</p>
                                         </a>
                                     </li>
-{{--                                @endcan--}}
+                                @endcan
 
-{{--                                @can('role-list')--}}
+{{--                                @can('courses-list')--}}
                                     <li class="nav-item">
                                         <a href="{{route('courses.index')}}" class="nav-link">
                                             <i class="far fa-circle nav-icon sub_menu_icon_size"></i>
@@ -113,12 +113,14 @@
                                         </a>
                                     </li>
 {{--                                @endcan--}}
-                                <li class="nav-item">
-                                    <a href="{{route('routines.index')}}" class="nav-link">
-                                        <i class="far fa-circle nav-icon sub_menu_icon_size"></i>
-                                        <p>Routine</p>
-                                    </a>
-                                </li>
+{{--                                @can('routine-list')--}}
+                                    <li class="nav-item">
+                                        <a href="{{route('routines.index')}}" class="nav-link">
+                                            <i class="far fa-circle nav-icon sub_menu_icon_size"></i>
+                                            <p>Routine</p>
+                                        </a>
+                                    </li>
+{{--                                @endcan--}}
 
                             </ul>
                         </li>

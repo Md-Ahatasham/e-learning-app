@@ -24,6 +24,7 @@
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Courses</th>
+                                            <th>Batches</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -37,6 +38,13 @@
                                                         @if($teacher->courses->isNotEmpty())
                                                             @foreach($teacher->courses as $index => $course)
                                                                 <a href="{{route('courses.enrolled',$course->id)}}">{{ $course->course_name }}</a>{{ $index < $teacher->courses->count() - 1 ? ',' : '' }}
+                                                            @endforeach
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if($teacher->batches->isNotEmpty())
+                                                            @foreach($teacher->batches as $index => $batch)
+                                                                <a href="{{route('courses.enrolled',$batch->id)}}">{{ $batch->batch_name }}</a>{{ $index < $teacher->batches->count() - 1 ? ',' : '' }}
                                                             @endforeach
                                                         @endif
                                                     </td>
@@ -72,7 +80,7 @@
                                         <div class="row" id="unitTable">
                                             <div class="form-group">
                                                 <label for="email">{{'Select Teacher'}}</label>
-                                                <select name="user_id" class="form-control input_field form-control-sm" id="name">
+                                                <select name="user_id" class="form-control input_field" id="name">
                                                     @if(!empty($data['teacherList']))
                                                         @foreach($data['teacherList'] as $teacher)
                                                             <option value="{{$teacher->id}}">{{$teacher->first_name.' '. $teacher->last_name .'('.$teacher->email.')'}}</option>
@@ -83,7 +91,7 @@
 
                                             <div class="form-group">
                                                 <label for="course">{{'Select Course'}}</label>
-                                                <select name="course_id[]" class="select2 form-control input_field form-control-sm" multiple="multiple" id="name">
+                                                <select name="course_id[]" class="select2 form-control input_field form-control-sm" id="name">
                                                     @if(!empty($data['courseList']))
                                                         @foreach($data['courseList'] as $course)
                                                             <option value="{{$course->id}}">{{$course->course_name}}</option>
@@ -94,7 +102,7 @@
 
                                             <div class="form-group">
                                                 <label for="batch">{{'Select Batch'}}</label>
-                                                <select name="batch_id[]" class="select2 form-control input_field form-control-sm" multiple="multiple" id="batch">
+                                                <select name="batch_id[]" class="select2 form-control input_field form-control-sm" id="batch">
                                                     @if(!empty($data['batchList']))
                                                         @foreach($data['batchList'] as $batch)
                                                             <option value="{{$batch->id}}">{{$batch->batch_name}}</option>

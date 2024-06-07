@@ -40,7 +40,8 @@
 <script src="{{asset('krajee/themes/explorer-fa5/theme.js')}}" type="text/javascript"></script>
 <script src="{{asset('js/moment.js')}}" type="text/javascript"></script>
 <script src="{{asset('js/datepicker.js')}}" type="text/javascript"></script>
-{{--<script src="{{asset('js/datedemo.js')}}" type="text/javascript"></script>--}}
+<script src="{{asset('plugins/ckeditor.js')}}"></script>
+<script src="{{asset('plugins/anothereditor.js')}}"></script>
 <script>$.fn.fileinput.defaults.theme = 'gly';</script>
 <script>
     $("document").ready(function() {
@@ -424,6 +425,15 @@
             $('#edit_course_modal').modal('show');
         });
     });
+</script>
+<script>
+    $(function () {
+        // Replace the <textarea id="editor1"> with a CKEditor
+        // instance, using default configuration.
+        CKEDITOR.replace('editor1')
+        //bootstrap WYSIHTML5 - text editor
+        $('.textarea').wysihtml5()
+    })
 </script>
 
 </body>

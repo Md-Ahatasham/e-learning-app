@@ -10,7 +10,7 @@ class TeacherRepository implements TeacherInterface{
 
     public function getAllTeacherList()
     {
-        return User::with('courses')->where('role_id', 2)->get();
+        return User::with(['courses','batches'])->where('role_id', 2)->get();
     }
 
     public function assignCourseToTeacher($request): bool

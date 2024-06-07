@@ -54,4 +54,10 @@ class User extends Authenticatable
             ->withTimestamps()
             ->withPivot('batch_id');
     }
+
+    public function batches()
+    {
+        return $this->belongsToMany(Batch::class, 'user_course')
+            ->withPivot('course_id', 'created_at', 'updated_at');
+    }
 }

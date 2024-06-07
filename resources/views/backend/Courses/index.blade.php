@@ -4,6 +4,7 @@
     <section class="content">
 
         <div class="container-fluid">
+
             <div class="row justify-content-around body_padding_top">
                 <div class="col-md-10">
                     <div class="row card add_new_button_design mr-0">
@@ -20,66 +21,12 @@
                         <div class="card-body">
                             <div class="tab-content">
                                 <div class="active tab-pane" id="activitys">
-                                    <table id="location" class="table table-bordered">
-                                        <thead>
-                                        <tr>
-                                            <th>Serial</th>
-                                            <th>Name</th>
-                                            <th>Details</th>
-                                            <th class="text-center">Action</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
 
-                                        @if(!empty($courseData = Auth::user()->role_id !== 1 ? $data['courseList']['courses'] : $data['courseList']))
-                                            @foreach($courseData as $list)
-                                                <tr>
-                                                    <td>{{$loop->index+1}}</td>
-                                                    <td>{{$list->course_name ?? ""}}</td>
-                                                    <td>{{$list->course_details ?? ""}}</td>
-                                                    <td class="text-center">
-                                                        <div class="row form-button-action">
-                                                            <div class="col-4 text-right">
-                                                                {{--                                                                @can('batch-edit')--}}
-                                                                <button type="button" data-toggle="tooltip" title=""
-                                                                        class="edit_course btn  btn-info btn-xs "
-                                                                        data-original-title="Edit Task"
-                                                                        id="{{$list->id}}">
-                                                                    <em class="fa fa-edit"></em>
-                                                                </button>
-                                                                {{--                                                                @endcan--}}
-                                                            </div>
-
-                                                            <div class="col-4 text-left">
-                                                                <form action="{{ route('courses.destroy',$list->id) }}"
-                                                                      method="post">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <button type="submit" class="btn btn-danger btn-xs"
-                                                                            onclick="return confirm('Are you sure you want to delete ?')">
-                                                                        <em class='fas fa-trash-alt'></em></button>
-                                                                </form>
-                                                            </div>
-
-                                                            <div class="col-4 text-right">
-                                                                <a href="{{route('contents.prepareContent',$list->id)}}" class="btn  btn-info btn-xs ">
-                                                                    <em class="fa fa-couch"></em>
-                                                                </a>
-                                                            </div>
-
-                                                            <div class="col-4 text-right">
-                                                                <a href="{{route('contents.getContentById',$list->id)}}" class="btn  btn-info btn-xs ">
-                                                                    <em class="fa fa-eye"></em>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        @endif
-                                        </tbody>
-
-                                    </table>
+                                   @if(Auth::user()->role_id !== 1)
+                                       @include('backend.Courses.teacherView')
+                                    @else
+                                        @include('backend.Courses.adminView')
+                                    @endif
 
                                 </div>
                             </div>
@@ -89,9 +36,7 @@
                 </div>
             </div>
         </div>
-        </div>
-        </div>
-        </div>
+
 
         <!----Batch add modal ---------------------------------------------------->
 
@@ -132,6 +77,10 @@
                                                       placeholder="Enter Course Details"
                                                       class="form-control-sm form-control" id="" type="text"
                                                       name="course_details"></textarea>
+
+{{--                                            <textarea id="editor1" name="editor1" rows="10" cols="80">--}}
+{{--                                            This is my textarea to be replaced with CKEditor.--}}
+{{--                                            </textarea>--}}
                                         </div>
                                     </div>
                                     {{--                                    <a class="add_button btn-sm btn-default add_more_button form-control" title="Add field"><em class="fas fa-plus add_icon"></em> </a>--}}
@@ -144,7 +93,7 @@
                                      class="btn-sm btn btn-danger cancel-button text-left">Cancel&nbsp;<span
                                             class="glyphicons glyphicons-circle_minus"></span></a></span>
                             <span><input type="submit" class="btn btn-sm btn-info text-right" value="Save"><span
-                                        class="glyphicons glyphicons-circle_plus"></span></button></span>
+                                        class="glyphicons glyphicons-circle_plus"></span></span>
                         </div>
                         </form>
                     </div>
