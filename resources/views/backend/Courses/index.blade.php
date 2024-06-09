@@ -86,7 +86,7 @@
                                     {{--                                    <a class="add_button btn-sm btn-default add_more_button form-control" title="Add field"><em class="fas fa-plus add_icon"></em> </a>--}}
                                 </div>
                             </div>
-                    </div>
+
                     <div class="modal-footer justify-content-center">
                         <div class="col-6 text-center">
                             <span><a data-dismiss="modal" aria-label="Close"
@@ -95,15 +95,17 @@
                             <span><input type="submit" class="btn btn-sm btn-info text-right" value="Save"><span
                                         class="glyphicons glyphicons-circle_plus"></span></span>
                         </div>
-                        </form>
-                    </div>
                 </div>
+               </form>
+            </div>
+        </div>
             </div>
         </div>
         {{-- end of add batch modal--}}
 
         @include('backend.courses.edit')
         </div>
+
 
     </section>
 

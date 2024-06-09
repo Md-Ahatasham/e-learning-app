@@ -30,4 +30,9 @@ class Course extends Model
         return $this->belongsToMany(Batch::class, 'user_course')
             ->withPivot('user_id', 'created_at', 'updated_at');
     }
+
+    public function contents(): HasMany
+    {
+        return $this->hasMany(Content::class, 'course_id', 'id');
+    }
 }
