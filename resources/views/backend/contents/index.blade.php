@@ -39,8 +39,10 @@
                                                                 <video width="90" height="60" controls>
                                                                     <source src="{{ asset($list->content_path) }}" type="video/mp4">
                                                                 </video>
-                                                            @else
-                                                                <iframe src="{{ asset($list->content_path) }}" type="application/pdf" width="90" height="60"></iframe>
+                                                            @elseif(pathinfo($list->content_path, PATHINFO_EXTENSION) == 'pdf')
+                                                                    <a href="{{ asset($list->content_path) }}" target="_blank">
+                                                                        <iframe src="{{ asset($list->content_path) }}" type="application/pdf" width="90" height="60"></iframe>
+                                                                    </a>
                                                             @endif
                                                         </div>
                                                     </div>
