@@ -3,8 +3,87 @@
     <section class="content">
         <div class="container-fluid">
             <!-- Info boxes -->
-           <div class="text-center" style="margin-top: 10%">
-             <h2>{{'Under construction'}}</h2>
+            <div class="row mt-5">
+
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header border-transparent">
+                            <h3 class="card-title">{{'Assigned Course List'}}</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="card-body p-0">
+                            @if(!empty($data['dashboardInfo']))
+                                @foreach($data['dashboardInfo']->routines as $routine)
+                                    <div class="info-box mb-3 m-4 bg-gradient-cyan">
+                                        <span class="info-box-icon"><i class="fas fa-tag"></i></span>
+                                        <div class="info-box-content">
+                                            <span class="info-box-text">{{$routine->course->course_name}}</span>
+                                        </div>
+                                        <div class="info-box-content">
+                                            <span class="info-box-text"><a href="" class="btn btn-primary btn-xs">{{'Add Content'}}</a></span>
+                                            <span class="info-box-text"><a href="{{route('contents.getContentById',$routine->course->id)}}" class="btn btn-primary btn-xs">{{'View Contents'}}</a></span>
+                                        </div>
+
+                                    </div>
+                                @endforeach
+                            @endif
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header border-transparent">
+                            <h3 class="card-title">{{'Routines for last 7 days'}}</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table m-0">
+                                    <thead>
+                                    <tr>
+                                        <th>Course Name</th>
+                                        <th>Start Time</th>
+                                        <th>End Time</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @if(!empty($data['dashboardInfo']))
+                                        @foreach($data['dashboardInfo']->routines as $routine)
+                                        <tr>
+                                            <td>{{$routine->course->course_name}}</td>
+                                            <td>{{$routine->start_time}}</td>
+                                            <td>{{$routine->end_time}}</td>
+                                        </tr>
+                                        @endforeach
+                                    @endif
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
             </div>
             <!-- /.row -->
         </div><!--/. container-fluid -->

@@ -81,4 +81,9 @@ class UserRepository implements UserInterface{
     {
       return User::find(Auth::user()->id)->update(['password' => Hash::make($password)]);
     }
+
+    public function getUserRoutine($userId = null)
+    {
+        return User::with('routines.course')->findOrFail($userId);
+    }
 }

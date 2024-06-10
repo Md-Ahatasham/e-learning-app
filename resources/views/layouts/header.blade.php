@@ -30,6 +30,7 @@
     <link href="{{asset('css/datepicker.css')}}" media="all" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css">
     <link rel="stylesheet" href="{{asset('plugins/anothereditor.css')}}">
+    <link rel="stylesheet" href="{{asset('dist/css/ionicons.css')}}">
 {{--    <link rel="stylesheet" href="{{asset('css/fontawesome.css')}}">--}}
 
 

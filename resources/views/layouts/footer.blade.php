@@ -42,6 +42,8 @@
 <script src="{{asset('js/datepicker.js')}}" type="text/javascript"></script>
 <script src="{{asset('plugins/ckeditor.js')}}"></script>
 <script src="{{asset('plugins/anothereditor.js')}}"></script>
+<script src="{{asset('dist/js/fastclick.js')}}"></script>
+<script src="{{asset('dist/js/pages/dashboard2.js')}}"></script>
 <script>$.fn.fileinput.defaults.theme = 'gly';</script>
 <script>
     $("document").ready(function() {

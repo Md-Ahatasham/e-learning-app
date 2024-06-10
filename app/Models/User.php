@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -59,5 +60,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Batch::class, 'user_course')
             ->withPivot('course_id', 'created_at', 'updated_at');
+    }
+
+    public function routines(): HasManyThrough
+    {
+        return $this->hasManyThrough(Routine::class, TeacherStudentCourse::class, 'user_id', 'course_id', 'id', 'course_id');
     }
 }
