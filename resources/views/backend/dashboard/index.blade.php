@@ -20,8 +20,14 @@
                         </div>
 
                         <div class="card-body p-0">
+                            @php
+                                 $previousCourseId = null;
+                            @endphp
                             @if(!empty($data['dashboardInfo']))
                                 @foreach($data['dashboardInfo']->routines as $routine)
+                                    @if ($routine->course->id === $previousCourseId)
+                                        @break
+                                    @endif
                                     <div class="info-box mb-3 m-4 bg-gradient-cyan">
                                         <span class="info-box-icon"><i class="fas fa-tag"></i></span>
                                         <div class="info-box-content">
@@ -33,6 +39,9 @@
                                         </div>
 
                                     </div>
+                                        @php
+                                            $previousCourseId = $routine->course->id;
+                                        @endphp
                                 @endforeach
                             @endif
 
