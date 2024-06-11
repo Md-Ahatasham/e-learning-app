@@ -90,14 +90,14 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                @can('batch-list')
+{{--                                @can('batch-list')--}}
                                     <li class="nav-item">
                                         <a href="{{ route('batches.index') }}" class="nav-link">
                                             <i class="far fa-circle nav-icon sub_menu_icon_size"></i>
                                             <p>Batch</p>
                                         </a>
                                     </li>
-                                @endcan
+{{--                                @endcan--}}
 
 {{--                                @can('courses-list')--}}
                                     <li class="nav-item">
