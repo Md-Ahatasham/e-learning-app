@@ -11,7 +11,7 @@ class DashboardService extends Controller {
 
     public function getAllInfo()
     {
-        return app()->make(UserRepository::class)->getUserRoutine(Auth::user()->role_id == 2 ? Auth::user()->id : '');
+        return app()->make(UserRepository::class)->getUserRoutine(Auth::user()->id);
     }
 
 }

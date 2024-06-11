@@ -3,8 +3,8 @@
     <section class="content">
         <div class="container-fluid">
             <!-- Info boxes -->
+            @if(Auth::user()->role_id === 2)
             <div class="row mt-5">
-
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-header border-transparent">
@@ -93,7 +93,16 @@
 
                     </div>
                 </div>
+
             </div>
+            @else
+                <div class="row" style="margin-top:20%">
+                    <div class="col-12 text-center">
+                        <h3>{{'Under Construction'}}</h3>
+                    </div>
+                </div>
+
+            @endif
             <!-- /.row -->
         </div><!--/. container-fluid -->
     </section>
