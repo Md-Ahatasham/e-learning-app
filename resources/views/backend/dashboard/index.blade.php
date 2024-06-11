@@ -33,9 +33,9 @@
                                         <div class="info-box-content">
                                             <span class="info-box-text">{{$routine->course->course_name}}</span>
                                         </div>
-                                        <div class="info-box-content">
-                                            <span class="info-box-text"><a href="" class="btn btn-primary btn-xs">{{'Add Content'}}</a></span>
-                                            <span class="info-box-text"><a href="{{route('contents.getContentById',$routine->course->id)}}" class="btn btn-primary btn-xs">{{'View Contents'}}</a></span>
+                                        <div class="info-box-content text-right">
+                                            <span class="info-box-text mb-3"><a href="" class="btn btn-secondary btn-xs"><em class="fa fa-eye"></em> {{' Content'}}</a></span>
+                                            <span class="info-box-text"><a href="{{route('contents.getContentById',$routine->course->id)}}" class="btn btn-secondary btn-xs"><em class="fa fa-plus-circle"></em> {{' Content'}}</a></span>
                                         </div>
 
                                     </div>

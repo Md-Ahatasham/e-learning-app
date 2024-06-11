@@ -1,21 +1,15 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-14 admin-sidebar">
 
     <div class="sidebar" style="margin-top: -1%">
-{{--        <div class="user-panel pb-3 mb-3 text-center">--}}
-{{--            <div class="image">--}}
-{{--                <img src="{{asset('dist/img/sidebar_logo.png')}}" class="img-circle" alt="RR">--}}
-{{--            </div>--}}
-{{--        </div>--}}
 
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
+            <div class="images" style="margin-left:6%;">
                 <img src="{{asset('dist/img/avatar5.png')}}" class="img-circle elevation-2 " alt="User Image">
             </div>
-            <div class="info">
-{{--                {{Auth::user()->getRoleNames()}}--}}
-                <a href="#" class="d-block">{{Auth::user()->bangla_name}}
+            <div class="">
+                <p style="margin-left:14%">{{Auth::user()->last_name. ' '. Auth::user()->getRoleNames() }}
                     <span class="user-level"></span>
-                </a>
+                </p>
             </div>
         </div>
         <!-- Sidebar Menu -->
