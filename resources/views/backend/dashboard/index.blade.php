@@ -54,7 +54,7 @@
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header border-transparent">
-                            <h3 class="card-title">{{'Routines for last 7 days'}}</h3>
+                            <h3 class="card-title">{{'Routine List'}}</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                     <i class="fas fa-minus"></i>
@@ -70,9 +70,10 @@
                                 <table class="table m-0">
                                     <thead>
                                     <tr>
-                                        <th>Course Name</th>
-                                        <th>Start Time</th>
-                                        <th>End Time</th>
+                                        <th>{{'Course Name'}}</th>
+                                        <th>{{'Batch Name'}}</th>
+                                        <th>{{'Start Time'}}</th>
+                                        <th>{{'End Time'}}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -80,6 +81,7 @@
                                         @foreach($data['dashboardInfo']->routines as $routine)
                                         <tr>
                                             <td>{{$routine->course->course_name}}</td>
+                                            <td>{{$routine->batch->batch_name}}</td>
                                             <td>{{$routine->start_time}}</td>
                                             <td>{{$routine->end_time}}</td>
                                         </tr>

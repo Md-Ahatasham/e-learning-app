@@ -86,10 +86,11 @@
                                         </div>
                                     </li>
                                 </ul>
-
-                                <div class="col-6 text-center">
-                                    <span><button type="submit" name="submit" class="btn btn-info btn-smtext-right">Save</button></span>
-                                </div>
+                                @can('routine-create')
+                                    <div class="col-6 text-center">
+                                        <span><button type="submit" name="submit" class="btn btn-info btn-smtext-right">Save</button></span>
+                                    </div>
+                                @endcan
                                 </form>
                             </div>
                             <!-- /.card-body -->
@@ -160,13 +161,13 @@
                                                                                         <div class="row form-button-action">
 
                                                                                             <div class="col-6 text-right">
-                                                                                                @can('user-edit')
+                                                                                                @can('routine-edit')
                                                                                                     <a href="{{route('routines.edit',$routine->id)}}" class="edit_user btn btn-primary btn-xs" id="{{$routine->id}}"><em class="fa fa-edit"></em></a>
                                                                                                 @endcan
                                                                                             </div>
 
                                                                                             <div class="col-6 text-left">
-                                                                                                @can('user-delete')
+                                                                                                @can('routine-delete')
                                                                                                     <form action="{{ route('routines.destroy',$routine->id) }}" method="post">
                                                                                                         @csrf
                                                                                                         @method('DELETE')

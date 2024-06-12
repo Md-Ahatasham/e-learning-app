@@ -45,6 +45,14 @@
 <script src="{{asset('dist/js/fastclick.js')}}"></script>
 <script src="{{asset('dist/js/pages/dashboard2.js')}}"></script>
 <script>$.fn.fileinput.defaults.theme = 'gly';</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#selectAll").click(function() {
+            $("input[type=checkbox]").prop('checked', $(this).prop('checked'));
+        });
+
+    });
+</script>
 <script>
     $("document").ready(function() {
         $("#routine").DataTable({

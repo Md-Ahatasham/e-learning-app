@@ -28,6 +28,7 @@ class HomeController extends Controller
     {
         $data['breadcrumb'] = $this->getBreadcrumb("Dashboard", "Dashboard");
         $data['dashboardInfo'] = $this->service->getAllInfo();
+       // dd($data['dashboardInfo']);
         return view('backend.dashboard.index', with(['data' => $data]));
     }
 

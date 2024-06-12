@@ -15,7 +15,6 @@
                         </h5>
                     </div>
                     <div class="widget-user-image">
-                        {{--                                                    <img class="img-circle elevation-2">--}}
                         <a href="{{route('contents.prepareContent',$list->id)}}">
                             <div class="" style="border:1px solid black;border-radius: 50%; padding:14%;width:82%;height:87px;background: ghostwhite">
                                 <em class="fas fa-plus"></em> {{'Add Content'}}
@@ -34,7 +33,7 @@
                             <!-- /.col -->
                             <div class="col-sm-4 border-right">
                                 <div class="description-block">
-                                    <h5 class="description-header">13,000</h5>
+                                    <h5 class="description-header">13,00</h5>
                                     <span class="description-text">{{'Contents'}}</span>
                                 </div>
                                 <!-- /.description-block -->
@@ -42,7 +41,7 @@
                             <!-- /.col -->
                             <div class="col-sm-4">
                                 <div class="description-block">
-                                    <h5 class="description-header">35</h5>
+                                    <h5 class="description-header">10</h5>
                                     <span class="description-text">{{'Batches'}}</span>
                                 </div>
                                 <!-- /.description-block -->

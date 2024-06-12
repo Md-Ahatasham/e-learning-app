@@ -7,7 +7,7 @@
                 <img src="{{asset('dist/img/avatar5.png')}}" class="img-circle elevation-2 " alt="User Image">
             </div>
             <div class="">
-                <p style="margin-left:14%">{{Auth::user()->last_name. ' '. Auth::user()->getRoleNames() }}
+                <p style="margin-left:14%">{{Auth::user()->last_name. ' '. '('. str_replace('"', '', Auth::user()->getRoleNames()[0]). ')' }}
                     <span class="user-level"></span>
                 </p>
             </div>
@@ -58,29 +58,7 @@
                     </li>
                 @endif
 
-                @can('teacher-list')
-                    <li class="nav-item">
-                        <a href="{{ route('teachers.index') }}" class="nav-link">
-                            <i class="fas fa-chart-bar"></i>
-                            <p>
-                                Teachers
-                            </p>
-                        </a>
-                    </li>
-                @endcan
-
-                @can('student-list')
-                    <li class="nav-item">
-                        <a href="{{ route('students.index') }}" class="nav-link">
-                            <i class="fas fa-chart-bar"></i>
-                            <p>
-                                Students
-                            </p>
-                        </a>
-                    </li>
-                @endcan
-
-{{--                    @if(Auth::user()->can('user-list') || Auth::user()->can('role-list') || Auth::user()->can('permission-list'))--}}
+                    @if(Auth::user()->can('batch-list') || Auth::user()->can('course-list') || Auth::user()->can('routine-list'))
                         <li class="nav-item has-treeview menu-open">
                             <a href="#" class="nav-link">
                                 <i class="fas fa-user"></i>
@@ -90,35 +68,57 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-{{--                                @can('batch-list')--}}
+                                 @can('course-list')
+                                <li class="nav-item">
+                                    <a href="{{route('courses.index')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon sub_menu_icon_size"></i>
+                                        <p>Course</p>
+                                    </a>
+                                </li>
+                                 @endcan
+                                @can('batch-list')
                                     <li class="nav-item">
                                         <a href="{{ route('batches.index') }}" class="nav-link">
                                             <i class="far fa-circle nav-icon sub_menu_icon_size"></i>
                                             <p>Batch</p>
                                         </a>
                                     </li>
-{{--                                @endcan--}}
+                                @endcan
 
-{{--                                @can('courses-list')--}}
-                                    <li class="nav-item">
-                                        <a href="{{route('courses.index')}}" class="nav-link">
-                                            <i class="far fa-circle nav-icon sub_menu_icon_size"></i>
-                                            <p>Course</p>
-                                        </a>
-                                    </li>
-{{--                                @endcan--}}
-{{--                                @can('routine-list')--}}
+                                @can('routine-list')
                                     <li class="nav-item">
                                         <a href="{{route('routines.index')}}" class="nav-link">
                                             <i class="far fa-circle nav-icon sub_menu_icon_size"></i>
                                             <p>Routine</p>
                                         </a>
                                     </li>
-{{--                                @endcan--}}
+                                @endcan
 
                             </ul>
                         </li>
-{{--                    @endif--}}
+                    @endif
+
+                    @can('teacher-list')
+                        <li class="nav-item">
+                            <a href="{{ route('teachers.index') }}" class="nav-link">
+                                <i class="fas fa-chart-bar"></i>
+                                <p>
+                                    Teachers
+                                </p>
+                            </a>
+                        </li>
+                    @endcan
+
+                    @can('student-list')
+                        <li class="nav-item">
+                            <a href="{{ route('students.index') }}" class="nav-link">
+                                <i class="fas fa-chart-bar"></i>
+                                <p>
+                                    Students
+                                </p>
+                            </a>
+                        </li>
+                    @endcan
 
                 @can('report-list')
                     <li class="nav-item">

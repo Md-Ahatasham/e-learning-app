@@ -9,11 +9,10 @@
                 <div class="col-md-10">
                     <div class="row card add_new_button_design mr-0">
                         <div class="">
-                            {{--                            @can('batch-create')--}}
-                            <a href="" class="btn btn-info btn-sm btn-round ml-auto add_button_to_right"
-                               data-toggle="modal" data-target="#modal-default">
-                                <em class="fa fa-plus"></em> &nbsp; Add New Course</a> <br>
-                            {{--                            @endcan--}}
+                             @can('course-create')
+                                <a href="" class="btn btn-info btn-sm btn-round ml-auto add_button_to_right"
+                                   data-toggle="modal" data-target="#modal-default">
+                            @endcan
                         </div>
                     </div>
                     <div class="card">

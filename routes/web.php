@@ -9,9 +9,9 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['auth','activityTracker']], function () {
 
-  Route::get('/', 'HomeController@index');
-  Route::get('dashboard', 'HomeController@index');
-  Route::get('/login', 'HomeController@index');
+  Route::get('/', 'HomeController@index')->name('dashboard');
+  Route::get('dashboard', 'HomeController@index')->name('dashboard');
+  Route::get('/login', 'HomeController@index')->name('dashboard');
 
   ## user role route
   Route::resource('roles','Role\RoleController');

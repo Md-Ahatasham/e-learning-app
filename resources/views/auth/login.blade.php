@@ -9,7 +9,7 @@
                     <div class="form-container">
                         <h3 class="title">{{__('Login Panel')}}</h3>
                         <div class="">
-                            <img src="{{asset('dist/img/avatar2.png')}}"
+                            <img src="{{asset('dist/img/avatar5.png')}}"
                                  style="border-radius: 50%;width: 50%;margin-bottom: 5%;border: 1px solid lightgray;" />
                         </div>
                         <span class="description"></span>

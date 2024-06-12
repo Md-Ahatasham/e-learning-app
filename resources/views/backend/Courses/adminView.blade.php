@@ -14,7 +14,7 @@
             <tr>
                 <td>{{$loop->index+1}}</td>
                 <td>{{$list->course_name ?? ""}}</td>
-                <td>{{$list->course_details ?? ""}}</td>
+                <td>{{!empty($list->course_details) ? substr($list->course_details, 0, 30).'......' : ""}}</td>
                 <td class="text-center">
                     <div class="row form-button-action">
                         <div class="col-4 text-right">
