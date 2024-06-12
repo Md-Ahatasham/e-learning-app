@@ -24,7 +24,7 @@
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 
 </head>
-<body style="background-image: url({{asset('dist/img/photo1.png')}}); background-size:cover">
+<body style="background-image: url({{asset('dist/img/sdf.jpg')}}); background-size:cover; width:fit-content">
 <div id="app">
 
 
