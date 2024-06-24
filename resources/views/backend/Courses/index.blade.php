@@ -7,11 +7,11 @@
 
             <div class="row justify-content-around body_padding_top">
                 <div class="col-md-10">
-                    <div class="row card add_new_button_design mr-0">
+                    <div class="row card mr-0" style="box-shadow: 0 0 0 0">
                         <div class="">
                              @can('course-create')
                                 <a href="" class="btn btn-info btn-sm btn-round ml-auto add_button_to_right"
-                                   data-toggle="modal" data-target="#modal-default">
+                                   data-toggle="modal" data-target="#modal-default">{{'Add New Course'}}</a>
                             @endcan
                         </div>
                     </div>
@@ -86,20 +86,21 @@
                                 </div>
                             </div>
 
-                    <div class="modal-footer justify-content-center">
-                        <div class="col-6 text-center">
-                            <span><a data-dismiss="modal" aria-label="Close"
-                                     class="btn-sm btn btn-danger cancel-button text-left">Cancel&nbsp;<span
-                                            class="glyphicons glyphicons-circle_minus"></span></a></span>
-                            <span><input type="submit" class="btn btn-sm btn-info text-right" value="Save"><span
-                                        class="glyphicons glyphicons-circle_plus"></span></span>
-                        </div>
+                            <div class="modal-footer justify-content-center">
+                                <div class="col-6 text-center">
+                                    <span><a data-dismiss="modal" aria-label="Close"
+                                             class="btn-sm btn btn-danger cancel-button text-left">Cancel&nbsp;<span
+                                                    class="glyphicons glyphicons-circle_minus"></span></a></span>
+                                    <span><input type="submit" class="btn btn-sm btn-info text-right" value="Save"><span
+                                                class="glyphicons glyphicons-circle_plus"></span></span>
+                                </div>
+                            </div>
+                       </form>
+                    </div>
                 </div>
-               </form>
             </div>
         </div>
-            </div>
-        </div>
+
         {{-- end of add batch modal--}}
 
         @include('backend.courses.edit')
