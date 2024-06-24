@@ -25,23 +25,20 @@
                             @endphp
                             @if(!empty($data['dashboardInfo']))
                                 @foreach($data['dashboardInfo']->routines as $routine)
-                                    @if ($routine->course->id === $previousCourseId)
-                                        @break
-                                    @endif
+                                    @if ($routine->course->id != $previousCourseId)
+
                                     <div class="info-box mb-3 m-4 bg-gradient-cyan">
                                         <span class="info-box-icon"><i class="fas fa-tag"></i></span>
                                         <div class="info-box-content">
                                             <span class="info-box-text">{{$routine->course->course_name}}</span>
                                         </div>
-                                        <div class="info-box-content text-right">
-                                            <span class="info-box-text mb-3"><a href="" class="btn btn-secondary btn-xs"><em class="fa fa-eye"></em> {{' Content'}}</a></span>
-                                            <span class="info-box-text"><a href="{{route('contents.getContentById',$routine->course->id)}}" class="btn btn-secondary btn-xs"><em class="fa fa-plus-circle"></em> {{' Content'}}</a></span>
-                                        </div>
 
                                     </div>
-                                        @php
-                                            $previousCourseId = $routine->course->id;
-                                        @endphp
+                                    @endif
+
+                                    @php
+                                        $previousCourseId = $routine->course->id;
+                                    @endphp
                                 @endforeach
                             @endif
 

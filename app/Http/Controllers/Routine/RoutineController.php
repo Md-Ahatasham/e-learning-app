@@ -15,6 +15,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class RoutineController extends Controller
 {
@@ -33,6 +34,9 @@ class RoutineController extends Controller
      */
     public function index()
     {
+        if(Auth::user()->role_id !== 1){
+            return $this->getRoutineByUserId(Auth::user()->id);
+        }
         return $this->preparedData();
     }
 
@@ -134,5 +138,12 @@ class RoutineController extends Controller
             $data['routine'] = $this->service->getRoutineById($id);
         }
         return view('backend.routines.create', with(['data' => $data]));
+    }
+
+    public function getRoutineByUserId($userId)
+    {
+        $data['breadcrumb'] = $this->getBreadcrumb("Routines", "Routine List");
+        $data['routineList'] = $this->service->getAllRoutineByUserId($userId);
+        return view('backend.routines.index', with(['data' => $data]));
     }
 }

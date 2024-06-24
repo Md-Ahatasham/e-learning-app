@@ -86,4 +86,9 @@ class UserRepository implements UserInterface{
     {
         return User::with('routines.course', 'routines.batch')->findOrFail($userId);
     }
+
+    public function getUserSpecificAllRoutine($userId = null)
+    {
+        return User::with('routines.course', 'routines.batch')->findOrFail($userId);
+    }
 }

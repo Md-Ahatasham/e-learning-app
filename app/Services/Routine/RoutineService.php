@@ -3,6 +3,8 @@ namespace App\Services\Routine;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Routine\RoutineRepository;
+use App\Repositories\UserRepository;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class RoutineService extends Controller {
@@ -40,6 +42,11 @@ class RoutineService extends Controller {
     public function deleteRoutine($id): int
     {
         return $this->repository->deleteRoutine($id);
+    }
+
+    public function getAllRoutineByUserId($userId)
+    {
+        return app()->make(UserRepository::class)->getUserSpecificAllRoutine($userId);
     }
 
 }
