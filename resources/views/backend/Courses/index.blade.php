@@ -21,8 +21,10 @@
                             <div class="tab-content">
                                 <div class="active tab-pane" id="activitys">
 
-                                   @if(Auth::user()->role_id !== 1)
+                                   @if(Auth::user()->role_id === 2)
                                        @include('backend.Courses.teacherView')
+                                    @elseif(Auth::user()->role_id === 3)
+                                        @include('backend.Courses.studentView')
                                     @else
                                         @include('backend.Courses.adminView')
                                     @endif
