@@ -27,7 +27,9 @@ Route::group(['middleware' => ['auth','activityTracker']], function () {
   ## student route
 
   Route::resource('students','Student\StudentController');
-  Route::get('dataTableStudentList','Student\StudentController@dataTableStudentList');
+  Route::post('assignCourseToStudent','Student\StudentController@assignCourse')->name('assign.coursesToStudent');
+  Route::put('getCourseInfoForStudent','Student\StudentController@getCourseInfoByStudent')->name('assignCourseToStudent.edit');
+
 
   ## teacher route
 

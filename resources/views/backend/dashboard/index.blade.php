@@ -3,7 +3,7 @@
     <section class="content">
         <div class="container-fluid">
             <!-- Info boxes -->
-            @if(Auth::user()->role_id === 2)
+            @if(Auth::user()->role_id !== 1)
             <div class="row mt-5">
                 <div class="col-md-4">
                     <div class="card">

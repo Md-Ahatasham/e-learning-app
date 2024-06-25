@@ -1,43 +1,133 @@
 @extends('layouts.master')
 @section('content')
 
-<section class="content">
-    <div class="container-fluid">
-        <div class="row justify-content-around body_padding_top">
-            <div class="col-md-12">
-                <div class="row card add_new_button_design mr-0">
-                    <div class="">
-                        @can('student-create')
-                        <a href="{{ route('students.create') }}" class="btn btn-info btn-round ml-auto btn-sm add_button_to_right">
-                            <em class="fa fa-plus"></em> &nbsp; Add New Student</a> <br>
-                        @endcan
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row justify-content-around body_padding_top">
+                <div class="col-md-12">
+                    <div class="row card add_new_button_design mr-0">
+                        <div class="">
+                            {{--                            @can('student-create')--}}
+                            <a href="" class="btn btn-info btn-sm btn-round ml-auto add_button_to_right" data-toggle="modal" data-target="#modal-default">
+                                <em class="fa fa-plus"></em> {{'Assign Course To Student'}}</a> <br>
+                            {{--                            @endcan--}}
+                        </div>
                     </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <div class="tab-content">
-                            <div class="active tab-pane table-responsive" id="activity">
-                                <table id="studentTable" aria-describedby="studentTable" class="table table-bordered table-striped">
-                                    <thead>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="tab-content">
+                                <div class="active tab-pane table-responsive" id="activity">
+                                    <table id="teacherTable" aria-describedby="teacherTable" class="table table-bordered table-striped">
+                                        <thead>
                                         <tr>
                                             <th>Picture</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
+                                            <th>Name</th>
                                             <th>Email</th>
-                                            <th>Action</th>
+                                            <th>Courses</th>
+                                            <th>Batches</th>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                        @if(!empty($data['studentList']))
+                                            @foreach ($data['studentList'] as $student)
+                                                <tr>
+                                                    <td><img class="patient_image rounded-circle" alt="user_avatar" src="{{$student->profile_photo}}" /></td>
+                                                    <td>{{ $student->first_name.' '. $student->last_name }}</td>
+                                                    <td>{{ $student->email }}</td>
+                                                    <td>
+                                                        @if($student->courses->isNotEmpty())
+                                                            @foreach($student->courses as $index => $course)
+                                                                <a href="{{route('courses.enrolled',$course->id)}}">{{ $course->course_name }}</a>{{ $index < $student->courses->count() - 1 ? ',' : '' }}
+                                                            @endforeach
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if($student->batches->isNotEmpty())
+                                                            @foreach($student->batches as $index => $batch)
+                                                                <a href="{{route('courses.enrolled',$batch->id)}}">{{ $batch->batch_name }}</a>{{ $index < $student->batches->count() - 1 ? ',' : '' }}
+                                                            @endforeach
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-</section>
+            <!----Batch add modal ---------------------------------------------------->
+
+            <div class="modal fade" id="modal-default">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header cat_modal_header">
+                            <p class="modal-title">{{'Assign Course'}}</p>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            <form action="{{route('assign.coursesToStudent')}}" method="post" enctype="multipart/form-data"> {{csrf_field()}}
+
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12">
+                                        <div class="row" id="unitTable">
+                                            <div class="form-group">
+                                                <label for="email">{{'Select Student'}}</label>
+                                                <select name="user_id" class="form-control input_field" id="name">
+                                                    @if(!empty($data['studentList']))
+                                                        @foreach($data['studentList'] as $student)
+                                                            <option value="{{$student->id}}">{{$student->first_name.' '. $student->last_name .'('.$student->email.')'}}</option>
+                                                        @endforeach
+                                                    @endif
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="course">{{'Select Course'}}</label>
+                                                <select name="course_id[]" class="select2 form-control input_field form-control-sm" id="name">
+                                                    @if(!empty($data['courseList']))
+                                                        @foreach($data['courseList'] as $course)
+                                                            <option value="{{$course->id}}">{{$course->course_name}}</option>
+                                                        @endforeach
+                                                    @endif
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="batch">{{'Select Batch'}}</label>
+                                                <select name="batch_id[]" class="select2 form-control input_field form-control-sm" id="batch">
+                                                    @if(!empty($data['batchList']))
+                                                        @foreach($data['batchList'] as $batch)
+                                                            <option value="{{$batch->id}}">{{$batch->batch_name}}</option>
+                                                        @endforeach
+                                                    @endif
+                                                </select>
+                                            </div>
+                                        </div>
+                                        {{--                                        <a class="add_button btn-sm btn-default add_more_button form-control" title="Add field"><em class="fas fa-plus add_icon"></em> </a>--}}
+                                    </div>
+                                </div>
+                                <div class="modal-footer justify-content-center">
+                                    <div class="col-6 text-center">
+                                        <span><a data-dismiss="modal" aria-label="Close" class="btn-sm btn btn-danger cancel-button text-left">Cancel&nbsp;<span class="glyphicons glyphicons-circle_minus"></span></a></span>
+                                        <span><input type="submit" class="btn btn-sm btn-info text-right" value="Save"><span class="glyphicons glyphicons-circle_plus"></span></button></span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {{-- end of add batch modal--}}
+            </div>
+        </div>
+
+    </section>
 
 @endsection

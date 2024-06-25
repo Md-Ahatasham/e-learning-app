@@ -11,18 +11,28 @@
                         <h4 class="card-title">User List </h4>
                         @can('user-create')
 {{--                        <a href="" class="btn btn-info btn-round ml-auto btn-sm add_button_to_right" data-toggle="modal" data-target="#modal-xl"><em class="fa fa-plus"></em> Add New</a>--}}
-                        <a href="{{ route('users.create') }}" class="btn btn-info btn-round ml-auto btn-sm add_button_to_right"><em class="fa fa-plus"></em> Add New</a>
+                        <a href="{{ route('users.create') }}" class="btn btn-info btn-round ml-auto btn-sm add_button_to_right"><em class="fa fa-plus"></em> {{'Add New'}}</a>
+                        @endcan
+                        @can('user-create')
+{{--                        <a href="" class="btn btn-info btn-round ml-auto btn-sm add_button_to_right" data-toggle="modal" data-target="#modal-xl"><em class="fa fa-plus"></em> Add New</a>--}}
+                        <a href="{{ route('students.index') }}" class="btn btn-info btn-round ml-auto btn-sm add_button_to_right mr-2">{{'Assign Course & Batch To Student'}}</a>
+                        @endcan
+
+                        @can('user-create')
+{{--                        <a href="" class="btn btn-info btn-round ml-auto btn-sm add_button_to_right" data-toggle="modal" data-target="#modal-xl"><em class="fa fa-plus"></em> Add New</a>--}}
+                        <a href="{{ route('teachers.index') }}" class="btn btn-info btn-round ml-auto btn-sm add_button_to_right mr-2">{{'Assign Course & Batch To Teacher'}}</a>
                         @endcan
                     </div>
 
                     <div class="card-body">
-                        <table class="table table-bordered table-striped" aria-describedby="table">
+                        <table id="routine" class="table table-bordered table-striped" aria-describedby="table">
                             <thead>
                                 <tr>
                                     <th>Picture</th>
                                     <th>First Name</th>
                                     <th>Last Name</th>
                                     <th>Employee ID</th>
+                                    <th>Employee Role</th>
                                     <th>Email</th>
                                     <th class="text-center justify-content-around">Action</th>
                                 </tr>
@@ -35,6 +45,7 @@
                                     <td>{{ $user->first_name }}</td>
                                     <td>{{ $user->last_name }}</td>
                                     <td>{{ $user->user_code }}</td>
+                                    <td>{{ $user['roles'][0]['name'] ?? "" }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td class="text-center">
                                         <div class="row form-button-action">
