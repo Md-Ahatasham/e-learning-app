@@ -55,10 +55,10 @@
 </script>
 <script>
     $("document").ready(function() {
-        $("#routine").DataTable({
+        $("#routine,#teacherTable,#studentTable").DataTable({
             "responsive": true,
             "paging": true,
-            "pageLength": 10000,
+            "pageLength": 15,
             "lengthChange": true,
             "searching": true,
             "ordering": true,
@@ -222,42 +222,6 @@
             return false;
         }
     }
-    $(document).ready(function() {
-
-        $('#studentTable').DataTable({
-            "processing": true,
-            "serverSide": true,
-            "pageLength": 1000,
-            "info": false,
-            "order": [
-                [0, 'desc']
-            ],
-            "ajax": "{{ url('dataTableStudentList') }}",
-            "columns": [{
-                "data": "profile_photo",
-                "orderable": false
-                },
-                {
-                    "data": "first_name"
-                },
-                {
-                    "data": "last_name"
-                },
-                {
-                    "data": "email"
-                },
-                {
-                    "data": "action",
-                },
-
-            ],
-            "fnDrawCallback": function (oSettings) {
-                if (oSettings._iDisplayLength >= oSettings.fnRecordsDisplay()) {
-                    $(oSettings.nTableWrapper).find('.dataTables_paginate').hide();
-                }
-            }
-        });
-    });
 </script>
 
 <script type="text/javascript">

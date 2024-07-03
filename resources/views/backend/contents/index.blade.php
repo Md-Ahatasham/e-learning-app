@@ -9,8 +9,15 @@
                     <div class="row card add_new_button_design mr-0">
                         <div class="">
                             {{--                            @can('batch-create')--}}
-                            <a href="{{route('courses.index')}}" class="btn btn-info btn-sm btn-round ml-auto add_button_to_right">
-                                <em class="fa fa-arrow-left"></em> {{'Back to course'}}</a> <br>
+
+                            @if(Auth::user()->role_id > 2)
+                                <a href="{{route('dashboard')}}" class="btn btn-info btn-sm btn-round ml-auto add_button_to_right">
+                                    <em class="fa fa-arrow-left"></em> {{'Back to dashboard'}}</a> <br>
+
+                            @else
+                                <a href="{{route('courses.index')}}" class="btn btn-info btn-sm btn-round ml-auto add_button_to_right">
+                                    <em class="fa fa-arrow-left"></em> {{'Back to course'}}</a> <br>
+                            @endif
                             {{--                            @endcan--}}
                         </div>
 

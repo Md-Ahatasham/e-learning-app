@@ -31,6 +31,7 @@ class CourseController extends Controller
     public function index()
     {
         $data['courseList'] = $this->service->getAllCourse();
+        $data['courseWiseCount'] = $this->service->getCourseWiseCount();
         $data['breadcrumb'] = $this->getBreadcrumb("Course", "Course list");
         return view('backend.courses.index', with(['data' => $data]));
     }

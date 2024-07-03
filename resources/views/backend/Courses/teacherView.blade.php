@@ -1,6 +1,5 @@
-@if(!empty($courseData = Auth::user()->role_id !== 1 ? $data['courseList']['courses'] : $data['courseList']))
-    <div class="row">
-        @foreach($courseData as $list)
+ <div class="row">
+        @foreach($data['courseList']['courses'] as $list)
             <!-- /.col -->
             <div class="col-md-4">
                 <!-- Widget: user widget style 1 -->
@@ -22,10 +21,13 @@
                         </a>
                     </div>
                     <div class="card-footer">
+                        @foreach($data['courseWiseCount'] as $count)
+                            @if($count['id'] == $list['id'])
+
                         <div class="row">
                             <div class="col-sm-4 border-right">
                                 <div class="description-block">
-                                    <h5 class="description-header">3,200</h5>
+                                    <h5 class="description-header">{{$count['user_count']}} </h5>
                                     <span class="description-text">{{'Students'}}</span>
                                 </div>
                                 <!-- /.description-block -->
@@ -33,7 +35,7 @@
                             <!-- /.col -->
                             <div class="col-sm-4 border-right">
                                 <div class="description-block">
-                                    <h5 class="description-header">13,00</h5>
+                                    <h5 class="description-header">{{$count['contents_count']}}</h5>
                                     <span class="description-text">{{'Contents'}}</span>
                                 </div>
                                 <!-- /.description-block -->
@@ -41,7 +43,7 @@
                             <!-- /.col -->
                             <div class="col-sm-4">
                                 <div class="description-block">
-                                    <h5 class="description-header">10</h5>
+                                    <h5 class="description-header">{{$count['batch_count']}}</h5>
                                     <span class="description-text">{{'Batches'}}</span>
                                 </div>
                                 <!-- /.description-block -->
@@ -49,6 +51,8 @@
                             <!-- /.col -->
                         </div>
                         <!-- /.row -->
+                            @endif
+                        @endforeach
                     </div>
                 </div>
                 <!-- /.widget-user -->
@@ -59,4 +63,3 @@
 
         @endforeach
     </div>
-@endif

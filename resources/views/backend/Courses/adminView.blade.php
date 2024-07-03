@@ -9,8 +9,7 @@
     </thead>
     <tbody>
 
-    @if(!empty($courseData = Auth::user()->role_id !== 1 ? $data['courseList']['courses'] : $data['courseList']))
-        @foreach($courseData as $list)
+        @foreach($data['courseList'] as $list)
             <tr>
                 <td>{{$loop->index+1}}</td>
                 <td>{{$list->course_name ?? ""}}</td>
@@ -37,7 +36,6 @@
                 </td>
             </tr>
         @endforeach
-    @endif
     </tbody>
 
 </table>

@@ -30,7 +30,10 @@
                                     <div class="info-box mb-3 m-4 bg-gradient-cyan">
                                         <span class="info-box-icon"><i class="fas fa-tag"></i></span>
                                         <div class="info-box-content">
-                                            <span class="info-box-text">{{$routine->course->course_name}}</span>
+                                            <span class="info-box-text">{{$routine->course->course_name}}</span> <br>
+                                            @if(Auth::user()->role_id > 2)
+                                                <a href="{{route('contents.getContentById',$routine->course->id)}}" style="color:white;"><span class="info-box-text">{{'Click to view contents'}}</span></a>
+                                            @endif
                                         </div>
 
                                     </div>

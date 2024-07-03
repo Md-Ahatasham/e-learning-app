@@ -17,7 +17,7 @@
                         <div class="card-body">
                             <div class="tab-content">
                                 <div class="active tab-pane table-responsive" id="activity">
-                                    <table id="teacherTable" aria-describedby="teacherTable" class="table table-bordered table-striped">
+                                    <table id="studentTable" aria-describedby="teacherTable" class="table table-bordered table-striped">
                                         <thead>
                                         <tr>
                                             <th>Picture</th>

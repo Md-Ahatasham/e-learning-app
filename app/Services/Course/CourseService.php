@@ -16,6 +16,11 @@ class CourseService extends Controller {
         return $this->repository->getAllCourse();
     }
 
+    public function getCourseWiseCount()
+    {
+        return $this->repository->getCourseWiseCount();
+    }
+
     public function getCourseById($id)
     {
         return $this->repository->getCourseById($id);
