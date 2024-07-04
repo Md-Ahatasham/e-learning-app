@@ -44,7 +44,190 @@
 <script src="{{asset('plugins/anothereditor.js')}}"></script>
 <script src="{{asset('dist/js/fastclick.js')}}"></script>
 <script src="{{asset('dist/js/pages/dashboard2.js')}}"></script>
+
+{{--<script src="{{asset('highchart/highchart.js')}}"></script>--}}
+{{--<script src="{{asset('highchart/exporting.js')}}"></script>--}}
+{{--<script src="{{asset('highchart/export-data.js')}}"></script>--}}
+
+{{--<script type="text/javascript" src="{{asset('plugins/highcharts/highcharts.js')}}"></script>--}}
+{{--<script type="text/javascript" src="{{asset('plugins/circles/circles.js')}}"></script>--}}
+{{--<script type="text/javascript" src="{{asset('plugins/raphael/raphael.js')}}"></script>--}}
+
+{{--<script src="https://code.highcharts.com/modules/variable-pie.js"></script>--}}
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/variable-pie.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+
+
 <script>$.fn.fileinput.defaults.theme = 'gly';</script>
+
+<script>
+    Highcharts.chart('allInfo', {
+        title: {
+            text: '',
+            align: 'left'
+        },
+        xAxis: {
+            categories: [
+                'Teacher', 'Batch', 'Content',
+            ]
+        },
+        yAxis: {
+            title: {
+                text: ''
+            }
+        },
+        tooltip: {
+            valueSuffix: ''
+        },
+        plotOptions: {
+            series: {
+                borderRadius: '25%'
+            }
+        },
+        series: [
+            <?php if(!empty($data['statisticalInfo'])){
+            foreach($data['statisticalInfo'] as $count){?>
+                {
+                    type: 'column',
+                    name:"<?php echo $count['course_name']?>",
+                    data: [ <?php echo $count['teacher_count'] .','.$count['batch_count'] .','. $count['contents_count'] ?>]
+
+                },
+            <?php } }?>
+
+             {
+            type: 'pie',
+            name: 'Student',
+            data: [
+                    <?php if(!empty($data['statisticalInfo'])){
+                    foreach($data['statisticalInfo'] as $key => $count){?>
+                    {
+                        name:"<?php echo $count['course_name']?>",
+                        y: <?php echo $count['user_count'] ?>,
+                        color: Highcharts.getOptions().colors[<?php echo $key ?>],
+                          <?php if($key == 0){?>
+                            dataLabels: {
+                                enabled: true,
+                                    distance: -50,
+                                    format: 'Total: {point.total}',
+                                    style: {
+                                    fontSize: '15px'
+                                }
+                            }
+                            <?php } ?>
+                    },
+                    <?php } }?>
+
+                ],
+            center: [75, 65],
+            size: 100,
+            innerSize: '70%',
+            showInLegend: false,
+            dataLabels: {
+                enabled: false
+            }
+        }]
+    });
+</script>
+<script>
+    Highcharts.chart('container', {
+        chart: {
+            type: 'pie'
+        },
+        title: {
+            text: ''
+        },
+        tooltip: {
+            valueSuffix: '%'
+        },
+        subtitle: {
+            text: ''
+        },
+        plotOptions: {
+            series: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: [{
+                    enabled: true,
+                    distance: 20
+                }, {
+                    enabled: true,
+                    distance: -40,
+                    format: '{point.percentage:.1f}',
+                    style: {
+                        fontSize: '1.2em',
+                        textOutline: 'none',
+                        opacity: 0.7
+                    },
+                    filter: {
+                        operator: '>',
+                        property: 'percentage',
+                        value: 10
+                    }
+                }]
+            }
+        },
+        series: [
+            {
+                name: 'Students',
+                colorByPoint: true,
+                data: [
+                        <?php if(!empty($data['statisticalInfo'])){
+                        foreach($data['statisticalInfo'] as $count){?>
+                    {
+                        name:"<?php echo $count['course_name']?>",
+                        y:<?php echo $count['user_count']?>
+
+                    },
+                    <?php } }?>
+                ]
+            }
+        ]
+    });
+</script>
+
+
+<script>
+    Highcharts.chart('courseWiseStudentsAndContentsCount', {
+        chart: {
+            type: 'variablepie'
+        },
+        title: {
+            text: ''
+        },
+        tooltip: {
+            headerFormat: '',
+            pointFormat: '<span style="color:{point.color}">\u25CF</span> Course:<b> {point.name}</b><br/>' +
+                'Students: <b>{point.y}</b><br/>'+
+                'Contents: <b>{point.z}</b><br/>'
+        },
+        series: [{
+            minPointSize: 10,
+            innerSize: '20%',
+            zMin: 0,
+            name: 'countries',
+            data: [
+
+                    <?php if(!empty($data['statisticalInfo'])){
+                    foreach($data['statisticalInfo'] as $count){?>
+                {
+                    name:"<?php echo $count['course_name']?>",
+                    y:<?php echo $count['user_count']?>,
+                    z:<?php echo $count['contents_count'] ?? 9 ?>,
+
+                },
+                <?php } }?>
+
+            ]
+        }]
+    });
+
+</script>
 <script type="text/javascript">
     $(document).ready(function() {
         $("#selectAll").click(function() {

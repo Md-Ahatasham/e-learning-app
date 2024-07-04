@@ -98,11 +98,12 @@
 
             </div>
             @else
-                <div class="row" style="margin-top:20%">
-                    <div class="col-12 text-center">
-                        <h3>{{'Under Construction'}}</h3>
-                    </div>
-                </div>
+                @include('backend.dashboard.dashboard')
+{{--                <div class="row" style="margin-top:20%">--}}
+{{--                    <div class="col-12 text-center">--}}
+{{--                        <h3>{{'Under Construction'}}</h3>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
             @endif
             <!-- /.row -->

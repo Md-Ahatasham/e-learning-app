@@ -46,6 +46,7 @@ class CourseRepository implements CourseInterface{
                 DB::raw('COUNT(DISTINCT contents.id) AS contents_count'),
                 DB::raw('COUNT(DISTINCT batch_id) AS batch_count'),
                 DB::raw('COUNT(DISTINCT CASE WHEN users.role_id = 3 THEN user_id END) AS user_count'),
+                DB::raw('COUNT(DISTINCT CASE WHEN users.role_id = 2 THEN user_id END) AS teacher_count'),
 
             )
             ->join('users', 'user_course.user_id', '=', 'users.id')

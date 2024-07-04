@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Services\Course\CourseService;
 use App\Services\Dashboard\DashboardService;
 use Illuminate\Contracts\Support\Renderable;
 
@@ -28,6 +29,7 @@ class HomeController extends Controller
     {
         $data['breadcrumb'] = $this->getBreadcrumb("Dashboard", "Dashboard");
         $data['dashboardInfo'] = $this->service->getAllInfo();
+        $data['statisticalInfo'] = app(CourseService::class)->getCourseWiseCount();
         return view('backend.dashboard.index', with(['data' => $data]));
     }
 

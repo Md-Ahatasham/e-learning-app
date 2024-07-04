@@ -38,7 +38,176 @@
 {{--    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900' rel='stylesheet' type='text/css'>--}}
     <link rel="icon" type="image/png" sizes="32x32" href="{{asset('dist/img/favicon.png')}}">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <style>
+        @import 'https://code.highcharts.com/css/highcharts.css';
 
+        .highcharts-pie-series .highcharts-point {
+            stroke: #EDE;
+            stroke-width: 2px;
+        }
+        .highcharts-pie-series .highcharts-data-label-connector {
+            stroke: silver;
+            stroke-dasharray: 2, 2;
+            stroke-width: 2px;
+        }
+
+        .highcharts-figure, .highcharts-data-table table {
+            min-width: 320px;
+            max-width: 600px;
+            margin: 1em auto;
+        }
+
+        .highcharts-data-table table {
+            font-family: Verdana, sans-serif;
+            border-collapse: collapse;
+            border: 1px solid #EBEBEB;
+            margin: 10px auto;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+        }
+        .highcharts-data-table caption {
+            padding: 1em 0;
+            font-size: 1.2em;
+            color: #555;
+        }
+        .highcharts-data-table th {
+            font-weight: 600;
+            padding: 0.5em;
+        }
+        .highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+            padding: 0.5em;
+        }
+        .highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+        .highcharts-data-table tr:hover {
+            background: #f1f7ff;
+        }
+        .highcharts-figure, .highcharts-data-table table {
+            min-width: 310px;
+            max-width: 800px;
+            margin: 1em auto;
+        }
+        .highcharts-data-table table {
+            font-family: Verdana, sans-serif;
+            border-collapse: collapse;
+            border: 1px solid #EBEBEB;
+            margin: 10px auto;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+        }
+        .highcharts-data-table caption {
+            padding: 1em 0;
+            font-size: 1.2em;
+            color: #555;
+        }
+        .highcharts-data-table th {
+            font-weight: 600;
+            padding: 0.5em;
+        }
+        .highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+            padding: 0.5em;
+        }
+        .highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+        .highcharts-data-table tr:hover {
+            background: #f1f7ff;
+        }
+        .statistic-box .small {
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 0px;
+        }
+
+        .box_link {
+            color: #30668C;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            text-align: center;
+            font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        .panel {
+            margin-bottom: 10px;
+            background-color: #fff;
+            border: 1px solid transparent;
+            /* / / border-radius: 10 px; */
+            -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+            box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+        }
+
+        .panel-bd {
+            border: 1px solid #30668C;
+        }
+
+        .panel-body::before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-top: 12px solid #30668C;
+            border-right: 12px solid transparent;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .notice_board {
+            font-family: 'Mukti', sans-serif;
+            font-size: 16px;
+        }
+        .info_box{
+            box-shadow: 0 0 1px rgba(0, 0, 0, 0.125), 0 1px 3px rgba(0, 0, 0, 0.2);
+            border-radius: 0.25rem;
+            background: #ffffff;
+            display: -ms-flexbox;
+            display: flex;
+            margin-bottom: 1rem;
+            min-height: 70px;
+            padding: .5rem;
+            position: relative;
+            margin-left:10px;
+            /* max-width: 24%; */
+        }
+
+        .info_first{
+            top: 5px;
+            max-height: 53px;
+            margin-left: 9%;
+            width: 30%;
+            background-color: #007bff;
+        }
+        .info_second{
+            top: 5px;
+            max-height: 53px;
+            margin-left: 9%;
+            width: 30%;
+            background-color: #e3342f;
+        }
+
+        .info_third{
+            top: 5px;
+            max-height: 53px;
+            margin-left: 9%;
+            width: 30%;
+            background-color: #6cb2eb;
+        }
+        .img_position{
+            margin-right: 25%;
+        }
+        .height{
+            margin-top: 5%;
+        }
+        .row{
+            margin:0px;
+            padding:0px;
+        }
+        .dashboard_body{
+            padding-top:1%;
+        }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
