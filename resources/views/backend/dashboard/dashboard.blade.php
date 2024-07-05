@@ -128,7 +128,7 @@
                         </div>
 
                         <div class="col-12 col-sm-12 col-md-5" style="box-shadow: 0 0 1px rgba(0, 0, 0, 0.125), 0 1px 3px rgba(0, 0, 0, 0.2);">
-                            <h5 class="text-center" style="font-size: 15px;padding:1%;">{{'Course wise all information'}}
+                            <h5 class="text-center" style="font-size: 15px;padding:1%;">{{'Course wise student count'}}
 
 
                             </h5>
